@@ -8,6 +8,6 @@ namespace Diplom
 {
     class SecondLevel
     {
-        int[] m, A, k, t;
+        List<Batch> batches;
     }
 }

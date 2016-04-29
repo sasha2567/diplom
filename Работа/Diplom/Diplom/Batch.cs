@@ -8,8 +8,9 @@ namespace Diplom
 {
     class Batch
     {
-        private int countBid;
-        private int typeBid;
+        private int countClaims;
+        private int typeClaims;
+        private List<int> claims;
 
         public Batch(int valueCount, int valueType)
         {
@@ -19,32 +20,32 @@ namespace Diplom
 
         public int getCountBid()
         {
-            return this.countBid;
+            return this.countClaims;
         }
 
         public int getTypeBid()
         {
-            return this.typeBid;
+            return this.typeClaims;
         }
 
         public void setCountBid(int value)
         {
-            this.countBid = value;
+            this.countClaims = value;
         }
 
         public void setTypeBid(int value)
         {
-            this.typeBid = value;
+            this.typeClaims = value;
         }
 
         public void incrementCountBid(int value)
         {
-            this.countBid += value;
+            this.countClaims += value;
         }
 
         public void decrementCountBid(int value)
         {
-            this.countBid -= value;
+            this.countClaims -= value;
         }
     }
 }

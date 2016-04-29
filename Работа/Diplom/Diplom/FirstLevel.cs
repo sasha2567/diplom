@@ -13,7 +13,6 @@ namespace Diplom
 
         public bool GenereteSolution()
         {
-            
             return false;
         }
     }
