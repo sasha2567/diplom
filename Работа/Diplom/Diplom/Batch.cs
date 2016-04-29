@@ -8,7 +8,7 @@ namespace Diplom
 {
     class Batch
     {
-        private int countClaims;
+        private int countClaims;//так ты их описал
         private int typeClaims;
         private List<int> claims;
 
