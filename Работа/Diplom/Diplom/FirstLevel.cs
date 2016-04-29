@@ -8,8 +8,13 @@ namespace Diplom
 {
     class FirstLevel
     {
-        private BatchesGroup groupTypeOne;
-        private BatchesGroup groupTypeTwo;
-        private BatchesGroup groupTypeThree;
+        private List<int> batchesList;
+        private List<List<int>> batches;
+
+        public bool GenereteSolution()
+        {
+            
+            return false;
+        }
     }
 }
