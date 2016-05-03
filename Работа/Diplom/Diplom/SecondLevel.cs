@@ -13,7 +13,7 @@ namespace Diplom
 
         void nach_uslov()
         {
-            
+            this.groups.k = 0;
         }
     }
 }
