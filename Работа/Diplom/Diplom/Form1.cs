@@ -25,5 +25,17 @@ namespace Diplom
             firstLevel = new FirstLevel(tmp.Count, tmp);
             firstLevel.GenerateStartSolution(2);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+         SecondLevel  sl=new SecondLevel();
+         sl.nach_uslov();
+           
+        }
     }
 }
