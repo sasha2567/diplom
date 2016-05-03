@@ -8,17 +8,18 @@ namespace Diplom
 {
     class Batch
     {
+        //Структура, необходимая для работы второго уровня (составов групп партий данных)
         private int countClaims;//так ты их описал
         private int typeClaims;
         private List<int> claims;
 
-        public Batch(int valueCount, int valueType)
+        public Batch(int valueCount, int valueType, List<int> valueClaims)
         {
-            this.setCountBid(valueCount);
-            this.setTypeBid(valueType);
+            this.setCountClaims(valueCount, valueClaims);
+            this.setTypeClaims(valueType);
         }
 
-        public int getCountBid()
+        public int getCountClaims()
         {
             return this.countClaims;
         }
@@ -28,22 +29,23 @@ namespace Diplom
             return this.typeClaims;
         }
 
-        public void setCountBid(int value)
+        public void setCountClaims(int value, List<int> valueClaims)
         {
             this.countClaims = value;
+            this.claims = new List<int>(this.countClaims);
         }
 
-        public void setTypeBid(int value)
+        public void setTypeClaims(int value)
         {
             this.typeClaims = value;
         }
 
-        public void incrementCountBid(int value)
+        public void incrementCountClaims(int value)
         {
             this.countClaims += value;
         }
 
-        public void decrementCountBid(int value)
+        public void decrementCountClaims(int value)
         {
             this.countClaims -= value;
         }

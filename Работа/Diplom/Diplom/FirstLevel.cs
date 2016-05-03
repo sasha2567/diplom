@@ -8,12 +8,12 @@ namespace Diplom
 {
     class FirstLevel
     {
-        private List<int> batchesList;
-        private List<List<int>> batches;
-        private List<int> tempBatchesList;
-        private List<List<int>> tempBatches;
-        private int countType;
-        private List<int> countClaims;
+        private List<int> mi;//Вектор количества партий данных для каждого типа данных
+        private List<List<int>> A1;//Матрица составов партий требований
+        private List<List<int>> A2;//
+        private int countType;//количество типов
+        private List<int> countClaims;//Начальное количество требований для каждого типа данных
+        private BatchTypeClaims test;
 
         public FirstLevel(int count_type, List<int> count_claims)
         {
@@ -26,19 +26,40 @@ namespace Diplom
             return false;
         }
 
-        public void GenerateStartSolution()
+        public void GenerateStartSolution(int m)
         {
-            int m = 2;
             int claim = 2;
-            this.batchesList = new List<int>(this.countType);
-            this.batches = new List<List<int>>(this.countType);
+            this.mi = new List<int>(this.countType);
+            this.A1 = new List<List<int>>(this.countType);
             for (int i = 0; i < this.countType; i++)
             {
-                this.batchesList.Add(m);
-                this.batches.Add(new List<int>());
-                this.batches[i].Add(this.countClaims[i] - claim);
-                this.batches[i].Add(claim);
+                this.mi.Add(m);
+                this.A1.Add(new List<int>());
+                this.A1[i].Add(this.countClaims[i] - claim);
+                for (int j = 0; j < m; j++)
+                {
+                    this.A1[i].Add(claim);
+                }
             }
+            List<List<int>> temp = new List<List<int>>();
+            temp.Add(new List<int>());
+            temp.Add(new List<int>());
+            temp[1].Add(0);
+            temp[1].Add(14);
+            temp[1].Add(2);
+            test = new BatchTypeClaims(2, 16, temp);
+            test.GenerateSolution();
+        }
+
+        public void GenerateSolutionForType(int I)
+        {
+
+        }
+
+        public bool CheckingInitialSolution()
+        {
+            
+            return true;
         }
 
         public int GetCriterion()
