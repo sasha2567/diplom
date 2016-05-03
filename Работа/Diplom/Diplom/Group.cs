@@ -5,15 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Diplom
-{
-    class SecondLevel
+{   
+    class Group
     {
-
-        Groups groups;
-
-        void nach_uslov()
-        {
-            
-        }
+        List<Batch> batches;
     }
 }
