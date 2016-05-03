@@ -139,15 +139,19 @@ namespace Diplom
                         }
                     }
                 }
-            }
-            else
-            {
-                this.np2--;
-                this.q1++;
-                if (this.q1 > this.np1)
+                else
                 {
-
+                    MessageBox.Show("Шаг 7");
+                    goto Step8;
                 }
+            }
+            Step8:
+            MessageBox.Show("Шаг 8");
+            this.np2--;
+            this.q1++;
+            if (this.q1 > this.np1)
+            {
+
             }
             return true;
         }       
