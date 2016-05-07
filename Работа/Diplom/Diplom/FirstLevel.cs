@@ -63,6 +63,19 @@ namespace Diplom
             {
                 test.PrintMatrix(2);
                 test.PrintMatrix();
+                test = new BatchTypeClaims(16, test.ReturnA2Matrix());
+                if (test.GenerateSolution())
+                {
+                    test.PrintMatrix(2);
+                    test.PrintMatrix();
+                    test = new BatchTypeClaims(16, test.ReturnA2Matrix());
+                    if (test.GenerateSolution())
+                    {
+                        test.PrintMatrix(2);
+                        test.PrintMatrix();
+                        //test = new BatchTypeClaims(16, test.ReturnA2Matrix());
+                    }
+                }
             }
         }
 

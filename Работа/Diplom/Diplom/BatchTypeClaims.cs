@@ -318,6 +318,11 @@ namespace Diplom
                 goto Step2;
             }
             return true;
-        }       
+        }
+
+        public List<List<int>> ReturnA2Matrix()
+        {
+            return this.A2;
+        }
     }
 }
