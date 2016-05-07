@@ -45,10 +45,25 @@ namespace Diplom
             temp.Add(new List<int>());
             temp.Add(new List<int>());
             temp[1].Add(0);
-            temp[1].Add(14);
+            temp[1].Add(12);
             temp[1].Add(2);
-            test = new BatchTypeClaims(2, 16, temp);
-            test.GenerateSolution();
+            temp[1].Add(2);
+            temp.Add(new List<int>());
+            temp[2].Add(0);
+            temp[2].Add(10);
+            temp[2].Add(3);
+            temp[2].Add(3);
+            temp.Add(new List<int>());
+            temp[3].Add(0);
+            temp[3].Add(10);
+            temp[3].Add(4);
+            temp[3].Add(2);
+            test = new BatchTypeClaims(16, temp);
+            if (test.GenerateSolution())
+            {
+                test.PrintMatrix(2);
+                test.PrintMatrix();
+            }
         }
 
         public void GenerateSolutionForType(int I)

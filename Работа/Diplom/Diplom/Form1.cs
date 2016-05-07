@@ -23,7 +23,7 @@ namespace Diplom
             tmp.Add(16);
             tmp.Add(16);
             firstLevel = new FirstLevel(tmp.Count, tmp);
-            firstLevel.GenerateStartSolution(2);
+            firstLevel.GenerateStartSolution(4);
         }
 
         private void button1_Click(object sender, EventArgs e)
