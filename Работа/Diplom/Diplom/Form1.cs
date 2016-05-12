@@ -18,12 +18,12 @@ namespace Diplom
         {
             InitializeComponent();
             List<int> tmp = new List<int>();
-            tmp.Add(16);
-            tmp.Add(16);
-            tmp.Add(16);
-            tmp.Add(16);
+            tmp.Add(3);
+            tmp.Add(17);
+            tmp.Add(3);
+            tmp.Add(19);
             firstLevel = new FirstLevel(tmp.Count, tmp);
-            firstLevel.GenerateStartSolution(4);
+            firstLevel.GenerateStartSolution();
         }
 
         private void button1_Click(object sender, EventArgs e)

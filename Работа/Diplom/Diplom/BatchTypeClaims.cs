@@ -16,9 +16,10 @@ namespace Diplom
      */
     class BatchTypeClaims
     {
+        private List<List<int>> A;//Матрица составов партий требований максимальных решений
         private List<List<int>> A1;//Матрица составов партий требований в окресности Ок
         private List<List<int>> A2;//Матрица составов партий требований в окресности Ок+1
-        private int countClaims;//Начальное количество требований для каждого типа данных
+        private int countClaims;//Начальное количество требований для текущего типа данных
         private int np1;//Количество решений по составам партий данных , полученных на текущей (s+g)-ой  итерации алгоритма 
         private int np2;//Количество решений по составам партий данных , полученных на последующей  ((s+g)+1)-ой  итерации алгоритма 
         private int q1;//Индекс решения по составам партий данных в А1
@@ -28,10 +29,12 @@ namespace Diplom
         private int h;//Номер партии, состав которой будет изменяться
         private int G;//Максимальное по модулю значение дискретного градиента
         private int j;//Дополнительный индекс к номеру партии h
+        private int i;//Идентификатор текущего типа партии
 
         //Необходимая функция для предотвращения копирвания указателей на матрицы А1 и А2
-        private void CopyMatrix(List<List<int>> valueA1)
+        private void CopyMatrix(List<List<int>> valueA1, List<List<int>> valueA)
         {
+            this.A = new List<List<int>>(valueA);
             this.A1 = new List<List<int>>(valueA1);
             this.A2 = new List<List<int>>();
 
@@ -43,24 +46,36 @@ namespace Diplom
             }
         }
 
-        public BatchTypeClaims(int valueCountClaims, List<List<int>> valueA1)
+        /* 
+         * Конструктор с параметрами
+         * 
+         * valueI - идентификатор текущего типа, подлежащего изменению
+         * valueCountClaims - количество требований текущего типа
+         * valueA1 - начальные решения, полученные на предыдущем шаге (текущее локальное решение)
+         * valueA - матрица решений по всем типам данных (текущее глобальное решение)
+         * 
+         */
+        public BatchTypeClaims(int valueI, int valueCountClaims, List<List<int>> valueA1, List<List<int>> valueA)
         {
+            this.i = valueI;
             this.np2 = 0;
             this.np1 = valueA1.Count - 1;
             this.q1 = 1;
             this.q2 = 0;
             this.q2i = 0;
             this.g = 1;
-            this.CopyMatrix(valueA1);
+            this.CopyMatrix(valueA1, valueA);
             this.countClaims = valueCountClaims;
         }
 
-        /*Формирование нового решения на основе рассматриваемого
+        /*
+         * Формирование нового решения на основе рассматриваемого
          * 
          *Используются индексы q1 и q2
          *q1 - индекс текущего решения в матрице А1
          *q2 - индекс текущего решения в матрица А2
          *В результате происходит заполнение матрицы А2 значениями, полученными на основе матрицы А1
+         *
          */
         public void FormationDecisionPartMakeup()
         {
@@ -212,7 +227,7 @@ namespace Diplom
             {
                 for (int i = 1; i < temp.Count; i++)
                 {
-                    int lastIndexForDel = temp.FindLastIndex(delegate(List<int> inList)
+                    int lastIndexForDelete = temp.FindLastIndex(delegate(List<int> inList)
                     {
                         int count_find = 0;
                         for (int k = 0; k < inList.Count; k++)
@@ -224,10 +239,10 @@ namespace Diplom
                         }
                         return count_find == inList.Count ? true : false;
                     });
-                    if (lastIndexForDel != i)
+                    if (lastIndexForDelete != i)
                     {
-                        temp.RemoveAt(lastIndexForDel);
-                        inMatrix.RemoveAt(lastIndexForDel);
+                        temp.RemoveAt(lastIndexForDelete);
+                        inMatrix.RemoveAt(lastIndexForDelete);
                     }
                 }
                 countLoops++;
@@ -238,6 +253,32 @@ namespace Diplom
         }
 
         /*
+         * Возврат полученных решений на новом шаге приближения
+         * 
+         */ 
+        public List<List<int>> ReturnA2Matrix()
+        {
+            List<List<int>> ret = new List<List<int>>();
+            for (int i = 0; i < this.A2.Count; i++)
+            {
+                ret.Add(new List<int>());
+                for (int j = 0; j < this.A2[i].Count; j++)
+                {
+                    ret[i].Add(this.A2[i][j]);
+                }
+            }
+            return ret;
+        }
+
+
+        public int GetCriterion()
+        {
+            int criterion = 0;
+
+            return criterion;
+        }
+        
+        /*
          * Основная функция работы алгоритма
          * 
          */ 
@@ -245,22 +286,18 @@ namespace Diplom
         {
             //MessageBox.Show("Алгоритм формирования решения i-ого типа данных.Шаг 1");
             Step2:
-            //MessageBox.Show("Шаг 2");
             this.h = 2;
             
             Step3:
-            //MessageBox.Show("Шаг 3");
             this.q2++;
             this.FormationDecisionPartMakeup();
 
-            //MessageBox.Show("Шаг 4");
             this.np2++;
             
             if (this.CheckingMatrixA2(1))
             {
                 this.j = 1;
                 Step5:
-                //MessageBox.Show("Шаг 5");
                 if (this.h + this.j <= this.countClaims)
                 {
                     if (this.CheckingMatrixA2(2))
@@ -270,59 +307,42 @@ namespace Diplom
                     }
                     else
                     {
-                        //MessageBox.Show("Шаг 6");
                         if (this.CheckingMatrixA2(3))
                         {
                             this.j++;
-                            //MessageBox.Show("Шаг 5");
                             goto Step5;
                         }
                     }
                 }
                 else
                 {
-                    //MessageBox.Show("Шаг 7");
-                    goto Step8;
+
                 }
             }
-            Step8:
-            //MessageBox.Show("Шаг 8");
             this.np2--;
             this.q1++;
             if (this.q1 > this.np1)
             {
                 if (this.np2 > 1)
                 {
-                    //MessageBox.Show("Шаг 9");
                     this.A2 = this.SortedMatrixA2(this.A2);
                     this.np2 = this.A2.Count - 1;
                     this.q2 = 1;
                     this.q2i = 0;
                     this.G = 0;
-                    if(this.np2 > 0)
-                    {
-                        goto Step11;
-                    }
                 }
                 else
                 {
-                    //MessageBox.Show("Шаг 10");
                     return false;
                 }
-                Step11:
-                //MessageBox.Show("Шаг 11");
                 SecondLevel test = new SecondLevel();
+                
             }
             else
             {
                 goto Step2;
             }
             return true;
-        }
-
-        public List<List<int>> ReturnA2Matrix()
-        {
-            return this.A2;
-        }
+        }      
     }
 }
