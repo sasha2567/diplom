@@ -12,7 +12,7 @@ namespace Diplom
 
         Groups groups=new Groups(5),Q=new Groups(1);
 
-       public void nach_uslov(int j)
+        public void nach_uslov(int j)
         {
             for (int i = 0; i < this.groups.Z;i++)
                 this.groups.k.Add(0);
@@ -24,6 +24,20 @@ namespace Diplom
             this.groups.Set_Nzt(this.groups.Nz);//Сань я знаю что богопротивно я потом исправлю и права доступа тоже
             this.groups.z =this.groups.Nzt.Min();
             this.groups.Nzt.Remove(this.groups.Nzt.Min());
-       }
+        }
+
+        public bool GenerateSolution(List<List<int>> matrixA)
+        {
+            return true;
+        }
+
+        public List<List<int>> ReturnAMatrix()
+        {
+            List<List<int>> ret = new List<List<int>>();//Сюда добавь код для построения матрицы А
+            //из партий требований, добавленных в группы (МАКСИМАЛЬНОЕ решение по составам партий)
+            //Либо верни все партии удовлетворяющие критерию по расписанию
+            //То биж все группы партий, вошедшие в обработку
+            return ret;
+        }
     }
 }

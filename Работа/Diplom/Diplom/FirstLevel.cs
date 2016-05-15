@@ -89,7 +89,7 @@ namespace Diplom
                 if(countLoop == 0)
                     test = new BatchTypeClaims(1, 16, temp, this.A);
                 else
-                    test = new BatchTypeClaims(1, 16, test.ReturnA2Matrix(), this.A);
+                    test = new BatchTypeClaims(1, 16, test.ReturnMatrixA2(), this.A);
                 if (test.GenerateSolution())
                 {
                     test.PrintMatrix(2);

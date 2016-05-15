@@ -257,7 +257,7 @@ namespace Diplom
          * Возврат полученных решений на новом шаге приближения
          * 
          */ 
-        public List<List<int>> ReturnA2Matrix()
+        public List<List<int>> ReturnMatrixA2()
         {
             List<List<int>> ret = new List<List<int>>();
             for (int i = 0; i < this.A2.Count; i++)
@@ -271,8 +271,11 @@ namespace Diplom
             return ret;
         }
 
-
-        public int GetCriterion()
+        /*
+         * Функция вычисления f1 критерия
+         * 
+         */ 
+        public int GetCriterion(List<List<int>> inMatrix)
         {
             int criterion = 0;
 
@@ -336,12 +339,22 @@ namespace Diplom
                     this.q2 = 1;
                     this.q2i = 0;
                     this.G = 0;
+                    if (this.np2 > 0)
+                    {
+                        SecondLevel test = new SecondLevel();
+                        if (test.GenerateSolution(this.A2))
+                        {
+                            List<List<int>> tempAMatrix = test.ReturnAMatrix();
+                            int result = this.GetCriterion(tempAMatrix);
+                        }
+                        
+                    }
                 }
                 else
                 {
                     return false;
                 }
-                SecondLevel test = new SecondLevel();
+                
                 
             }
             else
