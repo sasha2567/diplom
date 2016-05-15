@@ -67,10 +67,11 @@ namespace Diplom
             temp.Add(new List<int>());
             temp.Add(new List<int>());
             temp[1].Add(0);
-            temp[1].Add(12);
+            temp[1].Add(10);
             temp[1].Add(2);
             temp[1].Add(2);
-            temp.Add(new List<int>());
+            temp[1].Add(2);
+            /*temp.Add(new List<int>());
             temp[2].Add(0);
             temp[2].Add(10);
             temp[2].Add(3);
@@ -79,7 +80,7 @@ namespace Diplom
             temp[3].Add(0);
             temp[3].Add(10);
             temp[3].Add(4);
-            temp[3].Add(2);
+            temp[3].Add(2);*/
             int countLoop = 0;
             this.A = new List<List<int>>();
             MessageBox.Show("Генерируем начальное решение");
@@ -95,22 +96,11 @@ namespace Diplom
                     test.PrintMatrix();
                 }
                 countLoop++;
-                if (countLoop == 5)
+                if (countLoop == 6)
                     break;
                 else
                     MessageBox.Show("Генерируем новое решение");
             }
-        }
-
-        public void GenerateSolutionForType(int I)
-        {
-
-        }
-
-        public bool CheckingInitialSolution()
-        {
-            
-            return true;
         }
 
         public int GetCriterion()

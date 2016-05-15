@@ -122,10 +122,11 @@ namespace Diplom
                 case 1:
                     try
                     {
-                        if (this.A2[this.q2][1] < this.A2[this.q2][this.h])
-                        {
-                            return false;
-                        }
+                        for (int i = 2; i < this.A2[this.q2].Count; i++)
+                            if (this.A2[this.q2][1] < this.A2[this.q2][i])
+                            {
+                                return false;
+                            }
                     }
                     catch
                     {
@@ -319,7 +320,12 @@ namespace Diplom
 
                 }
             }
-            this.np2--;
+            else
+            {
+                this.A2.RemoveAt(this.q2);
+                this.q2--;
+                this.np2--;
+            }            
             this.q1++;
             if (this.q1 > this.np1)
             {
