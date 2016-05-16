@@ -83,6 +83,41 @@ namespace Diplom
             return 0;
         }
 
+        public bool CheckingMatrixA2(int flag)
+        {
+            switch (flag)
+            {
+                case 1:
+                    try
+                    {
+                        for (int i = 2; i < this.A2[this.q2].Count; i++)
+                            if (this.A2[this.q2][1] < this.A2[this.q2][i])
+                            {
+                                return false;
+                            }
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                    break;
+               case 2:
+                    try
+                    {
+                        if (this.A2[this.q2][1] < 2)
+                        {
+                            return false;
+                        }
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                    break;
+            }
+            return true;
+        }
+
         /*
          * 
          * 
@@ -138,9 +173,27 @@ namespace Diplom
                         sum += 2;
                     }
                     this.A2[this.q2][1] = this.countClaims[this.q2] - sum;
+                    if (this.CheckingMatrixA2(1) && this.CheckingMatrixA2(2))
+                    {
+                        for (int h = 0; h < this.A2[this.q2].Count; h++)
+                            if (this.A[this.i].Count < this.A2[this.q2].Count)
+                            {
+                                this.A[this.i][h] = this.A2[this.q2][h];
+                            }
+                            else
+                            {
+                                this.A[this.i].Add(this.A2[this.q2][h]);
+                            }
+                        secondLevel.GenerateSolution(this.A);
+                        //Добавить вычисление значения критерия
+                    }
+                    else
+                    {
+                        this.I[this.i] = 0;
+                    }
                 }
             }
-            //ТЕстовый запуск алгоритма формирования решений i-ого типа
+            //Тестовый запуск алгоритма формирования решений i-ого типа
             MessageBox.Show("Генерируем начальное решение");
             List<List<int>> temp = new List<List<int>>();
             temp.Add(new List<int>());

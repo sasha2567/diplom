@@ -1,0 +1,74 @@
+.win_overlay {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+}
+.win{
+    position: absolute;
+    text-align: center;
+    z-index: 200;
+}
+.win_img{
+    z-index: 300;
+    border: 1px solid black;
+}
+/*carousel styles*/
+
+.container{
+	width:263px;
+	height:80px;
+	float:left;
+	overflow:hidden;
+	position:relative;
+	left:3px;
+}
+#next{
+	width: 26px;
+	height:40px;
+	border:0px;
+}
+#prev{
+	display: none;
+	
+}
+#absolute{
+	position:absolute;
+	left:0px;
+}
+.prev_butt{
+	display:inline-block;
+	float: left;
+	margin-left:3px;
+	cursor:pointer;
+}
+.img{
+}
+/*carousel window styles*/
+.win_prev, .win_next{
+   
+}
+.win_img_prev {
+	 width: 26px; height:40px; position: absolute;  z-index:999; left:1px; top: 40%; border: 0px;
+}
+.win_img_next {
+	 width: 26px; height:40px; position: absolute;  z-index:999; right:-1px; top: 40%; border: 0px;
+}
+.win_info {
+    min-width:35px; height: 12px; position: absolute;  z-index:999; left:1px; top: 1px;  background-color:#FFFFFF; font-family:Verdana, Geneva, sans-serif; font-size:9px; color:#666666; padding:4px 8px 4px 8px ; text-align:left;
+}
+.win_space {
+    width:57px; height:25px; position: absolute;  z-index:999; right:0px; top: 1px; background-color:#FFF; vertical-align:top;
+}
+.win_zoom {
+    min-width:35px; height: 12px; position: absolute;  z-index:999; left:1px; top: 1px;  background-color:#FFFFFF; font-family:Verdana, Geneva, sans-serif; font-size:9px; color:#666666; padding:4px 8px 4px 8px ; text-align:left;
+}
+.win_close {
+    position: absolute;  z-index:999; right:6px; top: 6px; width:17px; height:17px;
+}
+.win_img_zoom {
+    width: 19px; height:19px; border:0px; margin:0px;
+}
+.win_img_close {
+    width:17px; height:17px; border:0px; margin:0px;
+}

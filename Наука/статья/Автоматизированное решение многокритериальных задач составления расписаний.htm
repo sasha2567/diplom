@@ -1,0 +1,1375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>Автоматизированное решение многокритериальных задач составления расписаний</title>
+<meta name="description" content="Автоматизированное решение многокритериальных задач составления расписаний">
+<meta name="keywords" content="задачами расписаниям решением параметрами критериями составленного являющихся качества алгоритмов значениями пространства ограниченностью многокритериальными процессов большими такими объектов размерностью которого каждого оптимальность ">
+<meta http-equiv="content-Type" content="text/html; charset=windows-1251">
+<link rel="image_src" href="http://www.dslib.net/var/images/dslib.png">
+<link rel="publisher" href="http://plus.google.com/115410743886644888238">
+<link rel="stylesheet" type="text/css" href="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib.css">
+<link type="text/css" href="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/popup.css" rel="stylesheet">
+<script async="" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/cbgapi.loaded_1"></script><script src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/watch.js" async="" type="text/javascript"></script><script src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ga.js" async="" type="text/javascript"></script><script async="" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/cbgapi.loaded_0"></script><script src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/basket.js"></script>
+<script src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/common.js"></script>
+<script src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/JsHttpRequest.js"></script> 
+<script gapi_processed="true" type="text/javascript" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/plusone.js">{lang: 'ru'}</script>
+<script type="text/javascript" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/window.js"></script>
+<script type="text/javascript" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/overlib.js"> <-- overLIB (c) Erik Bosrup --></script>
+<style id="ya_share_style" type="text/css">.b-share-popup-wrap{z-index:1073741823;position:absolute;width:500px}.b-share-popup{position:absolute;z-index:1073741823;border:1px solid #888;background:#FFF;color:#000}.b-share-popup-wrap .b-share-popup_down{top:0}.b-share-popup-wrap .b-share-popup_up{bottom:0}.b-share-popup-wrap_state_hidden{position:absolute!important;top:-9999px!important;right:auto!important;bottom:auto!important;left:-9999px!important;visibility:hidden!important}.b-share-popup,x:nth-child(1){border:0;padding:1px!important}@media all and (resolution=0){.b-share-popup,x:nth-child(1),x:-o-prefocus{padding:0!important;border:1px solid #888}}.b-share-popup__i{display:-moz-inline-box;display:inline-block;padding:5px 0!important;overflow:hidden;vertical-align:top;white-space:nowrap;visibility:visible;background:#FFF;-webkit-box-shadow:0 2px 9px rgba(0,0,0,.6);-moz-box-shadow:0 2px 9px rgba(0,0,0,.6);box-shadow:0 2px 9px rgba(0,0,0,.6)}.b-share-popup__item{font:1em/1.25em Arial,sans-serif;display:block;padding:5px 15px!important;white-space:nowrap;background:#FFF}.b-share-popup__item,a.b-share-popup__item:link,a.b-share-popup__item:visited{text-decoration:none!important;border:0!important}a.b-share-popup__item{cursor:pointer}a.b-share-popup__item .b-share-popup__item__text{display:inline;text-decoration:underline;color:#1A3DC1}a.b-share-popup__item:hover{word-spacing:0}a.b-share-popup__item:hover .b-share-popup__item__text{color:red;cursor:pointer}.b-share-popup__icon{display:-moz-inline-box;display:inline-block;margin:-3px 0 0;padding:0 5px 0 0!important;vertical-align:middle}.b-share-popup__icon_input{width:21px;height:16px;margin-top:-6px;padding:0!important}.b-share-popup__icon__input{margin-right:0;margin-left:2px;vertical-align:top}.b-share-popup__spacer{display:block;padding-top:10px!important}.b-share-popup__header{font:86%/1em Verdana,sans-serif;display:block;padding:10px 15px 5px!important;color:#999}.b-share-popup__header_first{padding-top:5px!important}.b-share-popup__input{font:86%/1em Verdana,sans-serif;display:block;padding:5px 15px!important;color:#999;text-align:left}.b-share-popup__input__input{font:1em/1em Verdana,sans-serif;display:block;width:10px;margin:5px 0 0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;resize:none;text-align:left;direction:ltr}.b-share-popup_down .b-share-popup_with-link .b-share-popup__input_link{position:absolute;top:5px;right:0;left:0}.b-share-popup_up .b-share-popup_with-link .b-share-popup__input_link{position:absolute;right:0;bottom:5px;left:0}.b-share-popup_down .b-share-popup_with-link{padding-top:55px!important}.b-share-popup_up .b-share-popup_with-link{padding-bottom:55px!important}.b-share-popup_down .b-share-popup_expandable .b-share-popup__main{padding-bottom:25px!important}.b-share-popup_up .b-share-popup_expandable .b-share-popup__main{padding-top:25px!important}.b-share-popup_down .b-share-popup_yandexed{padding-bottom:10px!important}.b-share-popup_up .b-share-popup_yandexed{padding-top:10px!important}.b-share-popup__yandex{position:absolute;right:4px;bottom:2px;font:78.125%/1em Verdana,sans-serif;padding:3px!important;background:0 0}a.b-share-popup__yandex:link,a.b-share-popup__yandex:visited{color:#C6C5C5;text-decoration:none}a.b-share-popup__yandex:link:hover,a.b-share-popup__yandex:visited:hover{color:red;text-decoration:underline}.b-share-popup_up .b-share-popup__yandex{top:2px;bottom:auto}.b-share-popup_expandable .b-share-popup__yandex{right:auto;left:4px}.b-share-popup_to-right .b-share-popup_expandable .b-share-popup__yandex{right:4px;left:auto}.b-share-popup__expander .b-share-popup__item{position:absolute;bottom:5px;font:86%/1em Verdana,sans-serif;margin:10px 0 0;padding:5px 10px!important;cursor:pointer;color:#999;background:0 0}.b-share-popup_to-right,.b-share-popup_to-right .b-share-popup__expander{direction:rtl}.b-share-popup_to-right .b-share-popup__expander .b-share-popup__icon{padding:0 0 0 5px!important}.b-share-popup_up .b-share-popup__expander .b-share-popup__item{top:-5px;bottom:auto}.b-share-popup__expander .b-share-popup__item:hover .b-share-popup__item__text{text-decoration:underline}.b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup__expander .b-ico_action_larr,.b-share-popup_full .b-share-popup__expander .b-ico_action_larr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup__expander .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__item__text_expand{display:none}.b-share-popup_to-right .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_full .b-share-popup__item__text_collapse,.b-share-popup_full .b-share-popup__expander .b-ico_action_rarr,.b-share-popup_to-right .b-share-popup_full .b-share-popup__expander .b-ico_action_larr{display:inline}.b-ico_action_rarr,.b-ico_action_larr{width:8px;height:7px;border:0}.b-share-popup__main,.b-share-popup__extra{direction:ltr;vertical-align:bottom;text-align:left}.b-share-popup_down .b-share-popup__main,.b-share-popup_down .b-share-popup__extra{vertical-align:top}.b-share-popup__main{display:-moz-inline-stack;display:inline-block}.b-share-popup__extra{display:none;margin:0 -10px 0 0}.b-share-popup_full .b-share-popup__extra{display:-moz-inline-stack;display:inline-block}.b-share-popup_to-right .b-share-popup__extra{margin:0 0 0 -10px}.b-share-popup__tail{position:absolute;width:21px;height:10px;margin:0 0 0 -11px}.b-share-popup_down .b-share-popup__tail{top:-10px;background:url("//yastatic.net/share/static/b-share-popup_down__tail.gif") 0 0 no-repeat}.b-share-popup_up .b-share-popup__tail{bottom:-10px;background:url("//yastatic.net/share/static/b-share-popup_up__tail.gif") 0 0 no-repeat}.b-share-popup_down .b-share-popup__tail,x:nth-child(1){top:-9px;background-image:url("//yastatic.net/share/static/b-share-popup_down__tail.png")}.b-share-popup_up .b-share-popup__tail,x:nth-child(1){bottom:-9px;background-image:url("//yastatic.net/share/static/b-share-popup_up__tail.png")}@media all and (resolution=0){.b-share-popup_down .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{top:-10px;background-image:url("//yastatic.net/share/static/b-share-popup_down__tail.gif")}.b-share-popup_up .b-share-popup__tail,x:nth-child(1),x:-o-prefocus{bottom:-10px;background-image:url("//yastatic.net/share/static/b-share-popup_up__tail.gif")}}.b-share-popup .b-share-popup_show_form_mail,.b-share-popup .b-share-popup_show_form_html{padding:0!important}.b-share-popup .b-share-popup_show_form_mail .b-share-popup__main,.b-share-popup .b-share-popup_show_form_html .b-share-popup__main,.b-share-popup .b-share-popup_show_form .b-share-popup__main,.b-share-popup .b-share-popup_show_form_mail .b-share-popup__extra,.b-share-popup .b-share-popup_show_form_html .b-share-popup__extra,.b-share-popup .b-share-popup_show_form .b-share-popup__extra{height:15px;padding:0!important;overflow:hidden;visibility:hidden}.b-share-popup_show_form_mail .b-share-popup__expander,.b-share-popup_show_form_html .b-share-popup__expander,.b-share-popup_show_form .b-share-popup__expander,.b-share-popup_show_form_mail .b-share-popup__input_link,.b-share-popup_show_form_html .b-share-popup__input_link,.b-share-popup_show_form .b-share-popup__input_link{display:none}.b-share-popup__form{position:relative;display:none;overflow:hidden;padding:5px 0 0!important;margin:0 0 -15px;white-space:normal}.b-share-popup_show_form_mail .b-share-popup__form_mail,.b-share-popup_show_form_html .b-share-popup__form_html,.b-share-popup_show_form .b-share-popup__form{display:block}.b-share-popup__form__link{padding:5px!important;margin:0 0 5px 10px;text-decoration:underline;cursor:pointer;color:#1A3DC1}.b-share-popup__form__link,.b-share-popup__form__button{font:86%/1.4545em Verdana,sans-serif;float:left;display:inline}.b-share-popup__form__button{margin:5px 0 0 15px}.b-share-popup__form__close{font:86%/1.4545em Verdana,sans-serif;float:right;display:inline;padding:5px!important;margin:0 10px 5px 0;cursor:pointer;color:#999}a.b-share-popup__form__link:hover,a.b-share-popup__form__close:hover{text-decoration:underline;color:red}.b-share-popup_font_fixed .b-share-popup__item{font-size:12.8px}.b-share-popup_font_fixed .b-share-popup__header,.b-share-popup_font_fixed .b-share-popup__input,.b-share-popup_font_fixed .b-share-popup__expander .b-share-popup__item,.b-share-popup_font_fixed .b-share-popup__form__link,.b-share-popup_font_fixed .b-share-popup__form__button,.b-share-popup_font_fixed .b-share-popup__form__close{font-size:11px}.b-share-popup_font_fixed .b-share-popup__yandex{font-size:10px}.b-share-form-button{font:86%/17px Verdana,Arial,sans-serif;display:-moz-inline-box;display:inline-block;position:relative;height:19px;margin:0 3px;padding:0 4px;cursor:default;white-space:nowrap;text-decoration:none!important;color:#000!important;border:none;outline:none;background:url("//yastatic.net/share/static/b-share-form-button.png") 0 -20px repeat-x}.b-share-form-button:link:hover,.b-share-form-button:visited:hover{color:#000!important}.b-share-form-button__before,.b-share-form-button__after{position:absolute;width:3px;height:19px;background:url("//yastatic.net/share/static/b-share-form-button.png")}.b-share-form-button__before{margin-left:-7px}.b-share-form-button__after{margin-left:4px;background-position:-3px 0}.b-share-form-button::-moz-focus-inner{border:none}button.b-share-form-button .b-share-form-button__before,button.b-share-form-button .b-share-form-button__after{margin-top:-1px}@-moz-document url-prefix(){button.b-share-form-button .b-share-form-button__after{margin-top:-2px;margin-left:6px}button.b-share-form-button .b-share-form-button__before{margin-top:-2px;margin-left:-9px}}SPAN.b-share-form-button:hover,.b-share-form-button_state_hover{background-position:0 -60px}SPAN.b-share-form-button:hover .b-share-form-button__before,.b-share-form-button_state_hover .b-share-form-button__before{background-position:0 -40px}SPAN.b-share-form-button:hover .b-share-form-button__after,.b-share-form-button_state_hover .b-share-form-button__after{background-position:-3px -40px}.b-share-form-button_state_pressed,.b-share-form-button_state_pressed .b-share-form-button_share{background-position:0 -100px!important}.b-share-form-button_state_pressed .b-share-form-button__before{background-position:0 -80px!important}.b-share-form-button_state_pressed .b-share-form-button__after{background-position:-3px -80px!important}button.b-share-form-button_state_pressed{overflow:visible}.b-share-form-button_icons{position:relative;padding:0;background-position:0 -20px!important}.b-share-form-button_icons .b-share-form-button__before{left:0;margin-left:-3px;background-position:0 0!important}.b-share-form-button_icons .b-share-form-button__after{z-index:-1;margin-left:0;background-position:-3px 0!important}.b-share-form-button_icons .b-share__handle{padding:2px!important}.b-share-form-button_icons .b-share__handle_more{position:relative;padding-right:6px!important;margin-right:-4px}.b-share-form-button_icons .b-share-icon{opacity:.5;background-image:url("//yastatic.net/share/static/b-share-icon_size_14.png")}.b-share-form-button_icons A.b-share__handle:hover .b-share-icon{opacity:1}.b-share{font:86%/1.4545em Arial,sans-serif;display:-moz-inline-box;display:inline-block;padding:1px 3px 1px 4px!important;vertical-align:middle}.b-share .b-share-form-button{font-size:1em}.b-share__text .b-share-icon{margin:0 5px 0 0;border:none}.b-share__text{margin-right:5px}.b-share__handle{float:left;height:16px;padding:5px 3px 5px 2px!important;cursor:pointer;text-align:left;text-decoration:none!important}.b-share__handle_cursor_default{cursor:default}.b-share__handle .b-share-form-button{margin-top:-2px}.b-share__hr{display:none;float:left;width:1px;height:26px;margin:0 3px 0 2px}a.b-share__handle:hover .b-share__text{text-decoration:underline;color:red}.b-share_bordered{padding:0 2px 0 3px!important;border:1px solid #E4E4E4;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px}.b-share_bordered .b-share__hr{display:inline;background:#E4E4E4}.b-share_link{margin:-8px 0}a.b-share_link{margin:0}.b-share_link .b-share__text{text-decoration:underline;color:#1A3DC1}.b-share-form-button_share{padding-left:26px!important;vertical-align:top}.b-share-form-button_share .b-share-form-button__before{margin-left:-29px}.b-share-form-button_share .b-share-form-button__icon{position:absolute;width:20px;height:17px;margin:1px 0 0 -23px;background:url("//yastatic.net/share/static/b-share-form-button_share__icon.png") 0 0 no-repeat}.b-share-pseudo-link{border-bottom:1px dotted;cursor:pointer;text-decoration:none!important}.b-share_font_fixed{font-size:11px}.b-share__handle_more{font-size:9px;margin-top:-1px;color:#7B7B7B}A.b-share__handle_more:hover{color:#000}.b-share__group{float:left}.b-share-icon{float:left;display:inline;overflow:hidden;width:16px;height:16px;padding:0!important;vertical-align:top;border:0;background:url("//yastatic.net/share/static/b-share-icon.png") 0 99px no-repeat}.b-share-icon_vkontakte,.b-share-icon_custom{background-position:0 0}.b-share-icon_yaru,.b-share-icon_yaru_photo,.b-share-icon_yaru_wishlist{background-position:0 -17px}.b-share-icon_lj{background-position:0 -34px}.b-share-icon_twitter{background-position:0 -51px}.b-share-icon_facebook{background-position:0 -68px}.b-share-icon_moimir{background-position:0 -85px}.b-share-icon_friendfeed{background-position:0 -102px}.b-share-icon_mail{background-position:0 -119px}.b-share-icon_html{background-position:0 -136px}.b-share-icon_postcard{background-position:0 -153px}.b-share-icon_odnoklassniki{background-position:0 -170px}.b-share-icon_blogger{background-position:0 -187px}.b-share-icon_delicious{background-position:0 -221px}.b-share-icon_gbuzz{background-position:0 -238px}.b-share-icon_linkedin{background-position:0 -255px}.b-share-icon_myspace{background-position:0 -272px}.b-share-icon_evernote{background-position:0 -289px}.b-share-icon_digg{background-position:0 -306px}.b-share-icon_juick{background-position:0 -324px}.b-share-icon_moikrug{background-position:0 -341px}.b-share-icon_yazakladki{background-position:0 -358px}.b-share-icon_liveinternet{background-position:0 -375px}.b-share-icon_tutby{background-position:0 -392px}.b-share-icon_diary{background-position:0 -409px}.b-share-icon_gplus{background-position:0 -426px}.b-share-icon_pocket{background-position:0 -443px}.b-share-icon_surfingbird{background-position:0 -460px}.b-share-icon_pinterest{background-position:0 -477px}.b-share-icon_renren{background-position:0 0}.b-share-icon_renren,.b-share-icon_sina_weibo{background:url("//yastatic.net/share/static/b-share-icon__china.png") no-repeat}.b-share-icon_sina_weibo{background-position:-18px 0}.b-share-icon_qzone{background-position:-36px 0}.b-share-icon_qzone,.b-share-icon_tencent_weibo{background:url("//yastatic.net/share/static/b-share-icon__china.png") no-repeat}.b-share-icon_tencent_weibo{background-position:-54px 0}.b-share_theme_dark .b-share-icon{background:url("//yastatic.net/share/static/b-share-icons__theme_dark.png") 99px 0 no-repeat}.b-share_theme_dark .b-share-icon_odnoklassniki{background-position:-4px -3px}.b-share_theme_dark .b-share-icon_vkontakte{background-position:-24px -3px}.b-share_theme_dark .b-share-icon_twitter{background-position:-44px -3px}.b-share_theme_dark .b-share-icon_facebook{background-position:-64px -3px}.b-share_theme_dark .b-share-icon_lj{background-position:-85px -3px}.b-share_theme_dark .b-share-icon_yaru{background-position:-105px -3px}.b-share_theme_dark .b-share-popup .b-share-icon_odnoklassniki,.b-share_theme_dark .b-share-icon_odnoklassniki:hover{background-position:-4px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_vkontakte,.b-share_theme_dark .b-share-icon_vkontakte:hover{background-position:-24px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_twitter,.b-share_theme_dark .b-share-icon_twitter:hover{background-position:-44px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_facebook,.b-share_theme_dark .b-share-icon_facebook:hover{background-position:-64px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_lj,.b-share_theme_dark .b-share-icon_lj:hover{background-position:-85px -28px}.b-share_theme_dark .b-share-popup .b-share-icon_yaru,.b-share_theme_dark .b-share-icon_yaru:hover{background-position:-105px -28px}.b-share_theme_dark .b-share-form-button_share .b-share-form-button__icon{background-image:url("//yastatic.net/share/static/b-share-form-button_share__icon_dark.png")}.b-share_theme_dark .b-share-form-button{color:#fff!important;opacity:.8}.b-share_theme_dark .b-share__handle:hover .b-share-form-button,.b-share_theme_dark .b-share-form-button:hover{opacity:1;cursor:pointer}.b-share_theme_dark .b-share-form-button,.b-share_theme_dark .b-share-form-button__before,.b-share_theme_dark .b-share-form-button__after{background:0 0}.b-share_theme_dark .b-share-popup__i{background-color:#333;border-radius:10px;-webkit-box-shadow:0 2px 9px rgba(255,255,255,.6);-moz-box-shadow:0 2px 9px rgba(255,255,255,.6);box-shadow:0 2px 9px rgba(255,255,255,.6)}.b-share_theme_dark .b-share__text{color:#AAA}.b-share_theme_dark .b-share-popup{color:#AAA;border-radius:10px;background-color:#333;background-color:rgba(50,50,50,.3)}.b-share_theme_dark .b-share-popup__item{background:0 0;color:#ccc}.b-share_theme_dark .b-share-popup .b-share-popup__item__text{color:#ccc}.b-share_theme_counter .b-share{display:inline-block;vertical-align:middle;white-space:nowrap}.b-share-counter{font:14px Arial,sans-serif;line-height:18px;display:none;float:left;margin:3px 6px 3px 3px;color:#fff}.b-share_theme_counter .b-share_type_small .b-share-counter{font-size:11px;line-height:14px;margin:2px 6px 2px 1px}.b-share_theme_counter .b-share-btn__counter .b-share-counter{display:block}.b-share-btn__counter{text-decoration:none}.b-share_theme_counter .b-share-btn__wrap{position:relative;float:left;margin-left:5px}.b-share_theme_counter .b-share_type_small .b-share-btn__wrap{margin-left:4px}.b-share_theme_counter .b-share-btn__wrap:first-child{margin-left:0}.b-share_theme_counter .b-share__link{display:inline-block;cursor:pointer;-webkit-border-radius:3px;border-radius:3px}.b-share_theme_counter .b-share_type_small .b-share__link{-webkit-border-radius:2px;border-radius:2px}.b-share_theme_counter .b-share-icon{display:block;float:left;width:24px;height:24px;background-image:url("//yastatic.net/share/static/b-share_counter_large.png");background-position:-20px 0}.b-share_theme_counter .b-share_type_small .b-share-icon{width:18px;height:18px;background-image:url("//yastatic.net/share/static/b-share_counter_small.png")}.b-share_theme_counter .b-share-icon_facebook{background-position:0 0}.b-share_theme_counter .b-share-btn__facebook{background-color:#3c5a98}.b-share_theme_counter .b-share-btn__facebook:hover{background-color:#30487a}.b-share_theme_counter .b-share-btn__facebook:active{border-top:2px solid #24365a;background-color:#334d81}.b-share_theme_counter .b-share-icon_moimir{background-position:0 -29px}.b-share_theme_counter .b-share-btn__moimir{background-color:#226eb7}.b-share_theme_counter .b-share-btn__moimir:hover{background-color:#1b5892}.b-share_theme_counter .b-share-btn__moimir:active{border-top:2px solid #14426d;background-color:#1d5e9c}.b-share_theme_counter .b-share-icon_vkontakte{background-position:0 -58px}.b-share_theme_counter .b-share-btn__vkontakte{background-color:#48729e}.b-share_theme_counter .b-share-btn__vkontakte:hover{background-color:#3a5b7e}.b-share_theme_counter .b-share-btn__vkontakte:active{border-top:2px solid #2b445e;background-color:#3d6186}.b-share_theme_counter .b-share-icon_twitter{background-position:0 -87px}.b-share_theme_counter .b-share-btn__twitter{background-color:#00aced}.b-share_theme_counter .b-share-btn__twitter:hover{background-color:#008abe}.b-share_theme_counter .b-share-btn__twitter:active{border-top:2px solid #00668d;background-color:#0092ca}.b-share_theme_counter .b-share-icon_odnoklassniki{background-position:0 -116px}.b-share_theme_counter .b-share-btn__odnoklassniki{background-color:#ff9f4d}.b-share_theme_counter .b-share-btn__odnoklassniki:hover{background-color:#cc7f3e}.b-share_theme_counter .b-share-btn__odnoklassniki:active{border-top:2px solid #975e2e;background-color:#d98742}.b-share_theme_counter .b-share-icon_gplus{background-position:0 -145px}.b-share_theme_counter .b-share-btn__gplus{background-color:#c25234}.b-share_theme_counter .b-share-btn__gplus:hover{background-color:#9b422a}.b-share_theme_counter .b-share-btn__gplus:active{border-top:2px solid #73311f;background-color:#a5462c}.b-share_theme_counter .b-share-icon_yaru{background-position:0 -174px}.b-share_theme_counter .b-share-btn__yaru{background-color:#d83933}.b-share_theme_counter .b-share-btn__yaru:hover{background-color:#ad2e29}.b-share_theme_counter .b-share-btn__yaru:active{border-top:2px solid #80221e;background-color:#b8312b}.b-share_theme_counter .b-share-icon_pinterest{background-position:0 -203px}.b-share_theme_counter .b-share-btn__pinterest{background-color:#cd1e27}.b-share_theme_counter .b-share-btn__pinterest:hover{background-color:#a4181f}.b-share_theme_counter .b-share-btn__pinterest:active{border-top:2px solid #7b1217;background-color:#ae1921}.b-share_theme_counter .b-share__link:active{height:22px}.b-share_theme_counter .b-share_type_small .b-share__link:active{height:16px}.b-share_theme_counter .b-share__link:active .b-share-icon,.b-share_theme_counter .b-share__link:active .b-share-counter{position:relative;top:-1px}.b-share_theme_counter .b-share__link::after{position:absolute;top:0;right:0;bottom:0;left:0;content:"";background-image:url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==)}.b-share_theme_counter .b-share__handle{height:auto;padding:0!important}</style><script src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/api.js" type="text/javascript"></script><style type="text/css">#flash-transport-container {height: 0; font-size: 0;}.mrc__translayer {filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70); -moz-opacity: 0.7; -khtml-opacity: 0.7; opacity: 0.7; background: #FFF url(//img6.imgsmail.ru/r/my/preloader_circle_32.gif) no-repeat center center; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 999999; display: none}
+.mrc__translayer_on iframe {visibility: hidden;}.mrc__translayer_on {background-image:none;}</style></head>
+
+<body leftmargin="0" topmargin="0" bgcolor="#d7d7d7" marginheight="0" marginwidth="0">
+
+
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="1000">
+<tbody><tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_01.gif" height="116" width="28"></td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_02.gif" height="116">
+    
+    
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="944">
+
+<tbody><tr>
+    <td valign="top" width="361"><div>
+    <a title="Электронная библиотека диссертаций и авторефератов России" href="http://www.dslib.net/"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/Library_dissertations.gif" alt="Электронная библиотека диссертаций и авторефератов России" id="Library_dissertations" border="0" height="116" width="361"></a> <div id="title">  <strong> dslib.net <br> 
+      Библиотека диссертаций</strong> </div>
+     </div>
+    </td>
+
+    <td class="new_diss_detali" align="right" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/info.png" width="583">
+      </td>
+</tr>
+</tbody></table>
+    
+   </td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_03.gif" height="116" width="28"></td>
+</tr>
+<tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_04.gif" height="43" width="28"></td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_05.gif" height="43" valign="top" width="944">
+    
+    
+
+
+
+
+
+
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" height="43" width="100%">
+
+<tbody><tr>
+    <td> 
+<table align="left" border="0" cellpadding="0" cellspacing="0" height="43">
+
+<tbody><tr>
+    <td class="menu_new_1" nowrap="nowrap" valign="top"> <a title="Подробная информация доставки диссертационных работ" href="http://www.dslib.net/">Подробная информация</a></td>  
+    <td height="43" width="61"><a title="Подробная информация доставки диссертационных работ" href="http://www.dslib.net/"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_12.gif" alt="" border="0" height="43" width="61"></a></td>  
+		
+	<td class="menu_new_1" nowrap="nowrap" valign="top"> <a title="Электронный каталог диссертаций, все диссертации защищенные в России" href="http://www.dslib.net/catalogue.html"> Каталог диссертаций</a></td>  
+    <td height="43" width="61"><a title="Электронный каталог диссертаций, все диссертации защищенные в России" href="http://www.dslib.net/catalogue.html"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_12.gif" alt="" border="0" height="43" width="61"></a></td>   
+
+<td class="menu_new_1" nowrap="nowrap" valign="top"> <a href="http://www.dslib.net/otchislenija-avtoram-dissertacij.html" title="Отчисления авторам диссертаций">Авторам</a></td>  
+    <td height="43" width="61"><a title="Отчисления авторам диссертаций" href="http://www.dslib.net/otchislenija-avtoram-dissertacij.html"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_12.gif" alt="" border="0" height="43" width="61"></a></td>   
+		
+	<td class="menu_new_1" nowrap="nowrap" valign="top"> <a href="http://www.dslib.net/responses.html" title="Отзывы dslib.net - доставка диссертаций из РГБ">Отзывы</a></td>  
+    <td height="43" width="61"><a title="Отзывы dslib.net - доставка диссертаций из РГБ" href="http://www.dslib.net/responses.html"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_12.gif" alt="" border="0" height="43" width="61"></a></td>   
+	
+	 </tr>
+</tbody></table>    
+    </td> 
+    <td> 
+<table align="right" border="0" cellpadding="0" cellspacing="0" height="43">
+
+<tbody><tr>
+	
+	    <td class="menu_new_1" nowrap="nowrap" valign="top"> <a title="Оставьте свой номер телефона, и менеджер Вам перезвонит" href="http://www.dslib.net/support/">Служба поддержки</a> </td>   
+	<td height="43" width="19"><a title="Служба поддержки" href="http://www.dslib.net/support/"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_14.gif" alt="" border="0" height="43" width="19"></a></td>  
+
+
+</tr>
+</tbody></table>    
+	
+	</td>  
+</tr>
+</tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+
+
+    
+    </td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_06.gif" height="43" width="28"></td>
+</tr>
+
+
+
+
+
+
+<tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_10.gif" width="28"></td>
+    <td bgcolor="#FFFFFF" valign="top">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <table border="0" cellpadding="0" cellspacing="0" height="100%" width="944">
+
+<tbody><tr>
+    <td valign="top" width="247">
+    
+    
+    
+  
+
+
+
+
+ <table border="0" cellpadding="0" cellspacing="0" width="247">
+<tbody><tr>
+    <td height="29" width="41"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_16.gif" alt="" border="0" height="29" width="41"></td>
+    <td class="new_kab_diss_2" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_19.gif" width="204">Навигация</td>
+    <td height="29" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_17.gif" alt="" border="0" height="29" width="2"></td>
+</tr>
+<tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" width="41"></td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" width="204">
+    
+
+<table border="0" cellpadding="0" cellspacing="0" height="100">
+
+
+<tbody><tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/catalogue.html" title="Каталог диссертаций России">Каталог диссертаций России</a> 
+</td>
+
+</tr>
+
+
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/anglijskie-dissertacii.html" title="Доставка англоязычных диссертационных работ">Англоязычные диссертации</a></td>
+</tr>
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/dissertacii-avtoreferaty-besplatno.html" title="Скачать диссертации и авторефераты бесплатно">Диссертации бесплатно</a></td>
+</tr>
+
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/predstojawie-zawity-dissertacij.html" title="Предстоящие защиты диссертаций">Предстоящие защиты </a></td>
+</tr>
+
+
+
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/recenzii-otzyvy-na-avtoreferat-dissertacii.html" title="Рецензии, отзывы на автореферат от научных рецензентов">Рецензии на автореферат </a></td>
+</tr>
+
+
+
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/otchislenija-avtoram-dissertacij.html" title="Отчисления авторам диссертационных работ">Отчисления авторам  </a></td>
+</tr>
+
+
+
+</tbody></table>
+
+    
+    </td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" width="2"></td>
+</tr>
+<tr>
+    <td colspan="3" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" height="5"></td>
+</tr>
+</tbody></table>  
+
+
+ <table border="0" cellpadding="0" cellspacing="0" width="247">
+<tbody><tr>
+    <td height="29" width="41"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_22.gif" alt="" border="0" height="29" width="41"></td>
+    <td class="new_kab_diss_2" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_21.gif" width="204"><a href="http://www.dslib.net/orders/" title="Мой кабинет">Мой кабинет</a></td>
+    <td height="29" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_17.gif" alt="" border="0" height="29" width="2"></td>
+</tr>
+<tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" width="41"></td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" width="204">
+    
+
+<table border="0" cellpadding="0" cellspacing="0" height="75">
+<tbody><tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/orders/" title="Забрать заказ, оплатить, изменить способ оплаты, проверить статус заказа">Заказы: забрать, оплатить </a></td>
+</tr>
+
+
+
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/orders/?action=a_info" title="Мой личный счет">Мой личный счет</a> </td>
+
+
+
+</tr>
+
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/orders/?action=c_edit" title="Редактировать личную информацию">Мой профиль</a></td>
+</tr>
+
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/author/" title="Мой авторский профиль">Мой авторский профиль</a></td>
+</tr>
+
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" height="25"><a href="http://www.dslib.net/subs/" title="Управление подписками: предстоящие защиты, поступление новых работ, акции и новости">Подписки на рассылки </a> <img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/new.gif" alt="" border="0" height="13" width="22"></td>
+</tr>
+
+</tbody></table>
+
+
+    
+    </td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" width="2"></td>
+</tr>
+<tr>
+    <td colspan="3" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" height="2"></td>
+</tr>
+</tbody></table>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+<div id="b_info"> <table border="0" cellpadding="0" cellspacing="0" width="247">
+
+<tbody><tr>
+    <td height="29" width="41"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_22.gif" alt="" border="0" height="29" width="41"></td>
+    <td class="new_kab_diss_2" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_21.gif" width="204">
+    
+    
+    
+    <table border="0" cellpadding="0" cellspacing="0" height="29" width="204"> <tbody><tr>
+    
+    <td class="new_kab_diss_2"><a href="http://www.dslib.net/basket/?action=list" title="Моя корзина">В корзине работ </a></td>
+    <td class="new_kab_diss_2" nowrap="nowrap" width="53"><a href="http://www.dslib.net/basket/?action=list" title="Моя корзина">0</a></td></tr></tbody></table>
+    
+    
+    
+    
+    
+    
+    
+    
+    </td>
+    <td height="29" width="2"> <img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_23.gif" alt="" border="0" height="29" width="2"></td>
+</tr>
+<tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" width="41"></td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" width="204">
+    
+    
+<table border="0" cellpadding="0" cellspacing="0" height="80" width="204">
+    
+
+<tbody><tr>
+<td class="new_kab_diss" nowrap="nowrap" width="151"><a href="http://www.dslib.net/basket/?action=list" title="Моя корзина">Моя скидка</a></td><td class="new_kab_diss" nowrap="nowrap" width="53"> 0%</td>
+</tr>
+
+<!--
+<tr>
+<td   nowrap width="151" class="new_kab_diss"><a href="/basket/?action=list" title="Моя корзина">Цена без учета скидки</a></td><td  width="53" nowrap class="new_kab_diss">0уе</td>
+</tr> -->
+
+<tr>
+<td class="new_kab_diss" nowrap="nowrap" width="151"><a href="http://www.dslib.net/basket/?action=list" title="Моя корзина">Цена с учетом скидки</a></td><td class="new_kab_diss" nowrap="nowrap" width="53"><span onmouseout="return nd();" onmouseover="return overlib('<center>0 руб. | 0 грн. | 0 долл.</center>', MOUSEOFF, FGCOLOR, '#FFFFCC',BGCOLOR, '#393939');">0руб</span></td>
+</tr> 
+
+<tr>
+<td class="new_kab_diss" colspan="2" align="left" nowrap="nowrap">   <form action="/basket/?action=list" method="POST" style="margin-top: 0; margin-bottom: 0;">  
+    
+<input style="cursor:pointer; width:140px;" name="order_do" onclick="window.location=/basket/" value="Оформить заказ" type="button"></form>        
+
+</td>
+</tr>
+ 
+</tbody></table>
+
+</td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_18.gif" width="2"></td>
+</tr>
+
+<tr>
+    <td colspan="3" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_20.gif" height="8" width="247"></td>
+</tr>
+</tbody></table>  
+ 
+</div>    
+
+ 
+
+
+
+<br>
+<div id="like_div" style="display: block;">
+<script type="text/javascript" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/openapi.js"></script>
+
+<table border="0" cellpadding="0" cellspacing="0" width="247">
+<tbody><tr>
+    <td height="30" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_24.gif" alt="" border="0" height="30" width="2"></td>
+    <td class="new_kab_diss_2" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_25.gif" width="243">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+    <td height="30" width="41"> <img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_33.gif" alt="" border="0" height="30" width="41"></td>
+    <td class="new_kab_diss_2"><a href="http://www.dslib.net/responses.html" title="Отзывы dslib.ru - доставка диссертаций из РГБ"> А Вам нравится?</a></td>
+
+</tr>
+</tbody></table>
+
+     </td>
+    <td height="30" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_26.gif" alt="" border="0" height="30" width="2"></td>
+</tr>
+<tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_31.gif" width="2"></td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_27.gif" width="243">
+
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="220">
+<tbody><tr>
+    <td style="padding-top:15px; padding-left:10px;">
+<div style="height: 22px; width: 180px; background: none repeat scroll 0% 0% transparent; position: relative; clear: both;" id="vk_like"><iframe style="overflow: hidden; height: 22px; width: 180px; z-index: 150;" id="vkwidget1" scrolling="no" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/widget_like.htm" name="fXD311df" frameborder="0" height="22" width="100%"></iframe></div>
+    </td>
+</tr>
+
+<tr>
+    <td style="padding-top:5px; padding-left:10px;">
+<div id="fb_like"><iframe scrolling="no" style="border: medium none; overflow: hidden; width: 220px; height: 21px; background-color: transparent;" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/like.htm" frameborder="0" height="21" width="220"></iframe></div>
+    </td>
+</tr>
+
+
+<tr>
+    <td style="padding-bottom:7px; padding-left:10px; padding-top:5px; font-size: 12px;">
+        <span style="position: relative; left: 0; top: 0; margin: 0; padding: 0; visibility: visible;"><iframe id="9488891" name="undefined" allowtransparency="true" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/share_button.htm" scrolling="no" style="height: 20px; background-color: transparent; width: 150px; border: 0px none rgb(255, 255, 0); display: block;" frameborder="0"></iframe></span><a style="display: none;" type="like_button" target="_blank" class="mrc__plugin_like_button" href="http://connect.mail.ru/share" data-mrc-config="{'type' : 'button', 'width' : '150'}" rel="nofollow">Нравится</a>
+        <div id="mr_like"><script src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/loader.js"></script></div>
+
+    </td>
+</tr>
+
+
+</tbody></table>
+
+    </td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_32.gif" width="2"></td>
+</tr>
+
+<tr>
+    <td height="2" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_28.gif" alt="" border="0" height="2" width="2"></td>
+    <td class="new_kab_diss_2" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_29.gif" width="243"></td>
+    <td height="2" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_30.gif" alt="" border="0" height="2" width="2"></td>
+</tr>
+
+</tbody></table>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ <div id="c_form">
+
+
+<br>
+<table style="margin-top: 0; margin-bottom: 0; BORDER: #b8b7b7 1px solid;  BORDER-COLLAPSE: collapse;" align="center" border="0" cellpadding="0" cellspacing="0" height="135" width="247">
+<tbody><tr><td>
+
+<form enctype="multipart/form-data" method="POST" style="margin-top: 0; margin-bottom: 0;">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="220">
+<tbody><tr>
+<td colspan="2" style="padding-bottom:7px;">
+
+
+<table cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td class="new_registracia_diss" style="BORDER-BOTTOM: #dbdbdb 1px solid;  BORDER-COLLAPSE: collapse;"><a href="http://www.dslib.net/basket/?action=reg" title="Регистрация">Регистрация</a></td> <td class="new_registracia_diss" style="BORDER-BOTTOM: #dbdbdb 1px solid;  BORDER-COLLAPSE: collapse;" align="right"> <a onclick="r_pass(); return false;" href="#">Забыли пароль?</a>
+
+</td></tr></tbody></table>
+
+
+</td></tr>
+<tr>
+<td class="new_registracia_diss" style="padding-bottom:7px; padding-top:7px">
+Email: </td>
+<td style="padding-bottom:7px;  padding-top:7px" align="right"> <input name="email" style="width:150px" type="text"> </td> 
+</tr><tr>
+<td class="new_registracia_diss">
+Пароль: </td> <td align="right"> <input name="pass" style="width:150px" type="password"> </td> 
+
+</tr>
+<tr>
+<td class="new_registracia_diss" colspan="2">
+
+<table class="new_registracia_diss" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+    <td style="padding-bottom:7px; padding-top:7px;" align="left" nowrap="nowrap">Запомнить меня <input checked="checked" name="autologin" value="1" type="checkbox"></td>
+    <td style="padding-bottom:7px; padding-top:7px;" align="right"> <input name="login" value="Войти" style="width:75px; cursor:pointer; " onclick="c_login(this.form); return false" type="submit"> </td>
+</tr>
+</tbody></table>
+
+</td></tr>
+</tbody></table>
+</form>
+</td></tr>
+</tbody></table>
+</div> 
+ <div id="news"><br>
+<table border="0" cellpadding="0" cellspacing="0" width="247">
+<tbody><tr>
+    <td height="30" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_24.gif" alt="" border="0" height="30" width="2"></td>
+    <td class="new_kab_diss_2" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_25.gif" width="243">  
+    
+    
+
+    
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+    <td height="30" width="41"> <img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_33.gif" alt="" border="0" height="30" width="41"></td>
+    <td class="new_kab_diss_2"><a href="http://www.dslib.net/news.html" title="Все новости сайта"> Новости  </a></td>
+  
+</tr>
+</tbody></table>        
+
+    
+     </td>
+    <td height="30" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_26.gif" alt="" border="0" height="30" width="2"></td>
+</tr>
+<tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_31.gif" width="2"></td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_27.gif" width="243">
+	
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="220">
+<tbody><tr>
+    <td class="new_news_diss">
+                  
+	
+	
+	<br>
+	Запущен сервис научных <br> рассылок о  предстоящих защитах и новых диссертаций добавленных на сайт. 
+<span class="new_registracia_diss">
+	<a title="Управление подписками: предстоящие защиты, поступление новых работ, акции и новости" href="http://www.dslib.net/subs/">подробнее... </a></span>
+	
+	<br>
+	<br>
+		
+	<strong>Вместе с dsLib.net поддержите авторов! Авторские отчисления составляют  70% </strong>
+	
+<span class="new_registracia_diss">
+	<a title="Отчисления авторам диссертационных работ" href="http://www.dslib.net/otchislenija-avtoram-dissertacij.html">подробнее...</a></span>
+	<br>
+<br>
+	
+    </td>
+</tr>
+</tbody></table>
+
+    </td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_32.gif" width="2"></td>
+</tr>
+
+<tr>
+    <td height="2" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_28.gif" alt="" border="0" height="2" width="2"></td>
+    <td class="new_kab_diss_2" background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_29.gif" width="243"></td>
+    <td height="2" width="2"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_30.gif" alt="" border="0" height="2" width="2"></td>
+</tr>
+
+</tbody></table>  
+
+</div>   
+
+<br><br>
+
+</td>
+    <td valign="top" width="697">
+    
+    
+<table border="0" cellpadding="0" cellspacing="0">
+
+<tbody><tr>
+    <td align="right">
+    
+    
+    
+<table border="0" cellpadding="0" cellspacing="0" width="97%">
+<tbody><tr>
+    <td align="center"><noscript><font color="#e30909" size="+1"><b>Для нормальной работы сайта необходимо включить JavaScript</b></font><br><br></noscript>  </td>
+</tr>
+</tbody></table>
+
+    
+    
+     </td>  
+</tr>
+<tr>
+    <td>
+
+<table style="BORDER-BOTTOM: #8e8d8d 1px solid;  BORDER-COLLAPSE: collapse;" align="right" cellpadding="0" cellspacing="0" width="97%">
+<tbody><tr>
+        <td height="40" valign="top">
+    <table align="right" border="0" cellpadding="0" cellspacing="0">
+<form name="search" action="/search/" method="get" style="margin-top: 0; margin-bottom: 0;"></form>
+<tbody><tr><td><input size="60" name="query" type="text"></td><td align="right" width="75"> <input class="search_diss" onclick="search_ext_save('form_search_ext'); return true" value="Найти" type="submit">
+
+</td> </tr>
+<tr><td colspan="2">
+
+<table align="right" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <td class="new_registracia_diss a"><a onclick="search_ext_load('div_search_ext'); return false" href="javascript:void(0)">расширенный поиск</a></td></tr>
+</tbody></table>
+</td> </tr>
+<tr><td colspan="2">
+
+    <div style="background-color: #FEFDE2; width:400px; padding:8px; border:1px solid #CCCCCC; display: none; z-index: 100;" id="div_search_ext">
+    </div>
+    
+
+    
+</td></tr>
+</tbody></table>
+
+
+        </td>
+</tr>
+</tbody></table>
+
+ </td>  
+</tr>
+<tr>
+    <td align="right">  
+    
+<table border="0" cellpadding="0" cellspacing="0" width="97%">
+<tbody><tr>
+    <td align="center"><div id="div_msg"></div>   </td>
+</tr>
+</tbody></table>    
+    
+    
+     </td>  
+</tr>
+<tr>
+    <td width="697"> 
+    
+    
+<div id="container">
+    
+    
+<table align="right" border="0" cellpadding="0" cellspacing="0" width="97%">
+<tbody><tr>
+<td>    
+    
+          
+
+	<div class="breadcrumbs">
+    
+	   	<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+		<a href="http://www.dslib.net/" itemprop="url"><span itemprop="title">Диссертации России</span></a> <em> &#8594;</em></span>
+		
+		<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a href="http://www.dslib.net/texnika.html" itemprop="url"><span itemprop="title">Технические науки</span></a> <em> &#8594;</em></span>
+
+		<span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <a href="http://www.dslib.net/sys-analiz.html" itemprop="url"><span itemprop="title">Системный анализ, управление и обработка информации </span></a></span>
+        
+	</div>
+ 
+
+
+        <div id="content_Text">
+    <h1>Автоматизированное решение многокритериальных задач составления расписаний  <span class="author_title"> Сытник Анатолий Сергеевич</span></h1>
+	<div id="content_Text_Img_Wrapper">
+	                  
+	    <div id="div_cover_canvas"></div>
+	    <div id="div_cover">
+                <div style="position:relative">
+		    <div style="position:absolute; 	right:0px; 	top:-50px;">
+			<a href="http://www.dslib.net/i/b/2921/211268.png" width="300" height="461" id="img_cover" target="_blank"><img src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/211268.png" style="width: 300px; height: 461px;" title="Автоматизированное решение многокритериальных задач составления расписаний " alt="Автоматизированное решение многокритериальных задач составления расписаний "></a>
+		    </div>
+		</div>
+	    </div>
+	    <script>cover_view();</script>
+		</div>
+	    <div id="content_Text_Order">
+                <div id="div_order_form">
+            <form id="order_form" enctype="multipart/form-data" onsubmit="return false" method="post">
+        <input name="item_id" value="211268" type="hidden">
+        <input name="item_name" value="Сытник Анатолий Сергеевич. Автоматизированное решение многокритериальных задач составления расписаний " type="hidden">
+            <input name="item_content" value="Сытник Анатолий Сергеевич. Автоматизированное решение многокритериальных задач составления расписаний  :  ил РГБ ОД 61:85-5/4690 " type="hidden">
+            <input name="item_year" value="0" type="hidden">
+			<input name="item_dtime" value="доставка 10 минут" type="hidden">
+		    <input name="item_type" value="D" type="hidden">
+	        <input name="item_url" value="/sys-analiz/avtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html" type="hidden">
+        <input name="item_add" value="Диссертацию в корзину" onclick="b_add(document.getElementById('order_form'))" type="submit">
+        </form> 
+        
+    	<form id="order_aref_form" enctype="multipart/form-data" onsubmit="return false" method="post">
+        <input name="item_id" value="211268" type="hidden">
+        <input name="item_name" value="Сытник Анатолий Сергеевич. Автоматизированное решение многокритериальных задач составления расписаний " type="hidden">
+	<input name="item_content" value="Сытник Анатолий Сергеевич. Автоматизированное решение многокритериальных задач составления расписаний , Автореферат" type="hidden">
+	<input name="item_year" value="0" type="hidden">
+			<input name="item_dtime" value="доставка 1-3 рабочих часа" type="hidden">
+		    <input name="item_type" value="A" type="hidden">
+	        <input name="item_url" value="/sys-analiz/avtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html" type="hidden">
+        <input name="item_add" value="Автореферат в корзину" onclick="b_add(document.getElementById('order_aref_form'))" type="submit">
+        </form> 
+        </div>
+      
+	 
+	<p id="info1" onmouseover="return overlib('<center>480 руб. | 144 грн. | 12 долл.</center>', MOUSEOFF, FGCOLOR, '#FFFFCC',BGCOLOR, '#393939');" onmouseout="return nd();"> 
+		Диссертация - 480 руб., доставка <span class="content_Text_Order_info_min"><strong>10 минут</strong></span>, круглосуточно, без выходных и праздников
+	    </p>
+	    
+
+    <p id="info2" onmouseover="return overlib('<center>240 руб. | 72 грн. | 6 долл.</center>', MOUSEOFF, FGCOLOR, '#FFFFCC',BGCOLOR, '#393939');" onmouseout="return nd();">
+	    Автореферат - 240 руб., доставка 1-3 часа, с 10-19 (Московское время), кроме воскресенья
+	    </p>
+       
+
+<p id="description">Сытник Анатолий Сергеевич. Автоматизированное 
+решение многокритериальных задач составления расписаний  :  ил РГБ ОД 
+61:85-5/4690 </p>
+<div style=" padding:10px 0px;">
+
+<table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td> <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;"><iframe title="+1" data-gapiattached="true" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/fastbutton.htm" name="I0_1430145352036" id="I0_1430145352036" vspace="0" tabindex="0" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" scrolling="no" marginwidth="0" marginheight="0" hspace="0" frameborder="0" width="100%"></iframe></div>      
+</td><td>
+
+<script type="text/javascript" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/share.js" charset="utf-8"></script>
+<font size="-1"><div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="button" data-yasharequickservices="yaru,vkontakte,facebook,twitter,odnoklassniki,lj"><span class="b-share"><a class="b-share__handle" id="ya-share-0.9813185999830152-1430145352006" data-hdirection="" data-vdirection=""><span class="b-share-form-button b-share-form-button_share"><i class="b-share-form-button__before"></i><i class="b-share-form-button__icon"></i>Поделиться…<i class="b-share-form-button__after"></i></span></a><a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a><a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a><a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a><a rel="nofollow" target="_blank" title="Одноклассники" class="b-share__handle b-share__link b-share-btn__odnoklassniki" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" data-service="odnoklassniki"><span class="b-share-icon b-share-icon_odnoklassniki"></span></a><a rel="nofollow" target="_blank" title="LiveJournal" class="b-share__handle b-share__link b-share-btn__lj" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" data-service="lj"><span class="b-share-icon b-share-icon_lj"></span></a></span></div>   </font>                      
+             
+ </td></tr></tbody></table>     
+                    
+                    
+                    
+                    
+                    </div> 
+                        </div>
+
+
+		 	  <div class="clear"></div>
+
+
+
+
+
+<div class="text">
+
+    <p class="hc">Содержание к диссертации</p>
+    	<p>Введение</p>
+	        <p class="glava">ГЛАВА I. <strong>Задача синхронизации для объектов сложной стеукгуры с варьируемым порядком выполнения заданий</strong> 14</p><p>1.1. Анализ методов решения задач составления Т5 расписаний</p><p>1.2. Анализ методов решения многокритериальных задач</p><p>1.3. Особенности решения комбинаторных задач большой размерности</p><p>I.4-. Постановка задачи синхронизации функционирования сложной системы</p><p>1.5. Методика назначения приоритетов 37</p><p>1.5.1. Анализ параметров сложных систем и критериев качества их функционирования 37</p><p>1.5.2. Связь критериев и приоритетов</p><p>1.5.3. Методика определения предпочтения параметров 46</p><p>1.5.4. Методика назначения приоритетов 47</p><p>1.6. Синтез алгоритма синхронизации по характеристикам объекта</p><p>Выводы по главе 51</p><p class="glava">ГЛАВА 2. <strong>Разработка и исследование гшопедур поиска решения многокритериальных задач синхронизации и прогнозирование качества расписании</strong> 53</p><p>2.1. Блоковый алгоритм</p><p>2.2. Особенности решения многокритериальных задач синхронизации в условиях неполном информации</p><p>2.3. Организация процедур поиска решения с помощью непараметрических критериев</p><p>2.4. Определение оценки качества эвристических алгоритмов синхронизации</p><p>2.5. Прогнозирование оценки качества расписаний 79</p><p>2.6. Исследование возможностей блокового алгоритма 83</p><p>2.7. Методика репіения многокритериальной задачи синхронизации функционирования сложного объекта и особенности ее применения </p><p>Выводы по главе</p><p class="glava">ГЛАВА 3. <strong>Абтомтизированное решение задач синхронизации процесса испытание и составление расписание в вузе</strong></p><p>3.1. ППП для решения задач синхронизации уо</p><p>3.2. Задачи синхронизации в ВУЗе у^</p><p>3.2.1. Параметры и параметрические ограничения у</p><p>3.2.2. Функции и функциональные ограничения</p><p>3.2.3. Критерии и критериальные ограничения</p><p>3.2.4. Выходные переменные для составления расписаний занятий</p><p>3.2.5. Назначение приоритетов</p><p>3.2.6. Синтез блокового алгоритма</p><p>3.2.7. Ограничения и критерии для составления расписания экзаменов</p><p>3.2.6. Блоковый алгоритм для составления расписания экзаменов</p><p>3.3. Особенности решения задач синхронизации учебного процесса в ВУЗе</p><p>3.4. Задача планирования процесса испытаний систем летательных аппаратов</p><p>3.5. Автоматизированное определение нормативов при составлении расписаний 116</p><p>Выводы по главе 120</p><p>Основные результаты и выводы работы 122</p><p>Заключение 124</p><p>Список использованной литературы 125</p>
+    <ul class="cont_diss"><li class="cont_diss_id"><a href="#2112681">Анализ параметров сложных систем и критериев качества их функционирования</a></li><li class="cont_diss_id"><a href="#2112682">Прогнозирование оценки качества расписаний</a></li><li class="cont_diss_id"><a href="#2112683">Выходные переменные для составления расписаний занятий</a></li><li class="cont_diss_id"><a href="#2112684">Автоматизированное определение нормативов при составлении расписаний</a></li></ul>
+    	<p class="hc">Введение к работе
+		</p><p>В Основных направлениях экономического и социального развития 
+СССР на I98I-I985 гг. и на период до 1990 года отмечается, что "для 
+решения задач интенсификации экономики и повышения ее эффективности 
+предусматривается развивать производство, обеспечивать широкое 
+применение автоматизированных систем управления, создавать 
+автоматизированные цехи и заводы, улучшать использование 
+производственных мощностей - машин, оборудования, транспортных средств, 
+наиболее рационально использовать материальные, трудовые и финансовые 
+ресурсы" [92].</p><p>Все. эти важнейшие направления сконцентрированы в 
+появившейся в последние годы концепции гибких автоматизированных 
+производств (ГАП) и гибких производственных систем (ГПС). В материалах 
+июньского (1983 г.) пленума ЦК КПСС эта концепция изложена в конкретных 
+директивах по развитию гибких технологий, которьм должно придаваться 
+первостепенное значение [76]. Под ними понимается адаптивная 
+производственная система, способная менять свою конфигурацию, состав и 
+цели функционирования в зависимости от меняющейся производственной 
+ситуации.</p><p>Разработка и внедрение ГПС представляет собой сложнейшую
+ научно-техническую задачу, требующую создания высокоэффективных систем 
+исполнительных средств с применением робототехнических систем, 
+разработки специального математического обеспечения для планирования и 
+управления их поведением с использованием ЭВМ, повышения уровня 
+организации производства.</p><p>Большая роль в управлении такими 
+сложными системами, каковыми являются ГПС,отводится решению задач 
+синхронизации или составления расписания их функционирования, 
+позволяющих добиваться ритмичности и пропорциональности в действиях 
+различных элементов и</p><p>звеньев, входящих в состав управляемого объекта.</p><p>Роль
+ этих задач особо возрастает в условиях гибких технологических 
+процессов, когда наряду с вопросами синхронизации приходится 
+осуществлять выбор оптимального технологического маршрута из 
+унифицированных технологических операций.</p><p>При создании современных
+ систем управления проектировщикам редко приходится иметь дело с 
+системами, работоспособность и качество которых можно оценить одним 
+показателем. Чаще всего существует множество таких показателей 
+(критериев), каждый из которых характеризует тот или иной аспект 
+функционирования системы управления. Такие задачи принято называть 
+многокритериальными.</p><p>Предметом настоящего исследования являются многокритериальные задачи составления расписаний большой размерности.</p><p>Обычно
+ задачи составления расписаний изучаются в теории расписаний 
+[10,55,112,129], многокритериальные задачи - в разделах методов 
+оптимизации [25,103] и в теории принятия решений [75,100, 130], 
+проблемы, связанные с большой размерностью - в теории вычислительной 
+сложности [26,106,137]. Пересечение этих самостоятельных областей 
+исследования порождает задачи с новыми свойствами (рис.1).</p><p>В 
+теории расписаний исследуются модели задач составления расписаний, 
+разрабатываются математические методы получения решений и анализируется 
+их оптимальность. В большинстве своем эти задачи исключительно 
+трудоемкие результаты обширных исследований, приведенных в последние 
+годы скорее вьивляют сложность проблемы, чем намечают конструктивные 
+пути ее решения [129]. Точное решение удается найти лишь для частных 
+случаев, таких, например, как задача Джонсона для одного и двух станков 
+[29], различные варианты задач упорядочения с ограничениями на отношения
+ предшествования, количество станков, работ и др. Доказательства их 
+оптимальности</p><p>область исследования: -прикладная теория</p><p>вычислительной</p><p>сложности.</p><p>область исследования: -теория расписа'</p><p>ний.</p><p>область исследования: -теория принятия решений,</p><p>-оптимизационные методы решения</p><p>многокритериальных задач.</p><p>Рис.1. К определению объекта исследования.</p><p>1 - область многокритериальных задач составления</p><p>расписаний (МКСР).</p><p><i>2</i><i> </i><i>- </i>область МКСР большой размерности.</p><p>в
+ основном проводятся для каждого случая и почти не подлежат обобщению. 
+Наличие множества различных ограничений, заданных правил использования 
+ресурсов, различных вариантов отношения предшествования и других 
+принципиальных особенностей приводит к выводу, что сама постановка 
+вопроса о получении оптимального решения для задач практических 
+размерностей вообще не правомерна (10,135]. Кроме того, при составлении 
+расписаний часто возникает необходимость в использовании более одного 
+показателя эффективности. Этот вопрос практически не рассматривается в 
+классической теории расписаний.</p><p>Решение задач со многими 
+критериями качества обычно рассматривается в двух аспектах. Во-первых, 
+это-разработка алгоритмов поиска оптимальных в каком-либо смысле решений
+ (задача проектирования [II9J), во-вторых - процедуры выбора из 
+множества решений</p><p>8 наиболее предпочтительного (задача выбора 
+[75І). Первое направление 'разрабатывается в методах векторной или 
+многокритериальной оптимизации. Решение таких задач находят с помощью 
+введения различных схем компромиссов [25,103], а также различными 
+вариациями зондирования пространства параметров [П7,П9]. Во втором 
+направлении основньм вопросом является не то, как найти оптимальное 
+решение, а что именно следует понимать под оптимальным решением, т.е. 
+исследуются трудности не технического, а концептуального характера 
+[98,99,130]. Решение определяется путем сравнения альтернатив .</p><p>Необходимым
+ условием процесса решения многокритериальных задач является привнесение
+ новой информации, что достигается использованием диалоговых и 
+адаптивных процедур с обязательным участием лица, принимающего решение 
+(ЛПР) в каждом цикле процесса решения. В диссертации акцентируется 
+разработка и исследование "машинной" части таких процедур (в отличие от 
+процесса принятия решений ЛПР).</p><p>Одним из важнейших в теории 
+расписаний является вопрос оценки близости построенного расписания к 
+искомому оптимальному. Естественно, что он приобретает особую сложность,
+ если оценка качества должна производиться по нескольким показателям 
+качества (область I рис.1).</p><p>Развивающаяся в настоящее время прикладная теория вычислительной сложности относит задачи теории расписаний к классу <b><i>ЛПР </i></b><i>- </i>полных
+ задач [26,80]. Основным свойством задач этого класса является то, что 
+их нельзя решить быстрее, чем за экспоненциальное (в зависимости от 
+размерности задачи) число шагов. Выводом из этого факта является 
+полнейшая неэффективность использования точных математических методов 
+для решения такой задачи, особенно для задач немалой размерности [137]. 
+Эффективные (полиномиальные) алгоритмы для новых задач большой 
+размерности, являются скорее ре- </p><p>зультатом искусства разработчика
+ и математика-программиста, их умения использовать особенности задач в 
+целях ускорения вычислений, чем следствием хороших Нормальных процедур. В
+ связи с высокой трудоемкостью оптимизации в строгом смысле определенный
+ интерес представляют методы приближенной оптимизации и, в частности, 
+методы эвристического типа. Согласно [оО] они, как правило, имеют 
+полиномиальную оценку трудоемкости.</p><p>В процессе разработки темы 
+П.б.Ь.1.1 "Создание алгоритмов и программ для составления расписаний 
+занятий, экзаменов и консультаций" Координационного плана работ Минвуза 
+СССР по проблемам высшей школы на 1976-ЬО гг. и з дальнейших 
+исследованиях по теме были выявлены особенности практических требований к
+ расписаниям, которые не позволяют непосредственно использовать 
+результаты, полученные ни как з теории расписаний, ни в теории решения 
+многокритериальных задач.</p><p>С одной стороны, это связано с тем, что в
+ теории расписаний редко рассматриваются задачи с двумя и более 
+критериями, причем эти критерии обязательно ранжированы. Компромисс 
+ищется путем эвристической композиции обобщенного критерия аналогично 
+процедуре выделения главного критерия. Алгоритмы решения существенно 
+используют особенности класса задач и практически не поддаются 
+обобщению.</p><p>С другой стороны, по сравнению с задачами 
+проектирования технических устройств при многих критериях задачи 
+составления расписаний имеют существенно большую размерность. Сто 
+связано с тем, что для задачи проектирования обычно задана структура 
+объекта '..элементы и связи между ними) в виде схемы, модели и в 
+процессе проектирования выбираются лишь оптимальные значения их 
+элементов. Каждая точка пространства параметров измеряется в метрических
+ шкалах, целевые функции - непрерывны. Такие задачи достаточно про-</p><p>сто
+ поддаются декомпозиции на подзадачи. В задачах составления расписаний 
+такой структуры не задано. Имеется лишь набор элементов, определенная 
+перестановка которых приведет к искомому решению. Пространство 
+параметров измеряется в номинальных шкалах, целевая функция - дискретна.
+ Эти задачи могут быть разбиты на подзадачи лишь эвристически.</p><p>Таким
+ образом, практические задачи составления расписаний для сложных 
+объектов включает ь себя не только весь спектр проблем, возникающих при 
+решениях а) комбинаторных задач, б) многокритериальных задач, в) задач 
+большой размерности (область 2 на рис.1), но и ставят новые, требующие 
+дальнейших исследований и разработок проблемы:</p><ol><li><p>Получение 
+допустимых, а в некоторых случаях оптимальных или близких к оптимальным 
+расписаний, удовлетворяющих множеству заданных критериев качества.</p></li> <li><p>Разработка наилучшего алгоритма составления расписания</p></li> </ol><p>в условиях априорной неопределенности о функции предпочтения критериев качества.</p><p>3. Оценка значимости и прогнозирование значений частных крите<br> риев качества в зависимости от исходных параметров задачи.</p><p>Данная
+ работа посвящена исследованию этих проблем применительно к условиям 
+функционирования дискретных сложных объектов и состоит из введения, трех
+ глав и заключения.</p><p>В первой главе исследуются проблемы, 
+возникающие при разработке эффективных алгоритмов поиска оптимального 
+решения многокритериальных задач составления расписаний большой 
+размерности. Эти проблемы являются общими для класса комбинаторных 
+оптимизационных задач, поэтому результаты, представленные в главе, могут
+ быть использованы как для составления расписаний, так и для решения 
+задач распределения ресурсов, транспортных задач и др.</p><p>Эвристические
+ методы, применяемые для решения большинства практических задач, 
+позволяют получать допустимые, а, в некоторых случаях, и оптимальные 
+решения. В главе проанализировано множество эвристических правил, дающих
+ оптимальные значения отдельно по различным критериям оптимальности, а 
+также работы, имеющиеся по решению многокритериальных задач составления 
+расписаний. Поставлена задача определения агрегированного эвристического
+ правила при известном правиле свертки интегрального критерия. Для 
+количественного представления эвристического правила осуществляется 
+анализ взаимодействия элементов объекта с алгоритмом составления 
+расписания его функционирования. Показывается, что хотя, в общем случае,
+ количество критериев оптимальности может быть любым, количество 
+неэквивалентных по предпочтению критериев не должно быть больше 
+количества параметров объекта. Это позволяет ввести понятие связности 
+критерия и параметра и по цепочке 
+"критерий-эвристика-параметры-приоритеты" устанавливать наиболее 
+эффективные приоритеты.</p><p>Для применения такой процедуры в условиях 
+априорной неопределенности о предпочтениях критериев вводится понятие 
+блокового алгоритма, рассматриваемого во второй главе. Осуществляется 
+синтез "наилучшего" алгоритма путем перестановок блоков алгоритма (ДЦЦ) с
+ применением известных ранговых статистик (коэффициента ранговой 
+корреляции Кендалла ) , относящихся к классу непараметрических 
+критериев, основанных на перестановках. Исследуется возможность 
+использования блокового алгоритма для зондирования пространства 
+перестановок Подходящее возможное направление поиска предлагается 
+выбирать на основании информации о целевой функции, полученной на 
+предыдущих шагах, а длину шага -на основании заданного уровня значимости
+ коэффициента ранговой корреляции. В главе приводятся результаты 
+проведенных на ЭВМ экс-</p><p>12 периментов по применению известной 
+человеко-машинной процедуры Джоффриона, направление и величина шага для 
+которой определяется в метрике ранговых критериев.</p><p>Далее в главе <i>2 </i>разрабатывается
+ методика определения статистических оценок граничных значений 
+показателей качества многокритериальных расписаний. В реальных условиях 
+эти оценки зависят от длины очереди, определяемой числом работ, 
+ожидающих обслуживания, коэффициентов загрузки (или запаса) требуемых 
+для назначения ресурсов, степени взаимозависимости параметров, наличия 
+отношения предшествования, других особенностей технологического 
+процесса, накладывающих определенные ограничения, а также схемы 
+агрегирования обобщенного критерия качества.</p><p>Большое количество 
+параметров в сочетании с комбинаторным характером задачи являются 
+основанием для использования статистических оценок, которые в отличие от
+ заниженных асимптотических оценок являются более реальными. Основой для
+ исследования являются статистические ряды изменения каждого частного 
+критерия, построенные по результатам равномерного зондирования 
+пространства параметров. Сокращение размерности зондируемого 
+пространства производится введением обобщенных параметров, являющихся 
+наиболее информативным признаком характеризующим неравномерность 
+значений параметров. В совокупности со средними значениями по каждому 
+параметру обобщенные параметры оказывают существенное влияние на разброс
+ значений критериев. В качестве прогнозного значения интегральной оценки
+ выбирается решение как можно более близко отстоящее от множества 
+граничных значений частных критериев.</p><p>Результатом главы является 
+общая методика решения многокритериальных задач составления расписаний 
+для сложных объектов. Показано, что методикой целесообразно пользоваться
+ на этапах рабочего проектирования и опытной эксплуатации программного 
+обеспече-</p><p>ния.</p><p>В третьей главе описываются результаты 
+практической реализации разработанных методик и процедур. На примерах 
+решения ряда задач показывается, что <i>путем </i>вариации 
+последовательности БдЦ, а также приоритетов исходных заданий 
+пользователь (постановщик задачи и математик-оптимизатор) может в 
+широком диапазоне управлять процессом поиска наилучшего решения задачи 
+составления расписания. Для этой цели разработан пакет прикладных 
+программ для составления расписаний (ППЛ СР), включающий 10000 
+операторов языка І1Л/І. Структура пакета приведена в главе.</p><p>Исследованы
+ требования к конкретным применениям ПШІ СР и структура программного 
+обеспечения, созданного на основе ШШ СР для решения задач составления 
+расписаний в ВУЗе и для диспетчеризации процесса испытаний систем 
+летательных аппаратов. Проанализирован опыт эксплуатации разработанного 
+программного обеспечения в Казанском и Уфимском авиационном институтах, 
+особенности внедрения в других ВУЗах и организациях. Приведены 
+рекомендации по преодолению ряда трудностей, связанных с особенностями 
+конкретного применения .</p><p>В заключении приводятся выводы по основным проблемам, рассматриваемым в диссертации.</p>
+	        
+    	    		    <h2 id="2112681">Анализ параметров сложных систем и критериев качества их функционирования</h2><p>Рассмотрим
+ объект управления (3), для которого решается задача (1.10)-(1.14), 
+подробнее. Объект - есть совокупность взаимосвязанных элементов, 
+различающихся параметрами и их значениями. Взаимосвязь элементов 
+описывается функциями, цель функционирования объекта выражается 
+критерием качества [I]. Параметры, функции и критерии являются входными и
+ выходными переменными, связи между которьми для реальных объектов 
+являются чрезвычайно сложными [42]. Поэтому возникла задача определения 
+структуры и параметров объекта управления по данным "вход-выход" или 
+задача идентификации. Задачи идентификации для различных объектов 
+подробно рассмотрены в [93]. Нас будет интересовать лишь взаимосвязь 
+сложной системы (объекта ) и алгоритма А синхронизации его 
+функционирования (рис.1.1).</p><p>Рассмотрим систему $ подробнее.</p><p>I.
+ Параметры и параметрические ограничения. Входные параметры Р - {. pi .,
+ р , „, , Рг} являются количественными характеристиками системы и 
+представляют собой множества числовых значений ее элементов. Параметры Р
+ не влияют на структуру алгоритма, но их анализ позволяет выделить 
+параметрические ограничения Р {\А Рм Р(ц с Ji» 1,..-, ). Чем больший 
+диапазон параметрических ограничений допускает алгоритм, тем более 
+универсальным и, следовательно, более сложным он является. Поэтому, Р и Р
+ следует задавать в разумных, с точки зрения проектировщика алгоритма, 
+пределах. Параметрические ограничения выделяют на множестве ОС г -мерній
+ параллелепипед объем которого равен</p><p>Чем больше границы 
+параметрических ограничений, тем больше объем Y и, следовательно, поиск 
+решения в нем будет более трудоемким. Каждой точке параллелепипеда П 
+соответствует один элемент в общем случае недопустимого расписания.</p><p>.
+ Функции и функциональные ограничения. Функции ЧГ (Р) описывают 
+поведение системы и позволяют по заданному набору параметров Р вычислять
+ любые характеристики, в том числе выходные переменные и значения 
+критериев качества. Функции ЧЧР) являются качественными характеристиками
+ системы $ и существенно определяют структуру алгоритма А. Выбор функции
+ ЧЧР) и функциональных ограничений Y - Y; Y (i i,-,m.) является решающим
+ при формировании ал-горитма А. Подмножество параллелепипеда Tt , 
+удовлетворяющее функциональным ограничениям, является областью, каждая 
+точка которой определяет элемент приемлемого варианта расписания</p><p>D « { П Y/ Yj v} cj-±,...,tn.)i.</p><p>3.
+ Выходные переменные. К ним относятся расписания X рассматриваемые как 
+множество D , удовлетворяющее параметрическим и функциональным 
+ограничениям, Если, с учетом функциональных ог раничений, в пространстве
+ критериев R к-мерный объем "У-=-0,</p><p>то значение D не пусто и 
+существует некоторое множество расписаний, допустимых с точки зрения 
+(1.7), (или (1.11)-(1.14)). Но все они различаются между собой по 
+значениям критериев качества _ у ( =1,..., к ) (1.8).</p><p>4. Критерии 
+качества и критериальные ограничения. Критерии качества \) (1)-1,..., к.
+ ) являются качественными характеристиками системы S и определяют цель 
+ее функционирования. Дяя уменьшения объема V вводят, если возможно, 
+критериальные ограничения Критериальные ограничения чГ- эт0 худшие 
+значения критерия 1 , которые ШР считает приемлемым.</p><p>Процедура 
+назначения приоритетов заданиям в литературе практически не исследована.
+ Считается, что это является прерогативой экспертов. Тем не менее 
+существует явная связь между критериями качества, по которым 
+анализируется готовое расписание и тем порядком, в котором задания 
+запускаются на обработку алгоритмом. Эта связь подтверждается анализом 
+табл.1.1. I. Связь приоритетов и параметров.</p><p>При составлении 
+расписаний для сложных систем в многокритериальном случае, назначение 
+приоритетов не всегда может быть обоснованно осуществлено экспертом без 
+привлечения дополнительной информации .</p><p>В общем случае, назначение
+ приоритетов входному потоку заданий может быть осуществлено как 
+априорно, на основе анализа информации, содержащейся в самих параметрах 
+задания, так и по значениям критериев частично составленного к данному 
+моменту расписания. В [28] такие приоритетные дисциплины носят название 
+внесистемных и внутрисистемных (или динамических) соответственно. Так 
+как показатели качества учитывают различные свойства, то и приоритеты 
+должны быть установлены в соответствии с весами этих свойств.</p>
+	    		    <h2 id="2112682">Прогнозирование оценки качества расписаний</h2><p>Метод
+ зондирования многомерных областей, с помощью которого в п.2.4 
+определяется оценка качества алгоритмов, широко применяется при 
+проектировании технических устройств. Основным отличием комбинаторной 
+задачи (составления расписаний, распределения ресур- сов и др.) от задач
+ проектирования является вид области решений D (1.7), которая для задач 
+проектирования имеет вид (1.2). Из сравнения (1.2) и (1.7) можно видеть,
+ что в задаче проектирования (1.1)-(1.2) каждой точке пространства 
+соответствует одно, в общем случае недопустимое, решение (одна машина, 
+устройство и др.). Каждая точка пространства допустимых значений 
+параметров измеряется в метрических шкалах и дает допустимое решение. 
+Подсчитанное для каждого решения качество (значение критериев) дает 
+функциональную зависимость критериев от параметров системы.</p><p>Для 
+задачи (1.6)-(1.7) одному решению соответствует ft- точек пространства 
+параметров размерности h , что является существенным препятствием для 
+использования метода зондирования точками, равномерно распределенными в 
+пространстве параметров.</p><p>Для обозначения варианта расписания одной
+ точкой введем пространство размерностью ika , что достаточно для 
+изображения каждого из множества расписаний R своей точкой. Причем, 
+часть осей будет иметь неметрические (номинальные) шкалы. Ставя каждой 
+точке кп -мерного пространства параметров (каждому решению R.) в 
+соответствие точку пространства критериев ч ( =1,..., к ) размерности k 
+можно построить статистический ряд изменения качества вариантов по 
+каждому критерию. Для обеспечения работоспособности процедуры 
+зондирования необходимо обеспечить непустоту пространства К , т.е. 
+исключить зависимость вида pj = с ( І = Е+І,...,я), где С - константа, (
+ к- I ) - количество параметров, имеющих номинальные шкалы. В 
+пространстве р "" параметров такую зависимость имеет хотя бы один 
+параметр каждого из элементов расписания (ввиду их дискретности и 
+порядковой шкалы). Разрешая систему относительно р І і ,.. » p-fc и 
+представляя можно сократить размерность пространства и рассматривать его
+ і -мерный объем, где .- - функция преобразования перестановки в 
+порядковую шкалу, к - количество параметров в системе. Тогда, значения 
+р+1 ,..., р, будут преобразованы в порядковую шкалу первых I параметров.
+ В этом случае обеспечивается требование непустоты пространства 
+допустимых решений</p><p>Полученное пространство может быть 
+прозондировано случайными (с равномерным законом распределения) или 
+более равномерными - ЛП - последовательностями и, тем самым, оценена 
+область Па-рето-оптимальных решений.</p><p>Однако размерность такого 
+пространства является еще слишком большой для того, чтобы пользоваться 
+ей на практике. В связи с этим в работе осуществлена модификация 
+процедуры зондирования путем введения обобщенных параметров</p><p>где pv- значение обобщенного параметра, pLv- значение ч -го параметра для L -го задания, с \ = 1, ,„, к ) .</p><p>Введение
+ обобщенных параметров в п. раз сокращает размерность зондируемого 
+пространства и характеризует обобщенную неравномерность значений 
+параметров. Целью проводимого зондирования является получение выборок 
+для статистического исследования флуктуации каждого отдельно взятого 
+критерия. Исследование проводится в три этапа [П7].</p>
+	    		    <h2 id="2112683">Выходные переменные для составления расписаний занятий</h2><p>Задачи
+ синхронизации учебного процесса входят в состав задач учебного 
+комплекса L94] , определяющего всю основную деятельность ВУЗа. Зти 
+задачи являются завершающими среди задач планирования учебного процесса и
+ требуют предварительного проведения больше-объемных расчетов, 
+учитывающих различные плановые нормативы.</p><p>В качестве таких задач 
+выступают разработка и оптимизация учебных планов, разработка 
+технологических карт дисциплин, подсчет учебной нагрузки ВУЗа, 
+определение необходимого штатного состава ВУЗа, распределение учебной 
+нагрузки ВУЗа по кафедрам и по преподавателям. Полученная в результате 
+учебная нагрузка преподавателей является исходной информацией для задач 
+составления расписаний занятий и экзаменов [39]. Несмотря на то, что 
+решение НаЗВаН-ных задач в различных ВУЗах имеет свои особенности ;, 
+технологи 109 ческий процесс их решения можно изобразить на следующей 
+схеме (рис.3.4).</p><p>Современные ВУЗы являются большими системами 
+организационного управления (200-500 учебных групп, 500-1000 
+преподавателей), работающими в условиях ограниченного аудиторного фонда.
+ Учитывая, что допустимое время решения всего комплекса задач составляет
+ 2-3 месяца, что необходимо учесть множество нормативных и 
+нефор-мализуемых требований, предъявляемых к результату, можно сделать 
+вывод, что решение этих задач необходимо осуществлять комплексно, 
+автоматизируя весь процесс в целом. Основной трудностью здесь 
+заключается в том, что объемы информации при переходе от задачи к задаче
+ постоянно увеличиваются. Тем самым, автоматизация решения отдельно 
+взятых задач составления расписаний требует огром-ных объемов 
+подготовительной работы , что не позволяет получать фактического эффекта
+ использования ЭВМ.</p><p>Решение задач учебного комплекса в целом 
+сложная проблема, требущая неоднократного участия ЛПР на многих стадиях 
+процесса решения. Здесь возникают технические трудности, связанные с 
+ограниченностью технических возможностей современных ЭВМ по части 
+отображения больших объемов информации, требуемой ЛІ1Р для принятия 
+решения [124,125]. Частичная автоматизация подготовки различной 
+нормативной информации [66,68,123] хотя и приводит к положительным 
+результатам, но не может осуществить коренного изменения.</p><p>Наибольший
+ эффект (как количественный, так и качественный) можно получить, если не
+ разделять задачи комплекса, а решать их целиком - т.е. решать задачу 
+синхронизации учебного процесса [58]</p>
+	    		    <h2 id="2112684">Автоматизированное определение нормативов при составлении расписаний</h2><p>Качество
+ планирования учебного процесса во многом зависит от того, насколько 
+удачно выбраны календарно-плановые нормативы, которые должны 
+удовлетворять многочисленным требованиям дидактического и 
+психофизиологического характера. К таким нормативам относятся: порядок 
+следования дисциплин в течение недели, чередование лекционных и 
+практических занятий, время, отводимое на подготовку к экзаменам, 
+последовательность их сдачи в течение экзаменационной сессии и др. 
+Большинство из этих нормативов чаще всего опре-дел.яются экспертным 
+путем, либо по результатам их статистического анализа.</p><p>Метод 
+имитационного моделирования, используемый в разработанном ІШГІ СР, 
+вызывает необходимость учитывать значительное число параметров для 
+выбора тех нормативов, которые традиционно носят характер экспертных 
+оценок. Для уменьшения объемов первичной информации многие из них 
+подсчитываются автоматически в процессе составления расписания.</p><p>Рассмотрим
+ подробнее определение двух основных для экзаменационной сессии 
+нормативов - длительность подготовки к экзамену и последовательность 
+сдачи экзаменов [.66,123].</p><p>В автоматизированной системе 
+длительность подготовки к экзамену (L ) рассматривается как функция ряда
+ параметров L = j- С ri? pj, , — , Г3 ), где г\- продолжительность 
+сессии, г\ - общее количество экзаменов у данной группы, Г5 - тип 
+дисциплины (математическая, техническая, гуманитарная), ґ\ - порядковый 
+номер экзамена, г5 - сложность сессии в целом, гъ - объем сдаваемого 
+материала по дисциплине, гу - психологические особенности восприятия 
+студентами учебного материала по данной дисциплине, га - 
+психолого-педагогические требования деканата, основанные на анализе 
+текущей успеваемости учебной группы как по данной так и по другим 
+дисциплинам в течение семестра, г - требования деканата, основанные на 
+анализе сдачи экзамена по данной дисциплине в прошлые годы и т.д.</p><p>Опыт
+ использования разработанной системы, накопленный с 1979 года 
+показывает, что учет такого количества параметров приводит к неоправдано
+ большому объему исходной информации, поэтому в ГДШ СР расчет 
+длительности производится упрощенно по первым пяти параметрам, которые 
+формализуются достаточно просто. В случае, когда не-формализуемые 
+параметры Р6 - Р9 оказывают существенное влияние, они могут быть учтены 
+на этапе согласования расписания с деканами. В таблице 3.1 приведены 
+результаты оценки одного из вариантов расписания экзаменов [а. именно на
+ весеннюю 1981/62 уч.года сессию) деканами факультетов. Сделано в 
+среднем 5,5% замечаний по длительности от общего количества экзаменов - 
+от 1,6 до 14% на разных факультетах.</p><p>Вопросы выбора наиболее 
+рациональной последовательности сдачи экзаменов и ее влияния на 
+результаты сессии в литературе исследованы слабо. Существующие 
+предположения начинать и заканчивать сессию наиболее простыми экзаменами
+ с постепенным усложнением дисциплин к середине сессии практически не 
+обоснованы. По результатам анализа ряда сессий можно заметить, что 
+последовательность сдачи не имеет значения, кроме редких (не более 1%) 
+случаев, когда необходимо соблюдать логическую последовательность 
+изучения дисциплин .например: теория механизмов и машин - детали машин, 
+но не наоборот). 3 автоматизированной системе последовательность сдачи 
+экзаменов устанавливается по возможности близкой к последовательности 
+такой же сессии прошлого года, что, одновременно, позволяет заранее 
+учесть влияние неформализуемых параметров -  Получаемый псевдослучайный 
+вариант является базовым. Оценка базового варианта деканами выявляет в 
+среднем 0,6% замечаний по последовательности от общего количества 
+экзаменов. Полное удовлетворение ряда факультетов вызвано, возможно, 
+нежеланием или отсутствием времени на оценку варианта. В этом случае 
+учебные группы сдают экзамены полностью по базовому варианту. В 
+окончательном варианте, который получается при повторном составлении 
+расписания с учетом имеющихся замечаний в качестве исходных данных, 
+удается выполнить до 97-9У% пожеланий деканов.</p>
+	    	    
+
+</div>                
+            
+  </div>
+   
+ 
+  </td>  
+</tr>
+
+<tr>
+<td>
+   </td>  
+</tr>
+<tr>
+<td>
+
+  </td>  
+</tr>
+
+</tbody></table>   
+ 
+ </div>
+ 
+ 
+ 
+     </td>  
+</tr>
+<tr>
+    <td>     
+ </td>  
+</tr>
+</tbody></table>    
+    
+      </td>
+</tr>
+</tbody></table>  
+
+    </td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_11.gif" width="28"></td>
+</tr>
+<tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_10.gif" width="28"></td>
+    <td bgcolor="#FFFFFF" valign="top">    <br><br></td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_11.gif" width="28"></td>
+</tr>
+
+<tr>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_07.gif" height="120" width="28"></td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_08.gif" height="120" valign="top"> 
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" height="115" width="100%">
+<tbody><tr>
+    <td height="30" valign="top">
+             <table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+    <td class="menu_14_2" valign="bottom">© 2007-2015 Электронная библиотека диссертаций dslib.net </td> </tr>
+   
+    
+         <tr><td class="menu_14" height="25" valign="bottom">  
+    
+
+    <a href="http://www.dslib.net/dissertacii-avtoreferaty-besplatno.html">Cкачать диссертации и авторефераты бесплатно</a> | <a href="http://www.dslib.net/otchislenija-avtoram-dissertacij.html">Отчисления авторам</a> | <a href="http://www.dslib.net/predstojawie-zawity-dissertacij.html">Предстоящие защиты диссертаций</a></td></tr>
+ 
+
+</tbody></table>    
+
+</td>
+</tr>
+<tr>
+    <td valign="bottom">
+    
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+            <td class="menu_14" align="left" valign="top">                	 
+        <a href="http://www.dslib.net/fiz-mat.html">Математика</a><br>
+         <a href="http://www.dslib.net/farmacia.html">Фармацевтика</a></td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>   
+    <td class="menu_14" valign="top">                	 
+		    <a href="http://www.dslib.net/ximia.html">Химия</a><br> <a href="http://www.dslib.net/biologia.html">Биология</a>                 
+   </td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top">                         
+		    <a href="http://www.dslib.net/geologia.html">Геология</a><br>
+    <a href="http://www.dslib.net/texnika.html">Техника</a></td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top">    <a href="http://www.dslib.net/voen-nauki.html">Военные</a>                      
+		  <br>
+    <a href="http://www.dslib.net/nauka-historia.html">История</a></td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top">                
+		    <a href="http://www.dslib.net/economika.html">Экономика</a> <br>                    
+    <a href="http://www.dslib.net/filosofia.html">Философия</a></td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top">               
+		    <a href="http://www.dslib.net/filologia.html">Филология</a><br>
+    <a href="http://www.dslib.net/geografia.html">География</a></td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top">                              
+		    <a href="http://www.dslib.net/law-sciences.html">Право</a><br> <a href="http://www.dslib.net/fiz-mat.html">Физика</a>  
+   </td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top">             
+		     <a href="http://www.dslib.net/pedagogika.html">Педагогика</a><br> <a href="http://www.dslib.net/medicina.html">Медицина</a>                
+</td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top">                              
+            <a href="http://www.dslib.net/veterinaria.html">Ветеринария</a><br>
+    <a href="http://www.dslib.net/iskusstvoved.html">Искусство</a></td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top">                             
+		    <a href="http://www.dslib.net/arxitektura.html">Архитектура</a><br>
+    <a href="http://www.dslib.net/psixologia.html">Психология</a></td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top"> <a href="http://www.dslib.net/sociologia.html">Социология</a><br>
+   <a href="http://www.dslib.net/selskoe-xoziajstvo.html">Сельск-хоз</a>
+    </td>
+            
+    <td rowspan="2" class="menu_14_1">•</td>
+    <td class="menu_14" valign="top">             
+		    <a href="http://www.dslib.net/politika.html">Политика</a><br>
+    <a href="http://www.dslib.net/kulturologia.html">Культура</a></td>
+            
+</tr>
+
+</tbody></table>
+
+
+
+    </td>
+</tr>
+<tr>
+ <td class="menu_14_2">&nbsp; </td>
+</tr>
+</tbody></table>
+             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </td>
+    <td background="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/dslib_09.gif" height="120" width="28"></td>
+</tr>
+</tbody></table>
+<br>
+<script type="text/javascript">
+    b_load();
+    window.onload = function () {
+	like_init();
+	document.getElementById('like_div').style.display = 'block';
+    }
+</script>
+
+<!-- google -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12744469-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- /google -->
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter17993992 = new Ya.Metrika({id:17993992, enableAll: true, webvisor:true});
+        } catch(e) { }
+    });
+    
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/17993992" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- vk_all   -->
+<script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=r1Q6m8ZrWsXPF0Psxm1F*QqutsgETgFjQGI86oBTKb058XVgLu2ZOq4gmHicfYedI9FpWHRFLy3MKs2Y6*SfNrypU75B3zVVwjt9JABQac20pEdTEoYaUgGW3rF3yEGcS/k7hqa*2P1Q6P4Ehy1QlK26W*sZjZm55iPgwSAC08U-';</script>
+<!--  /vk_all  -->
+	
+
+
+
+<div class="b-share-popup-wrap b-share-popup-wrap_state_hidden" id="ya-share-0.9813185999830152-1430145352006-popup"><div class="b-share-popup b-share-popup_down b-share-popup_to-right"><div class="b-share-popup__i"><div class="b-share-popup__main  b-share-popup_yandexed"><div class="b-share-popup__header b-share-popup__header_first">Поделитесь с друзьями</div><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" class="b-share-popup__item" data-service="vkontakte"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_vkontakte"></span></span><span class="b-share-popup__item__text">ВКонтакте</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=odnoklassniki&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" class="b-share-popup__item" data-service="odnoklassniki"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_odnoklassniki"></span></span><span class="b-share-popup__item__text">Одноклассники</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" class="b-share-popup__item" data-service="twitter"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_twitter"></span></span><span class="b-share-popup__item__text">Twitter</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" class="b-share-popup__item" data-service="facebook"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_facebook"></span></span><span class="b-share-popup__item__text">Facebook</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=moimir&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" class="b-share-popup__item" data-service="moimir"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_moimir"></span></span><span class="b-share-popup__item__text">Мой Мир</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=lj&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" class="b-share-popup__item" data-service="lj"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_lj"></span></span><span class="b-share-popup__item__text">LiveJournal</span></a><a rel="nofollow" target="_blank" href="http://share.yandex.ru/go.xml?service=gplus&amp;url=http%3A%2F%2Fwww.dslib.net%2Fsys-analiz%2Favtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html&amp;title=%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9" class="b-share-popup__item" data-service="gplus"><span class="b-share-popup__icon"><span class="b-share-icon b-share-icon_gplus"></span></span><span class="b-share-popup__item__text">Google Plus</span></a><a href="http://api.yandex.ru/share/" class="b-share-popup__yandex">Яндекс</a></div></div><div class="b-share-popup__tail"></div></div></div><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/postmessageRelay.htm" id="oauth2relay834510217" name="oauth2relay834510217"></iframe><div style="position: absolute; visibility: hidden; z-index: 1000; top: -10000px; left: -10000px; background-image: none;" id="overDiv"><table bgcolor="#393939" border="0" cellpadding="1" cellspacing="0" width="200"><tbody><tr><td><table bgcolor="#FFFFCC" border="0" cellpadding="2" cellspacing="0" width="100%"><tbody><tr><td valign="TOP"><font color="#000000" face="Verdana,Arial,Helvetica" size="1"><center>480 руб. | 144 грн. | 12 долл.</center></font></td></tr></tbody></table></td></tr></tbody></table>
+</div></body></html>

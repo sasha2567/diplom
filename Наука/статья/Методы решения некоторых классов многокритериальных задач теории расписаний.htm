@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<title>
+Методы решения некоторых классов многокритериальных задач теории расписаний
+</title>
+<link href="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/all-7e5c5bf3f54f174d0a6710efe345014c.css" media="screen" rel="stylesheet">
+<script src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ga.js" async="" type="text/javascript"></script><script src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/viewer-7a4e7b30b353a7e892cfbce7a3500dc2.js"></script>
+<!--[if lt IE 9]>
+<link href="/assets/viewer/ie-5744f60819f1ebb728d3db7c3718a671.css" media="screen" rel="stylesheet" />
+<![endif]-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38971245-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body>
+<div class="popup-holder viewer">
+<div class="bg">&nbsp;</div>
+<div class="popup">
+<div class="heading">
+<h2>
+Просмотр документа
+</h2>
+<form action="#" class="toolbar">
+<fieldset>
+<ul>
+<li class="first-child zoom" id="zoom_out">
+<a href="#">
+<img src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ico-decrease-c52166435abd99d6133c585ec9a7eaa1.png" height="16" width="25">
+</a>
+</li>
+<li class="last-child zoom inactive" id="zoom_in">
+<a href="#">
+<img src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ico-incrase-df72d9b25d089bdd3ad8bce474b45740.png" height="17" width="25">
+</a>
+</li>
+</ul>
+<ul>
+<li class="first-child" id="leftr_btn">
+<a href="#">
+<img src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ico-rotate-left-2bfe663d1b7b657f98e327aa8e4ca45d.png" height="16" width="25">
+</a>
+</li>
+<li class="last-child" id="right_btn">
+<a href="#">
+<img src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ico-rotate-right-40b833a9405fc884bb8ff39e191edb70.png" height="16" width="25">
+</a>
+</li>
+</ul>
+<ul>
+<li class="first-child" id="first_btn">
+<a href="#">
+<img src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ico-first-d12b291c8fecc995297f4642abae2a01.png" height="16" width="15">
+</a>
+</li>
+<li id="prev_btn">
+<a href="#">
+<img src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ico-prev-baf01ab8b995afc139ba4a4c699f3ceb.png" height="16" width="15">
+</a>
+</li>
+<li>
+<span class="number">
+<input id="page_input" max="10" min="1" required="required" step="1" value="1" type="number">
+</span>
+</li>
+<li id="next_btn">
+<a href="#">
+<img src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ico-next-4aff13e552d4b8eeb3f30b8737012b4d.png" height="16" width="15">
+</a>
+</li>
+<li class="last-child" id="last_btn">
+<a href="#">
+<img src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/ico-last-63a1cfb461bba227ee8147720ba37fa4.png" height="16" width="15">
+</a>
+</li>
+</ul>
+</fieldset>
+</form>
+<a class="btn-close" href="http://fizmathim.com/metody-resheniya-nekotoryh-klassov-mnogokriterialnyh-zadach-teorii-raspisaniy">
+<span class="translation_missing" title="translation missing: ru.viewer.show.close">Close</span>
+</a>
+</div>
+<div class="container">
+<div class="preview" id="small_preview">
+<span class="mask">&nbsp;</span>
+<div tabindex="0" style="overflow: hidden; padding: 0px; width: 134px;" class="scroll-pane jspScrollable" id="s_container">
+
+<div style="width: 134px; height: 553px;" class="jspContainer"><div style="padding: 0px; width: 121px; top: 0px;" class="jspPane"><ul>
+<li class="small active">
+<a href="#">
+<img big_img="#img-1" class="pic small_img" data-original="/pageread/4146/d/small/1" id="#small_img-1" number="1" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/1_002.png" height="135" width="100">
+</a>
+</li>
+<li class="small">
+<a href="#">
+<img big_img="#img-2" class="pic small_img" data-original="/pageread/4146/d/small/2" id="#small_img-2" number="2" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/2.png" height="135" width="100">
+</a>
+</li>
+<li class="small">
+<a href="#">
+<img big_img="#img-3" class="pic small_img" data-original="/pageread/4146/d/small/3" id="#small_img-3" number="3" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/3_002.png" height="135" width="100">
+</a>
+</li>
+<li class="small">
+<a href="#">
+<img big_img="#img-4" class="pic small_img" data-original="/pageread/4146/d/small/4" id="#small_img-4" number="4" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/4.png" height="135" width="100">
+</a>
+</li>
+<li class="small">
+<a href="#">
+<img big_img="#img-5" class="pic small_img" data-original="/pageread/4146/d/small/5" id="#small_img-5" number="5" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/5.png" height="135" width="100">
+</a>
+</li>
+<li class="small">
+<a href="#">
+<img big_img="#img-6" class="pic small_img" data-original="/pageread/4146/d/small/6" id="#small_img-6" number="6" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/6.png" height="135" width="100">
+</a>
+</li>
+<li class="small">
+<a href="#">
+<img big_img="#img-7" class="pic small_img" data-original="/pageread/4146/d/small/7" id="#small_img-7" number="7" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/7.png" height="135" width="100">
+</a>
+</li>
+<li class="small">
+<a href="#">
+<img big_img="#img-8" class="pic small_img" data-original="/pageread/4146/d/small/8" id="#small_img-8" number="8" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/8.png" height="135" width="100">
+</a>
+</li>
+<li class="small">
+<a href="#">
+<img big_img="#img-9" class="pic small_img" data-original="/pageread/4146/d/small/9" id="#small_img-9" number="9" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/9_002.png" height="135" width="100">
+</a>
+</li>
+<li class="small">
+<a href="#">
+<img big_img="#img-10" class="pic small_img" data-original="/pageread/4146/d/small/10" id="#small_img-10" number="10" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/10_002.png" height="135" width="100">
+</a>
+</li>
+</ul></div><div class="jspVerticalBar"><div class="jspCap jspCapTop"></div><a class="jspArrow jspArrowUp jspDisabled"></a><div style="height: 517px;" class="jspTrack"><div style="height: 190px; top: 0px;" class="jspDrag"><div class="jspDragTop"></div><div class="jspDragBottom"></div></div></div><a class="jspArrow jspArrowDown"></a><div class="jspCap jspCapBottom"></div></div></div></div>
+</div>
+<div class="view-holder">
+<a class="btn-open" href="#" id="show-hide_btn">
+<span class="translation_missing" title="translation missing: ru.viewer.show.open">Open</span>
+</a>
+<div class="preview">
+<span class="mask">&nbsp;</span>
+<div tabindex="0" style="overflow: hidden; padding: 0px; width: 804px;" class="scroll-pane jspScrollable" id="container">
+
+
+
+<div style="width: 804px; height: 553px;" class="jspContainer"><div style="padding: 0px; width: 791px; top: -150px;" class="jspPane"><ul>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/1" id="img-1" number="1" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/1.png" style="border:1px solid black" height="1082" width="765">
+</li>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/2" id="img-2" number="2" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/2_002.png" style="border:1px solid black" height="1082" width="765">
+</li>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/3" id="img-3" number="3" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/3.png" style="border:1px solid black" height="1082" width="765">
+</li>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/4" id="img-4" number="4" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/4_002.png" style="border:1px solid black" height="1082" width="765">
+</li>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/5" id="img-5" number="5" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/5_002.png" style="border:1px solid black" height="1082" width="765">
+</li>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/6" id="img-6" number="6" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/6_002.png" style="border:1px solid black" height="1082" width="765">
+</li>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/7" id="img-7" number="7" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/7_002.png" style="border:1px solid black" height="1082" width="765">
+</li>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/8" id="img-8" number="8" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/8_002.png" style="border:1px solid black" height="1082" width="765">
+</li>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/9" id="img-9" number="9" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/9.png" style="border:1px solid black" height="1082" width="765">
+</li>
+<li>
+<img class="normal_img" data-original="/pageread/4146/d/normal/10" id="img-10" number="10" src="%D0%9C%D0%B5%D1%82%D0%BE%D0%B4%D1%8B%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D1%85%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2%20%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%20%D1%82%D0%B5%D0%BE%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B9_files/10.png" style="border:1px solid black" height="1082" width="765">
+</li>
+</ul><div class="disclamer">
+		<form accept-charset="UTF-8" action="/order" class="read" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="FTf7LIDhLMjs/fiACPv28zXI2dBVXitlRNbgTjF+IKM=" type="hidden"></div>
+			<input id="link" name="link" value="metody-resheniya-nekotoryh-klassov-mnogokriterialnyh-zadach-teorii-raspisaniy" type="hidden">
+			<input id="type" name="type" value="disser" type="hidden">
+			<button class="order2" onclick="_gaq.push(['_trackEvent', 'click', 'order']);"><span>Купить диссертацию</span></button>
+</form><hr>
+<p>Для ознакомления с диссертацией мы предлагаем вам бесплатно прочитать
+ полный текст автореферата и первые 10 страниц работы. Для дальнейшего 
+изучения интересующей вас работы, вам необходимо ее купить.</p>
+<p>Диссертация будет доставлена в формате Adobe PDF на указанную вами 
+при оформлении заказа почту, так же вы сможете после оплаты скачать ваш 
+заказ напрямую с нашего сайта.</p>
+<p>В тексте приобретенной вами работы не будет никаких надписей и водяных знаков которые вы видите выше.</p>
+<hr>
+		<form accept-charset="UTF-8" action="/order" class="read" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="FTf7LIDhLMjs/fiACPv28zXI2dBVXitlRNbgTjF+IKM=" type="hidden"></div>
+			<input id="link" name="link" value="metody-resheniya-nekotoryh-klassov-mnogokriterialnyh-zadach-teorii-raspisaniy" type="hidden">
+			<input id="type" name="type" value="disser" type="hidden">
+			<button class="order2" onclick="_gaq.push(['_trackEvent', 'click', 'order']);"><span>Купить диссертацию</span></button>
+</form></div></div><div class="jspVerticalBar"><div class="jspCap jspCapTop"></div><a class="jspArrow jspArrowUp"></a><div style="height: 517px;" class="jspTrack"><div style="height: 25px; top: 6.6129px;" class="jspDrag"><div class="jspDragTop"></div><div class="jspDragBottom"></div></div></div><a class="jspArrow jspArrowDown"></a><div class="jspCap jspCapBottom"></div></div></div></div>
+</div>
+</div>
+</div>
+<div class="row">
+<span class="title">
+Методы решения некоторых классов многокритериальных задач теории расписаний
+<span class="mask">&nbsp;</span>
+</span>
+<span>Тузиков, Александр Васильевич</span>
+<span>ВАК РФ 01.01.09</span>
+<span class="number" id="page_info">Стр. 1 из 10</span>
+</div>
+</div>
+</div>
+
+
+
+</body></html>

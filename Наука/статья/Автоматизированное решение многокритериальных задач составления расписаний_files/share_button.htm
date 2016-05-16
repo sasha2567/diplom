@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <title></title>
+    <meta charset="utf-8" http-equiv="Content-Type">
+
+    <style type="text/css">
+        #loader, small, b {
+            cursor: pointer
+        }
+        body {margin: 0; padding: 0; background-color: transparent; font-family: Arial;}
+	    img {border: 0}
+	    #wrp {white-space: nowrap; }
+	    
+	    .like-button {
+	        white-space:nowrap;text-align:left;line-height:17px;position:relative;width:auto;outline:0; text-decoration:none; height:18px; font-size: 11px; line-height: 17px;overflow: hidden
+	    }
+        
+        .like-button small {
+            overflow: hidden; vertical-align: bottom;white-space:nowrap;text-align:left;line-height:17px;position:relative;width:auto;padding:0;margin:0;outline:0; text-decoration:none; display:inline-block; height:18px;background:url(http://my1.imgsmail.ru/r/new_share_like_buttons_sprite.png) no-repeat 0 0; padding-left: 22px;line-height: 17px;
+        }
+        
+	    .like-button i {
+	        vertical-align:top;float: none; white-space:nowrap;text-align:left;font-size:11px;line-height:100%;position:relative;width:auto;color:white;padding:0;margin:0;font-weight: bold; display:inline-block;background:url('http://my1.imgsmail.ru/r/new_share_like_buttons_sprite.png') no-repeat right -19px; height: 14px; padding: 4px 5px 0 0; font-family: \'Lucida Grande\',Tahoma,Verdana,Arial,sans-serif;font-szie: 11px; font-style: normal;cursor: pointer; line-height: 9px; *line-height: 13px; *padding-top: 2px; *height: 18px;
+	    }
+        
+        .like-button:hover small, .share-hover small {
+            background-position: 0 -38px
+        }
+        
+        .like-button:hover i, .share-hover i {
+            background-position: 100% -57px
+        }
+        
+	    .liked-state {}
+	    .liked-state small {
+	        background-position: left -76px;
+	    }
+        
+	    .liked-state .mrc_icon {
+	        background-position: left -171px;
+	    }
+        
+        .liked-state:hover small, .liked-hover small {
+            background-position: 0 -96px
+        }
+        
+        .micro-button:hover .mrc_icon, .share-hover .mrc_icon {
+            background-position: left -134px;
+        }
+        
+	    .liked-state:hover .mrc_icon, .liked-hover .mrc_icon {background-position: left -152px}
+	    .micro-button {
+	    	display: inline-block;
+	        vertical-align: middle;
+	    }
+        
+	    .micro-button b {
+	        background: none;margin:0 5px 0 0; position: relative; text-decoration:underline; color:#0857A6; font:normal 12px/16px arial;
+	        cursor: pointer;
+	        display: inline-block;
+	        height: 18px;
+	        vertical-align: top;
+	    }
+        
+	    .mrc_icon {
+	        background: url(http://my1.imgsmail.ru/r/new_share_like_buttons_sprite.png) no-repeat; background-position: left -116px; display: inline-block; width: 16px; height: 18px; position: relative;
+            cursor: pointer;
+	    }
+	    
+	    #loader {
+	        display: none; position: absolute; left: 0; top: 0; width: 21px; height: 18px; z-index: 1; padding: 0; margin: 0; border: 0; overflow: hidden; background: url(http://my1.imgsmail.ru/r/new_share_like-button_animatied_big.gif) no-repeat;
+	    }
+        
+        .liked-hover #loader, .share-hover #loader {
+            background-image: url(http://my1.imgsmail.ru/r/new_share_like-button_animatied_hover.gif);
+        }
+        
+	    .loader .mrc_icon {
+	        background: url(http://my1.imgsmail.ru/r/new_share_like-button_animatied_small.gif) no-repeat; background-position: left top !important;
+	    }
+        
+        .liked-hover.loader .mrc_icon, .share-hover.loader .mrc_icon {
+            background-image: url(http://my1.imgsmail.ru/r/new_share_like-button_animatied_small_hover.gif);
+        } 
+            	    
+	    #share-count {
+	        float: none; width:auto;color:black;padding:0;margin:0;display:inline-block;background:url('http://my1.imgsmail.ru/r/new_share_like_buttons_sprite.png') no-repeat left -189px; height: 13px; font-family: Tahoma; color: #000; padding: 5px 5px 0 10px; border-right: 1px solid #ffc70d; margin-left: 1px; cursor: pointer; font-weight: normal; font-style: normal; line-height: 8px; *line-height: 100%; *padding-top: 3px; *height: 18px
+	    }
+	    .micro-button #share-count {
+	        position: relative; font-size: 9px;
+			vertical-align: top;
+			background: url('http://my1.imgsmail.ru/r/new_share_like_buttons_sprite.png') no-repeat left -272px;
+			height: 11px;
+			line-height: 6px;
+			*line-height: 100%;
+			*height: 16px;
+	    }
+	    
+	    #faces {
+            display: block;
+			margin-top: 9px
+	    }
+	    
+	    .share-users-info {
+	        color: #505050; font-size: 11px; margin-left: 5px;
+	    }
+	    .share-users-info a {
+	        color: #1a5aa5;
+	    }
+	    .share-users-info a:hover {
+	        text-decoration: none
+	    }
+	    
+	    .friend {display: inline-block;  margin: 0 5px 0 0}
+	    .friend-title {position: absolute; top: 0; left: 0; padding: 3px 5px; background-color: #c6c6c6; color: black; display: none; z-index: 2}
+	    .friend-title s {left:18px; position:absolute; bottom:-5px; z-index:11;}
+	    .friend-title s i {border-color:transparent transparent #c6c6c6; border-top-color: #c6c6c6; border-style:solid; border-width:5px 5px 0; display:inline-block; font-size:1px; height:0; line-height:0; width:0;}
+	    #faces a {display: inline-block; width: 45px; height: 45px; background-color: #efefef; background-position: center center; background-repeat: no-repeat; position: relative;}
+	    .friend-title {display: none; position: absolute; top: -27px;}
+	    #faces a:hover .friend-title {display: block;}
+        
+        .user, * .user, #faces .user {display: none}
+        body.liked * .user {display: inline}
+        body.liked #faces .user {display: inline}
+        
+        body.liked .not-shared-text {display: none}
+		
+		#flash-transport-container {position: absolute; left: -5000px; top: -100000px}
+		.no-faces #faces {display: none}
+		
+		body.liked .last-friend, body.liked .friend-comma {display: none}
+    </style>    
+    <script type="text/javascript">
+    document.domain = 'mail.ru';
+    // <![CDATA[
+    var DOMReady  = false;
+    var domainParts = document.domain.split('.');
+    document.domain = domainParts[domainParts.length - 2] + '.' + domainParts[domainParts.length - 1];
+    
+    var mailru = mailru || {};
+    mailru.isIE = /*@cc_on!@*/false;
+    mailru.def = {
+    	FLASH_TRANSPORT_URL: 'http://my2.imgsmail.ru/r/my/app/flash_lc.swf'
+    };
+    mailru.intercom = {flash : false};
+    
+    mailru.intercomType = ( window.postMessage && !mailru.isIE)? 'event' : (((function(){var i,a,o,p,s="Shockwave",f="Flash",t=" 2.0",u=s+" "+f,v=s+f+".",rSW=RegExp("^"+u+" (\\d+)");if((o=navigator.plugins)&&(p=o[u]||o[u+t])&&(a=p.description.match(rSW)))return a[1];else if(!!(window.ActiveXObject))for(i=10;i>0;i--)try{if(!!(new ActiveXObject(v+v+i)))return i}catch(e){}return 0;})() < 10) ? 'hash' : 'flash');
+    mailru.flash = {
+		inited: false
+	};
+    mailru.transmit =  function(params){
+        var get = mailru.utils.makeGet(params);
+    	switch(mailru.intercomType){
+    		case 'event':
+    			var wnd;
+    			switch(params.relation){
+    				case 'opener':
+    					wnd = window.opener;
+    					break;
+    				case 'parent':
+    					wnd = window.parent;
+    					break;
+    				case 'pparent':
+    					wnd = window.parent.parent;
+    					break;
+    			}
+    			
+    			wnd.postMessage(get, params.domain);
+    			if(params.relation=='opener') window.close();
+    			break;
+    		case 'flash':
+				if (mailru.intercom.flash) {
+					mailru.intercom.flash.request(get);
+				}
+				else {
+					mailru.intercom.flash = {
+						transport: "",
+						inited: false,
+						params: {},
+						sendOnReady: '',
+						toSend: [],
+						insertFlash: function(){
+							mailru.intercom.flash.transport = document.createElement('div');
+							document.body.appendChild(mailru.intercom.flash.transport);
+							mailru.intercom.flash.transport.id = 'flash-transport-container';
+							mailru.intercom.flash.transport.innerHTML = '' +
+							'<object id="api-lcwrapper-client" name="api-lcwrapper-client" height="1" width="1" type="application/x-shockwave-flash">' +
+							'<param value="always" name="allowScriptAccess"/>' +
+							'<param value="' +
+							mailru.def.FLASH_TRANSPORT_URL +
+							'" name="movie"/>' +
+							'<param value="' +
+							mailru.intercom.flash.vars +
+							'" name="FlashVars"/>' +
+							'</object>';
+						},
+						init: function(data){
+							var _get = mailru.utils.parseGet((document.URL.match(/\?(.*)/) || [''])[0]);
+							mailru.intercom.flash.params.fcid = _get.fcid || _get.window_id;
+							if (!mailru.intercom.flash.params.fcid) 
+								mailru.intercom.flash.params.fcid = mailru.utils.uniqid();
+							mailru.intercom.flash.sendOnReady = data;
+							
+							mailru.intercom.flash.vars = mailru.utils.makeGet({
+								CBReady: 'mailru.intercom.flash.ready',
+								listenTo: '',
+								connectTo: 'api',
+								cid: mailru.intercom.flash.params.fcid,
+								host: document.domain,
+								role: 'client',
+								noOpposite: 1
+							});
+							if (mailru.isIE && !DOMReady) {
+								window.onload = function(){
+									mailru.intercom.flash.insertFlash();
+								}
+							}
+							else {
+								mailru.intercom.flash.insertFlash();
+							}
+						},
+						request: function(params){
+							if(typeof params !== 'string')
+								params = mailru.utils.makeGet(params);
+							try {
+								document.getElementById('api-lcwrapper-client').send(params);
+							} 
+							catch (e) {
+								setTimeout(arguments.callee, 10);
+								return false;
+							}
+						},
+						ready: function(){
+							mailru.intercom.flash.transport = document.getElementById('api-lcwrapper-client');
+							if (params.relation == 'opener') {
+								mailru.intercom.flash.onSendStatus = function(){
+									try {
+										window.close();
+									} 
+									catch (e) {
+									}
+								}
+							}
+							mailru.intercom.flash.request(params);
+						},
+						onSendStatus: function(){
+						}
+					}
+					
+					mailru.intercom.flash.init(get);
+				}
+    			break;
+    	}
+    }
+    mailru.utils = mailru.utils || {
+    	parseGet: function (str){
+    		var p = str.split('&'), r = {}, di;
+    		for(var i=p.length; i--; ){
+    			di = p[i].indexOf('=');
+    			r[p[i].substr(0, di)] = decodeURIComponent(p[i].substr(di+1));
+    		}
+    		return r;
+    	},	
+    	makeGet: function(hash){
+    		var r = [];
+    		for(var k in hash){
+    			if(!hash.hasOwnProperty(k)) continue;
+    			r[r.length] = k+ '='+ encodeURIComponent(hash[k]);
+    		}
+    		return r.join('&');
+    	},
+    	addHandler: function(obj, name, cb){
+    		if (obj.addEventListener){
+    			obj.addEventListener(name, cb, false);
+    		} else if (obj.attachEvent){
+    			obj.attachEvent('on'+ name, cb);
+    		}
+    	},
+        plu: function(number, one, three, five){
+			if(number <= 20 && number >= 10 || number == 0)
+				return five;
+				
+			number = number.toString();
+			number = number[number.length - 1];
+
+			if(number == 1)
+				return one;
+
+			if(number <= 4 && number > 1){
+				return three;
+			}
+			if(number >= 5 || number == 0){
+				return five;
+			}
+		},
+        uniqid: function(){
+			return Math.round(Math.random(+new Date() + Math.random())*10000000);
+		}
+    }    
+
+    mailru.likeButton = {
+        liked: false,
+        likedTitle: 'Вы порекомендовали эту страницу друзьям в Моем Мире@Mail.Ru, нажмите еще раз, чтобы удалить рекомендацию',
+        notLikedTitle: 'Нажмите на кнопку, чтобы порекомендовать эту страницу Вашим друзьям в Моем Мире@Mail.Ru', 
+        needLogin: false,
+        button: null,
+        _reqProcess: false,
+        _req: (function(){
+    		var xhr = function(){
+    			if(window.XMLHttpRequest){
+    				return new XMLHttpRequest();
+    			} else {
+    				try {
+    					return new ActiveXObject("Msxml2.XMLHTTP");
+    				} catch(e) {
+    					try {
+    						return new ActiveXObject("Microsoft.XMLHTTP");
+    					} catch(e) {}
+    				}
+    			}
+    		}
+    		return function(opts){
+    			var r = xhr();
+    			if(!opts || !opts.url || !r)
+    				return;
+    			opts.method = opts.method || 'GET';
+    			
+    			opts.get = opts.get || {};
+    			if(opts.before){
+                    opts.before();
+                }
+    			r.open(opts.method, opts.url+ '?'+ mailru.utils.makeGet(opts.get), true);
+    			if(opts.cb){
+    				r.onreadystatechange = function() {
+    					if (r.readyState == 4) {
+    						window.clearTimeout(timeout);
+    						if(r.status == 200) {
+    							if(!opts._timeout_trigged)
+    								opts.cb(r.responseText);
+    						} else if(opts.cbError){
+    							opts.cbError('http_error', r.status);
+    						}
+    					}
+    				}
+    			}
+    			if(opts.cbError){
+    				var timeout = window.setTimeout(function(){
+    					opts._timeout_trigged=1;
+    					opts.cbError('timeout');
+    				}, opts.timeout||15000);
+    			}
+    			r.send(null);
+    		}
+    	})(),
+        _hoverOn: false, 
+        click: function(el){
+			
+            if(mailru.likeButton._reqProcess) return false; 
+            if(!mailru.likeButton.button) 
+                mailru.likeButton.button = el;
+
+            mailru.likeButton.loader = document.getElementById('loader') || false;    
+            if(mailru.likeButton.needLogin) {
+                mailru.likeButton._login();
+                return false;
+            }
+            if (el.tagName !== 'form')
+                el = el.parentNode;
+                
+            if (!mailru.likeButton._req) {
+                el.submit();
+                return true;
+            }
+            
+            var inputs = [] 
+            inputs = el.getElementsByTagName('input');
+            
+            serialize = (function(){
+               var o = {};
+               for(var i = 0; i <inputs.length; i++){
+                   o[inputs[i].name] = inputs[i].value; 
+               } 
+               return o; 
+            })();
+            if(mailru.likeButton.liked){
+                serialize.unlike = 1;
+            }
+            else {
+                delete serialize.unlike
+            }
+            
+            
+            var afterRequest = function(result){
+                mailru.likeButton._reqProcess = false; 
+                if (!result) {
+                    throw new Error('Server response fail');
+                    return false;
+                }
+                try{
+                    var oldResult = result;
+                    result = eval('('+result+')');
+                } catch (e) {
+                    mailru.likeButton.needLogin = true;
+                    mailru.likeButton._login();
+                    return false;
+                }
+                
+                
+                
+                if(result.history_id){
+                    mailru.likeButton.liked = true;
+                }
+                else{
+                    mailru.likeButton.liked = false;
+                } 
+                
+                
+                mailru.likeButton.loader.style.display = 'none';
+                    
+                
+                
+                if(result.error){
+                    switch(result.error){
+                        case 'need_login' : document.location = document.location.href; break;
+                        case 'limit error' : 
+                          mailru.transmit({
+                            event: 'plugin.like.rl',
+                            result: mailru.utils.makeGet({wid: params.wid}),
+                            relation: 'parent',
+                            rt: 1,
+                            domain: params.host
+                          })
+                    }
+                    return false;
+                }
+				
+				mailru.likeButton._changeState();
+				mailru.likeButton._processComment(result, {
+                    
+                });
+
+				var getUrlInfo = function(u){
+					if( !!u ) {
+						var _re = /^(?:([^:\/?\#]+):)?(?:\/\/([^\/?\#]*))?([^?\#]*)(?:\?([^\#]*))?(?:\#(.*))?/;
+						var _rs = u.match(_re); } else { _rs = [null,null,null,null,null]; }
+					return {
+						'scheme'	: _rs[1] || null,
+						'host'		: _rs[2] || null,
+						'path'		: _rs[3] || null,
+						'query'		: _rs[4] || null,
+						'hash'		: _rs[5] || null
+					}
+				}
+				
+				setTimeout(function(){
+					var _loc = getUrlInfo(window.location.href);
+					for(var i = 0; i < parent.frames.length; i++){
+                        try {
+							_fr = getUrlInfo(parent.frames[i].location.href);
+							if(_loc['host'] == _fr['host'] && parent.frames[i] != window){
+								parent.frames[i].location = parent.frames[i].location.href;
+							}
+                        } catch(e) { }
+                    }
+                }, 500);
+            }
+            
+            mailru.likeButton._req({
+                url: el.action,
+                method: el.method,
+                get: serialize,
+                cb: afterRequest,
+                before: function(){
+
+                        mailru.likeButton._reqProcess = true;
+                        
+                        mailru.likeButton.loader.style.display = 'block';
+                            
+                    
+                }
+            });
+        },
+        _changeState: function(state){
+        	mailru.likeButton.liked = state || mailru.likeButton.liked;
+            var b = mailru.likeButton.button.getElementsByTagName('b');
+            if(!mailru.likeButton.liked){
+                b[0].setAttribute('title', mailru.likeButton.notLikedTitle);
+                document.body.className = document.body.className.replace('liked', '');
+                mailru.likeButton.button.className = mailru.likeButton.button.className.replace('liked-state', '');
+                document.getElementById('share-count').innerHTML = parseInt(document.getElementById('share-count').innerHTML) - 1;
+                
+                if (parseInt(document.getElementById('share-count').innerHTML) <= 0) {
+                    document.getElementById('share-count').style.display = 'none'; 
+                } else {
+					document.body.className = document.body.className.replace('no-faces', '');
+				}
+				if(document.getElementById('faces') && document.getElementById('faces').getElementsByTagName('a').length < 2){
+					document.body.className += ' no-faces ';
+				}
+				
+    		} else {
+                b[0].setAttribute('title', mailru.likeButton.likedTitle);
+                
+                document.body.className += ' liked '; 
+                mailru.likeButton.button.className += ' liked-state ';
+				document.body.className = document.body.className.replace('no-faces', '');
+                if (!document.getElementById('share-count')) {
+                    with (document.getElementById('like-button')) {
+                        innerHTML += '<span title="Уже поделились" id="share-count">1</span>'
+                    }
+                }
+                else {
+                    document.getElementById('share-count').innerHTML = parseInt(document.getElementById('share-count').innerHTML) + 1;
+                    document.getElementById('share-count').style.display = 'inline-block';
+                }
+    		}	
+            if(document.getElementById('recs-count'))
+                document.getElementById('recs-count').innerHTML = mailru.utils.plu(parseInt(document.getElementById('share-count').innerHTML), 'рекомендует', 'рекомендуют', 'рекомендуют');
+            
+			resizeFrame();
+        },
+        _login: function(){
+        	window.open('http://connect.mail.ru/login?noclear=1&PopupMode=1&connect=1&sharelike=1', '_blank', 'width=540,height=360');
+        },
+        _afterLogin: function(){
+            document.location = document.location.href + '&submit=1'; 
+        },
+        _afterCaptcha: function(){
+            document.location = document.location.href;    
+        },
+        _processComment: function(result, extParams){
+            var result = result || {};
+            var extParams = extParams || {};
+            var params = mailru.utils.parseGet(document.URL.match(/\?(.*)/)[1]);
+        
+            if(params.host.indexOf('http://') == -1){
+            	params.host = 'http://' + params.host;
+            }
+            if(result.history_id)
+                mailru.transmit({
+                	event: 'plugin.liked',
+                	result: mailru.utils.makeGet({wid: params.wid, history_id: result.history_id, id: params.buttonid}),
+                	relation: 'parent',
+                	rt: 1,
+                	domain: params.host
+                });
+            else    
+                mailru.transmit({
+                	event: 'plugin.unliked',
+                	result: mailru.utils.makeGet({wid: params.wid, id: params.buttonid}),
+                	relation: 'parent',
+                	rt: 1,
+                	domain: params.host
+                });
+        }
+    }
+    var params = mailru.utils.parseGet(document.URL.match(/\?(.*)/)[1]);
+    
+    if(params.host.indexOf('http://') == -1){
+    	params.host = 'http://' + params.host;
+    }    
+    //]]>
+    </script>
+
+</head>
+<body class=" no-faces">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="wrp">
+    <form name="likeform" action="/share" method="post" id="likeform">
+        
+
+        <input name="submitted" value="1" type="hidden">
+        <input name="url" value="http://www.dslib.net/sys-analiz/avtomatizirovannoe-reshenie-mnogokriterialnyh-zadach-sostavlenija-raspisanij.html" type="hidden">
+        <input name="api_key" value="" type="hidden">
+        <input name="video" value="" type="hidden">
+        <input name="vwidth" value="150" type="hidden">
+        <input name="vheight" value="21" type="hidden">
+        <input name="title" value="" type="hidden">
+        <input name="desc" value="" type="hidden">
+        <input name="comment" value="" type="hidden">
+        <input name="image_url" value="" type="hidden">
+    	<input name="postType" value="share_like" type="hidden">
+        <input name="r" value="991352" type="hidden">
+        <input name="q" value="1375389507" type="hidden">
+		<span id="like-button" class="like-button  " onclick="mailru.likeButton.click(this)">
+			
+		</span>
+        
+    	
+        
+        
+        
+    	<span class="share-users-info">
+    	
+        
+        
+			
+        
+            
+		
+        </span>
+        <script type="text/javascript">
+            // <![CDATA[
+            function resizeFrame(){
+				var height = 20, width = false;
+				
+				mailru.transmit({
+					event: 'common.modalWindow',
+					result: mailru.utils.makeGet({
+						wid: params.wid,
+						modalResize: 1,
+						modalWindowHeight: height,
+						modalWindowWidth: width
+					}),
+					relation: 'parent',
+					rt: 1,
+					domain: params.host
+				})
+			}
+			resizeFrame();
+            var f = parent.frames;
+            //]]>
+        </script>
+    </form> 
+ </div>
+ <script type="text/javascript">
+     // <![CDATA[
+     (function(){
+        mailru.likeButton.button = document.getElementById('like-button');
+        
+        function getClass(){
+            
+            var className = '';    
+            if(mailru.likeButton.liked)
+                className = 'liked-hover';
+            else
+                className = 'share-hover';
+                
+            return className;
+        }
+        
+        mailru.likeButton.button.onmouseover = function(){
+            mailru.likeButton.button.className += ' ' + getClass() + ' ';
+        }
+        mailru.likeButton.button.onmouseout = function(){
+            mailru.likeButton.button.className = mailru.likeButton.button.className.replace(getClass(), '').replace('share-hover', '').replace('liked-hover', '');
+        }
+        
+		
+        document.body.onclick = function(){
+            mailru.transmit({
+            	event: 'plugin.closeComment',
+            	result: mailru.utils.makeGet({wid: params.wid, share: true}),
+            	relation: 'parent',
+            	rt: 1,
+            	domain: params.host
+            })    
+        }
+		 
+    })();
+    DOMReady  = true;
+	resizeFrame();
+    //]]>
+ </script>
+
+
+
+
+
+
+</body></html>
