@@ -59,7 +59,7 @@ namespace Diplom
          * valueA - матрица решений по всем типам данных (текущее глобальное решение)
          * 
          */
-        public BatchTypeClaims(int valueI, int valueCountClaims, List<List<int>> valueA1, List<List<int>> valueA)
+        public BatchTypeClaims(int valieCriterion, int valueI, int valueCountClaims, List<List<int>> valueA1, List<List<int>> valueA)
         {
             this.i = valueI;
             this.np2 = 0;
@@ -68,6 +68,7 @@ namespace Diplom
             this.q2 = 0;
             this.q2i = 0;
             this.g = 1;
+            this.f1 = valieCriterion;
             this.CopyMatrix(valueA1, valueA);
             this.countClaims = valueCountClaims;
         }
@@ -282,8 +283,22 @@ namespace Diplom
         public int GetCriterion(List<List<int>> inMatrix)
         {
             int criterion = 0;
-
-            return criterion;
+            for (int i = 1; i < inMatrix.Count; i++)
+            {
+                for (int j = 1; j < inMatrix[i].Count; i++)
+                {
+                    criterion += inMatrix[i][j];
+                }
+            }
+            int criterionA = 0;
+            for (int i = 1; i < this.A.Count; i++)
+            {
+                for (int j = 1; j < this.A[i].Count; j++)
+                {
+                    criterionA += this.A[i][j];
+                }
+            }
+            return criterionA - criterion;
         }
         
         /*
@@ -343,24 +358,29 @@ namespace Diplom
                     this.q2 = 1;
                     this.q2i = 0;
                     this.G = 0;
-                    if (this.np2 > 0)
+                    for (int indexQ = 1; indexQ < this.A2.Count; indexQ++)
                     {
-                        SecondLevel test = new SecondLevel();
-                        if (test.GenerateSolution(this.A2))
+                        this.A[this.i] = this.A2[indexQ];
+                        SecondLevel secondLevel = new SecondLevel();
+                        if (secondLevel.GenerateSolution(this.A))
                         {
-                            List<List<int>> tempMatrixA = test.ReturnAMatrix();
+                            List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
                             int f1g = this.GetCriterion(tempMatrixA);
-
+                            if (f1g - this.f1 <= 0)
+                            {
+                                if (f1g - this.f1 < this.G) 
+                                {
+                                    this.q2i = indexQ;
+                                    this.G = f1g - this.f1;
+                                }
+                            }
                         }
-                        
                     }
                 }
                 else
                 {
                     return false;
                 }
-                
-                
             }
             else
             {

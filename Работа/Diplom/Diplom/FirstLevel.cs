@@ -83,6 +83,10 @@ namespace Diplom
             return 0;
         }
 
+        /*
+         * 
+         * 
+         */ 
         public bool CheckingMatrixA2(int flag)
         {
             switch (flag)
@@ -133,7 +137,13 @@ namespace Diplom
             SecondLevel secondLevel = new SecondLevel();
             secondLevel.GenerateSolution(this.A);
             //Добавить вычисление значения критерия
-            for (int j = 0; j < this.I.Count; j++)
+            this.f1 = new List<int>();
+            for (int i = 0; i < this.countType; i++)
+            {
+                this.f1.Add(0);
+            }
+
+            for (int j = 0; j < this.countType; j++)
             {
                 if (j > this.i && this.I[j] != 0)
                 {
@@ -155,7 +165,7 @@ namespace Diplom
                         this.A1[i].Add(this.A[i][j]);
                     }
                 }
-                test = new BatchTypeClaims(this.i, this.countClaims[this.i], this.A1, this.A);
+                test = new BatchTypeClaims(this.f1[this.i], this.i, this.countClaims[this.i], this.A1, this.A);
                 List<List<int>> tempA = test.ReturnMatrixA2();
                 if (tempA.Count == 0)
                 {
@@ -207,9 +217,9 @@ namespace Diplom
             while (true)
             {
                 if (countLoop == 0)
-                    test = new BatchTypeClaims(1, 16, temp, this.A);
+                    test = new BatchTypeClaims(10, 1, 16, temp, this.A);
                 else
-                    test = new BatchTypeClaims(1, 16, test.ReturnMatrixA2(), this.A);
+                    test = new BatchTypeClaims(10, 1, 16, test.ReturnMatrixA2(), this.A);
                 if (test.GenerateSolution())
                 {
                     test.PrintMatrix(2);
