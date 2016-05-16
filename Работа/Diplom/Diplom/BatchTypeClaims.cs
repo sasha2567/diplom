@@ -30,11 +30,15 @@ namespace Diplom
         private int G;//Максимальное по модулю значение дискретного градиента
         private int j;//Дополнительный индекс к номеру партии h
         private int i;//Идентификатор текущего типа партии
+        private int f1;//критерий, полученный с первого уровня для определения лучшего решения
 
         //Необходимая функция для предотвращения копирвания указателей на матрицы А1 и А2
         private void CopyMatrix(List<List<int>> valueA1, List<List<int>> valueA)
         {
-            this.A = new List<List<int>>(valueA);
+            if(valueA != null)
+                this.A = new List<List<int>>(valueA);
+            else
+                this.A = new List<List<int>>();
             this.A1 = new List<List<int>>(valueA1);
             this.A2 = new List<List<int>>();
 
@@ -344,8 +348,9 @@ namespace Diplom
                         SecondLevel test = new SecondLevel();
                         if (test.GenerateSolution(this.A2))
                         {
-                            List<List<int>> tempAMatrix = test.ReturnAMatrix();
-                            int result = this.GetCriterion(tempAMatrix);
+                            List<List<int>> tempMatrixA = test.ReturnAMatrix();
+                            int f1g = this.GetCriterion(tempMatrixA);
+
                         }
                         
                     }
