@@ -9,9 +9,9 @@ namespace Diplom
     class Batch
     {
         //Структура, необходимая для работы второго уровня (составов групп партий данных)
-        private int countClaims;//так ты их описал
-        private int typeClaims;
-        private List<int> claims;
+        public int countClaims;//так ты их описал
+        public int typeClaims;
+        public List<int> claims;
 
         public Batch(int valueCount, int valueType, List<int> valueClaims)
         {

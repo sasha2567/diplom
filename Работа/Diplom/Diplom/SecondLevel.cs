@@ -12,18 +12,34 @@ namespace Diplom
 
         Groups groups=new Groups(5),Q=new Groups(1);
 
-        public void nach_uslov(int j)
+        public void nach_uslov(int j)//this.groups.Z
         {
             for (int i = 0; i < this.groups.Z;i++)
                 this.groups.k.Add(0);
             this.Q.k.Add(0);
             this.groups.Set_I1(j);//допустим
             this.groups.Set_I2(j);//допустим 
-            this.groups.Set_M(this.groups.Z);//допустим 
+            this.groups.Set_M(j);//допустим 
             this.Q.Set_M(1);//допустим
-            this.groups.Set_Nzt(this.groups.Nz);//Сань я знаю что богопротивно я потом исправлю и права доступа тоже
-            this.groups.z =this.groups.Nzt.Min();
-            this.groups.Nzt.Remove(this.groups.Nzt.Min());
+           
+        }
+        public void Algoritm_1()
+        {
+            while (true)
+            {
+                this.groups.Set_Nzt(this.groups.Nz);//1
+
+                int i1 = this.groups.I2.Min();//2
+                this.groups.I1.Remove(i1);//2
+
+                this.groups.z = this.groups.Nzt.Min();//4
+                this.groups.Nzt.Remove(this.groups.Nzt.Min());//4
+
+                this.groups.hi1 = 1;//5
+
+
+
+            }
         }
 
         public bool GenerateSolution(List<List<int>> matrixA)
