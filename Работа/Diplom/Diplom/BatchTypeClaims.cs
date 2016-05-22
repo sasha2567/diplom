@@ -31,6 +31,7 @@ namespace Diplom
         private int j;//Дополнительный индекс к номеру партии h
         private int i;//Идентификатор текущего типа партии
         private int f1;//критерий, полученный с первого уровня для определения лучшего решения
+        private bool inMatrixFlag = false;//флаг проверки входных зачений
 
         //Необходимая функция для предотвращения копирвания указателей на матрицы А1 и А2
         private void CopyMatrix(List<List<int>> valueA1, List<List<int>> valueA)
@@ -42,11 +43,18 @@ namespace Diplom
             this.A1 = new List<List<int>>(valueA1);
             this.A2 = new List<List<int>>();
 
-            this.A2.Add(new List<int>());
-            this.A2.Add(new List<int>());
-            for (int i = 0; i < valueA1[1].Count; i++)
+            try
             {
-                this.A2[1].Add(0);
+                this.A2.Add(new List<int>());
+                this.A2.Add(new List<int>());
+                for (int i = 0; i < valueA1[1].Count; i++)
+                {
+                    this.A2[1].Add(0);
+                }
+            }
+            catch
+            {
+                this.inMatrixFlag = true;
             }
         }
 
@@ -154,7 +162,7 @@ namespace Diplom
                 case 3:
                     try
                     {
-                        if (this.A2[this.q1][this.h] == this.A2[this.q1][this.h + this.j])
+                        if (this.A1[this.q1][this.h] == this.A1[this.q1][this.h + this.j])
                         {
                             return true;
                         }
@@ -175,9 +183,9 @@ namespace Diplom
         public void PrintMatrix(int a = 1)
         {
             string s = "";
-            if (a == 1)
-            {
-                s += "Матрица А2\n";
+            switch(a){
+                case 1 :
+                    s += "Матрица А2\n";
                 foreach (List<int> row in this.A2)
                 {
                     foreach (int colum in row)
@@ -186,10 +194,9 @@ namespace Diplom
                     }
                     s += "\n";
                 }
-            }
-            else
-            {
-                s += "Матрица А1\n";
+                    break;
+                case 2:
+                    s += "Матрица А1\n";
                 foreach (List<int> row in this.A1)
                 {
                     foreach (int colum in row)
@@ -198,6 +205,18 @@ namespace Diplom
                     }
                     s += "\n";
                 }
+                    break;
+                case 3:
+                    s += "Матрица А\n";
+                    foreach (List<int> row in this.A)
+                    {
+                        foreach (int colum in row)
+                        {
+                            s += colum + ", ";
+                        }
+                        s += "\n";
+                    }
+                    break;
             }
             MessageBox.Show(s);
 
@@ -207,7 +226,7 @@ namespace Diplom
          * Функция получения неповторяющихся решений в матрице А2 на шаге 9
          *
          */
-        public List<List<int>> SortedMatrixA2(List<List<int>> inMatrix)
+        public List<List<int>> SortedMatrix(List<List<int>> inMatrix)
         {
             List<List<int>> temp = new List<List<int>>();
             for (int j = 0; j < inMatrix.Count; j++)
@@ -277,6 +296,42 @@ namespace Diplom
         }
 
         /*
+         * Возврат полученных решений по составам всех партий
+         * 
+         */
+        public List<List<int>> ReturnMatrixA()
+        {
+            List<List<int>> ret = new List<List<int>>();
+            for (int i = 0; i < this.A.Count; i++)
+            {
+                ret.Add(new List<int>());
+                for (int j = 0; j < this.A[i].Count; j++)
+                {
+                    ret[i].Add(this.A[i][j]);
+                }
+            }
+            return ret;
+        }
+
+        /*
+         * 
+         * 
+         */
+        private List<List<int>> CopyMatrix(List<List<int>> inMatrix)
+        {
+            List<List<int>> ret = new List<List<int>>();
+            for (int i = 0; i < inMatrix.Count; i++)
+            {
+                ret.Add(new List<int>());
+                for (int j = 0; j < inMatrix[i].Count; j++)
+                {
+                    ret[i].Add(inMatrix[i][j]);
+                }
+            }
+            return ret;
+        }
+
+        /*
          * Функция вычисления f1 критерия
          * 
          */ 
@@ -307,6 +362,10 @@ namespace Diplom
          */ 
         public bool GenerateSolution()
         {
+            if (this.inMatrixFlag)
+            {
+                return false;
+            }
             //MessageBox.Show("Алгоритм формирования решения i-ого типа данных.Шаг 1");
             Step2:
             this.h = 2;
@@ -337,10 +396,6 @@ namespace Diplom
                         }
                     }
                 }
-                else
-                {
-
-                }
             }
             else
             {
@@ -353,33 +408,36 @@ namespace Diplom
             {
                 if (this.np2 > 1)
                 {
-                    this.A2 = this.SortedMatrixA2(this.A2);
+                    this.A2 = this.SortedMatrix(this.A2);
                     this.np2 = this.A2.Count - 1;
-                    this.q2 = 1;
                     this.q2i = 0;
                     this.G = 0;
-                    for (int indexQ = 1; indexQ < this.A2.Count; indexQ++)
+                    if (this.np2 > 0)
                     {
-                        this.A[this.i] = this.A2[indexQ];
-                        SecondLevel secondLevel = new SecondLevel();
-                        if (secondLevel.GenerateSolution(this.A))
+                        for (int indexQ = 1; indexQ < this.A2.Count; indexQ++)
                         {
-                            List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
-                            int f1g = this.GetCriterion(tempMatrixA);
-                            if (f1g - this.f1 <= 0)
+                            List<List<int>> tempA = CopyMatrix(this.A);
+                            tempA[this.i] = this.A2[indexQ];
+                            SecondLevel secondLevel = new SecondLevel();
+                            if (secondLevel.GenerateSolution(tempA))
                             {
-                                if (f1g - this.f1 < this.G) 
+                                List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
+                                int f1g = this.GetCriterion(tempMatrixA);
+                                if (f1g - this.f1 <= 0)
                                 {
-                                    this.q2i = indexQ;
-                                    this.G = f1g - this.f1;
+                                    if (f1g - this.f1 < this.G)
+                                    {
+                                        this.q2i = indexQ;
+                                        this.G = f1g - this.f1;
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                else
-                {
-                    return false;
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             else

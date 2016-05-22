@@ -10,6 +10,7 @@ namespace Diplom
     class FirstLevel
     {
         private List<int> I;//Вектор интерпритируемых типов данных
+        private List<int> Ii;//Вектор интерпритируемых типов данных на текущем шагу алгоритма
         private List<int> mi;//Вектор количества партий данных для каждого типа данных
         private List<int> npi;//задание для каждого i-го типа данных количества решений по составам партий данных i-ых типов, сформированных на текущей ите-рации алгоритма
         private List<List<int>> A1;//Матрица составов партий требований
@@ -20,6 +21,7 @@ namespace Diplom
         private BatchTypeClaims test;
         private int i;//идентификатор текущего изменяемого типа
         private int G;
+        private List<int> Gi;
         private int q1;
         private int q2;
         private int k;
@@ -36,6 +38,8 @@ namespace Diplom
             this.mi = new List<int>(this.countType);
             this.npi = new List<int>(this.countType);
             this.I = new List<int>(this.countType);
+            this.Ii = new List<int>(this.countType);
+            this.Gi = new List<int>(this.countType);
         }
 
         /*
@@ -51,20 +55,21 @@ namespace Diplom
             for (int i = 1; i <= this.countType; i++)
             {
                 this.I.Add(1);
+                this.Ii.Add(1);
                 this.mi.Add(claim);
                 this.npi.Add(1);
                 this.A.Add(new List<int>());
                 this.A[i].Add(0);
-                this.A[i].Add(this.countClaims[i - 1] - claim);
+                this.A[i].Add(this.countClaims[i] - claim);
                 this.A[i].Add(claim);
             }
             for (int i = 1; i <= this.countType; i++)
             {
-                if (this.A[i][1] < 2 || this.A[i][1] < this.A[i][1])
+                if (this.A[i][1] < 2 || this.A[i][1] < this.A[i][2])
                 {
                     this.A[i].Clear();
                     this.A[i].Add(0);
-                    this.A[i].Add(this.countClaims[i - 1]);
+                    this.A[i].Add(this.countClaims[i]);
                     this.mi[i - 1] = 1;
                     this.npi[i - 1] = 0;
                     this.I[i - 1] = 0;
@@ -142,13 +147,20 @@ namespace Diplom
             {
                 this.f1.Add(0);
             }
-
             for (int j = 0; j < this.countType; j++)
             {
-                if (j > this.i && this.I[j] != 0)
+                this.Ii[j] = this.I[j];
+            }
+            this.i = 0;
+            if (this.i > 0)
+            {
+                for (int j = 0; j < this.countType; j++)
                 {
-                    this.i = j;
-                    break;
+                    if (j > this.i && this.Ii[j] != 0)
+                    {
+                        this.i = j;
+                        break;
+                    }
                 }
             }
             if (this.npi[this.i] > 0)
@@ -166,6 +178,9 @@ namespace Diplom
                     }
                 }
                 test = new BatchTypeClaims(this.f1[this.i], this.i, this.countClaims[this.i], this.A1, this.A);
+                test.GenerateSolution();
+                test.PrintMatrix(2);
+                test.PrintMatrix();
                 List<List<int>> tempA = test.ReturnMatrixA2();
                 if (tempA.Count == 0)
                 {
@@ -199,7 +214,7 @@ namespace Diplom
                     }
                     else
                     {
-                        this.I[this.i] = 0;
+                        this.Ii[this.i] = 0;
                     }
                 }
             }
@@ -213,6 +228,18 @@ namespace Diplom
             temp[1].Add(2);
             temp[1].Add(2);
             temp[1].Add(2);
+            /*temp.Add(new List<int>());
+            temp[2].Add(0);
+            temp[2].Add(5);
+            temp[2].Add(5);
+            temp[2].Add(3);
+            temp[2].Add(3);
+            temp.Add(new List<int>());
+            temp[3].Add(0);
+            temp[3].Add(5);
+            temp[3].Add(4);
+            temp[3].Add(4);
+            temp[3].Add(3);*/
             int countLoop = 0;
             while (true)
             {
@@ -226,7 +253,7 @@ namespace Diplom
                     test.PrintMatrix();
                 }
                 countLoop++;
-                if (countLoop == 5)
+                if (countLoop == 6)
                     break;
                 else
                     MessageBox.Show("Генерируем новое решение");

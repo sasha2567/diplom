@@ -18,10 +18,10 @@ namespace Diplom
         {
             InitializeComponent();
             List<int> tmp = new List<int>();
-            tmp.Add(3);
-            tmp.Add(17);
-            tmp.Add(3);
-            tmp.Add(19);
+            tmp.Add(16);
+            tmp.Add(16);
+            tmp.Add(16);
+            tmp.Add(16);
             firstLevel = new FirstLevel(tmp.Count, tmp);
             firstLevel.GenerateSolution();
         }
