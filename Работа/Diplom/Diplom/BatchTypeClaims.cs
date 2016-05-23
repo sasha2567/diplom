@@ -135,7 +135,6 @@ namespace Diplom
             this.i = valueI;
             this.np2 = 0;
             this.np1 = valueA1.Count - 1;
-            this.q1 = 1;
             this.q2 = 0;
             this.q2i = 0;
             this.g = 1;
@@ -346,42 +345,42 @@ namespace Diplom
             {
                 return false;
             }
-            bool step3 = false, step4 = false, step5 = false;
+            bool step5 = false;
+            this.q1 = 1;
+            this.h = 2;
+            this.j = 1;
             while (this.q1 <= this.np1)
             {
-                this.h = 2;
-            
-                Step3:
-                this.q2++;
-                this.FormationDecisionPartMakeup();
-                this.np2++;
-                Step4:
-                if (this.CheckingMatrix(1))
+                if (!step5)
                 {
-                    this.j = 1;
-                    Step5:
-                    if (this.h + this.j <= this.countClaims)
+                    step5 = false;
+                    this.q2++;
+                    this.FormationDecisionPartMakeup();
+                    this.np2++;
+                    if (!this.CheckingMatrix(1))
                     {
-                        if (this.CheckingMatrix(2))
-                        {
-                            this.h += this.j;
-                            goto Step3;
-                        }
-                        if (this.CheckingMatrix(3))
-                        {
-                            this.j++;
-                            goto Step5;
-                        }
+                        this.A2.RemoveAt(this.q2);
+                        this.q2--;
+                        this.np2--;
                     }
                 }
-                else
+                if (this.h + this.j <= this.countClaims)
                 {
-                    this.A2.RemoveAt(this.q2);
-                    this.q2--;
-                    this.np2--;
-                    goto Step4;
-                }            
+                    if (this.CheckingMatrix(2))
+                    {
+                        this.h += this.j;
+                        continue;
+                    }
+                    if (this.CheckingMatrix(3))
+                    {
+                        this.j++;
+                        step5 = true;
+                        continue;
+                    }
+                }          
                 this.q1++;
+                this.h = 2;
+                this.j = 1;
             }
             if (this.np2 > 1)
             {
