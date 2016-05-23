@@ -27,10 +27,13 @@ namespace Diplom
         private int k;
         private List<int> f1;//Критерии начальных решений всех типов данных
 
-        /*
+        /* 
+         * Конструктор с параметрами
          * 
+         * count_type - количество типов рассматриваемых данных
+         * count_claims - количество требований всех типов данных
          * 
-         */ 
+         */
         public FirstLevel(int count_type, List<int> count_claims)
         {
             this.countType = count_type;
@@ -43,9 +46,8 @@ namespace Diplom
         }
 
         /*
-         * 
-         * 
-         * 
+         * Алгоритм формирования начальных решений по составам партий всех типов
+         *  
          */ 
         public void GenerateStartSolution()
         {
@@ -60,7 +62,7 @@ namespace Diplom
                 this.npi.Add(1);
                 this.A.Add(new List<int>());
                 this.A[i].Add(0);
-                this.A[i].Add(this.countClaims[i] - claim);
+                this.A[i].Add(this.countClaims[i - 1] - claim);
                 this.A[i].Add(claim);
             }
             for (int i = 1; i <= this.countType; i++)
@@ -69,7 +71,7 @@ namespace Diplom
                 {
                     this.A[i].Clear();
                     this.A[i].Add(0);
-                    this.A[i].Add(this.countClaims[i]);
+                    this.A[i].Add(this.countClaims[i - 1]);
                     this.mi[i - 1] = 1;
                     this.npi[i - 1] = 0;
                     this.I[i - 1] = 0;
@@ -79,10 +81,9 @@ namespace Diplom
         }
 
         /*
+         * Функция вычисления f1 критерия
          * 
-         * 
-         * 
-         */ 
+         */
         public int GetCriterion()
         {
             return 0;
@@ -92,7 +93,7 @@ namespace Diplom
          * 
          * 
          */ 
-        public bool CheckingMatrixA2(int flag)
+        public bool CheckingMatrix(int flag)
         {
             switch (flag)
             {
@@ -128,7 +129,7 @@ namespace Diplom
         }
 
         /*
-         * 
+         * Алгоритм формирования решения по составам паритй всех типов данных
          * 
          * 
          * 
@@ -180,8 +181,8 @@ namespace Diplom
                 test = new BatchTypeClaims(this.f1[this.i], this.i, this.countClaims[this.i], this.A1, this.A);
                 test.GenerateSolution();
                 test.PrintMatrix(2);
-                test.PrintMatrix();
-                List<List<int>> tempA = test.ReturnMatrixA2();
+                test.PrintMatrix(3);
+                List<List<int>> tempA = test.ReturnMatrix(3);
                 if (tempA.Count == 0)
                 {
                     this.mi[this.i]++;
@@ -198,7 +199,7 @@ namespace Diplom
                         sum += 2;
                     }
                     this.A2[this.q2][1] = this.countClaims[this.q2] - sum;
-                    if (this.CheckingMatrixA2(1) && this.CheckingMatrixA2(2))
+                    if (this.CheckingMatrix(1) && this.CheckingMatrix(2))
                     {
                         for (int h = 0; h < this.A2[this.q2].Count; h++)
                             if (this.A[this.i].Count < this.A2[this.q2].Count)
@@ -246,11 +247,11 @@ namespace Diplom
                 if (countLoop == 0)
                     test = new BatchTypeClaims(10, 1, 16, temp, this.A);
                 else
-                    test = new BatchTypeClaims(10, 1, 16, test.ReturnMatrixA2(), this.A);
+                    test = new BatchTypeClaims(10, 1, 16, test.ReturnMatrix(3), this.A);
                 if (test.GenerateSolution())
                 {
                     test.PrintMatrix(2);
-                    test.PrintMatrix();
+                    test.PrintMatrix(3);
                 }
                 countLoop++;
                 if (countLoop == 6)
