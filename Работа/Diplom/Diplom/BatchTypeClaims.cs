@@ -132,15 +132,13 @@ namespace Diplom
          */
         public BatchTypeClaims(int valieCriterion, int valueI, int valueCountClaims, List<List<int>> valueA1, List<List<int>> valueA)
         {
-            this.i = valueI;
-            this.np2 = 0;
-            this.np1 = valueA1.Count - 1;
-            this.q2 = 0;
-            this.q2i = 0;
-            this.g = 1;
-            this.f1 = valieCriterion;
-            this.A1 = this.CopyMatrix(valueA1);
+            /*this.A1 = new List<List<int>>();
+            this.A1.Add(new List<int>());
+            this.A1.Add(new List<int>());
+            this.A1[1] = valueA[valueI];*/
+
             this.A = this.CopyMatrix(valueA);
+            this.A1 = this.CopyMatrix(valueA1);
             this.A2 = new List<List<int>>();
             try
             {
@@ -155,7 +153,13 @@ namespace Diplom
             {
                 this.inMatrixFlag = true;
             }
-            //this.CopyMatrix(valueA1, valueA);
+            this.i = valueI;
+            this.np2 = 0;
+            this.np1 = this.A1.Count - 1;
+            this.q2 = 0;
+            this.q2i = 0;
+            this.g = 1;
+            this.f1 = valieCriterion;
             this.countClaims = valueCountClaims;
         }
 
@@ -221,15 +225,7 @@ namespace Diplom
          */
         public List<List<int>> SortedMatrix(List<List<int>> inMatrix)
         {
-            List<List<int>> temp = new List<List<int>>();
-            for (int j = 0; j < inMatrix.Count; j++)
-            {
-                temp.Add(new List<int>());
-                for (int i = 0; i < inMatrix[j].Count; i++)
-                {
-                    temp[j].Add(inMatrix[j][i]);
-                }
-            }
+            List<List<int>> temp = this.CopyMatrix(inMatrix);
             //сортировка буферной матрицы
             foreach (List<int> row in temp)
             {

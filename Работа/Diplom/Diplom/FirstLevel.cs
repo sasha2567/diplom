@@ -22,11 +22,14 @@ namespace Diplom
         private BatchTypeClaims test;
         private int i;//идентификатор текущего изменяемого типа
         private int G;
+        private int g;
         private List<int> Gi;
         private int q1;
         private int q2;
+        private int q2i;
         private int k;
-        private List<int> f1;//Критерии начальных решений всех типов данных
+        private List<int> f1i;//Критерии начальных решений всех i-ого типа данных
+        private int f1;//Критерий текущего решения для всех типов
 
         /* 
          * Конструктор с параметрами
@@ -41,6 +44,7 @@ namespace Diplom
             this.countClaims = count_claims;
             this.mi = new List<int>(this.countType);
             this.np1i = new List<int>(this.countType);
+            this.np2i = new List<int>(this.countType);
             this.I = new List<int>(this.countType);
             this.Ii = new List<int>(this.countType);
             this.Gi = new List<int>(this.countType);
@@ -59,8 +63,10 @@ namespace Diplom
             {
                 this.I.Add(1);
                 this.Ii.Add(1);
+                this.Gi.Add(0);
                 this.mi.Add(claim);
                 this.np1i.Add(1);
+                this.np2i.Add(1);
                 this.A.Add(new List<int>());
                 this.A[i].Add(0);
                 this.A[i].Add(this.countClaims[i - 1] - claim);
@@ -86,9 +92,25 @@ namespace Diplom
          * Функция вычисления f1 критерия
          * 
          */
-        public int GetCriterion()
+        public int GetCriterion(List<List<int>> inMatrix)
         {
-            return 0;
+            int criterion = 0;
+            for (int i = 1; i < inMatrix.Count; i++)
+            {
+                for (int j = 1; j < inMatrix[i].Count; i++)
+                {
+                    criterion += inMatrix[i][j];
+                }
+            }
+            int criterionA = 0;
+            for (int i = 1; i < this.A.Count; i++)
+            {
+                for (int j = 1; j < this.A[i].Count; j++)
+                {
+                    criterionA += this.A[i][j];
+                }
+            }
+            return criterionA - criterion;
         }
 
         /*
@@ -134,91 +156,132 @@ namespace Diplom
         }
 
         /*
+         * Функция проверки наличия оставшихся в рассмотрении типов
+         * 
+         */ 
+        private bool CheckType(int flag)
+        {
+            int count = 0;
+            switch (flag)
+            {
+                case 1:
+                    for (int j = 0; j < this.countType; j++)
+                    {
+                        if (this.I[j] != 0)
+                            count++;
+                    }
+                    break;
+                case 2:
+                    for (int j = 0; j < this.countType; j++)
+                    {
+                        if (this.Ii[j] != 0)
+                            count++;
+                    }
+                    break;
+            }
+            
+            if (count == 0)
+                return true;
+            return false;
+        }
+
+        /*
          * Алгоритм формирования решения по составам паритй всех типов данных
          * 
          */ 
-        public bool GenerateSolution()
+        public void GenerateSolution()
         {
+            this.f1i = new List<int>();
+            for (int i = 0; i < this.countType; i++)
+            {
+                this.f1i.Add(0);
+            }
             this.GenerateStartSolution();
             SecondLevel secondLevel = new SecondLevel();
             secondLevel.GenerateSolution(this.A);
+            List<List<int>> tmpMatrixA = secondLevel.ReturnAMatrix();
+            this.f1 = this.GetCriterion(tmpMatrixA);
             //Добавить вычисление значения критерия
-            this.f1 = new List<int>();
-            for (int i = 0; i < this.countType; i++)
-            {
-                this.f1.Add(0);
-            }
             for (int j = 0; j < this.countType; j++)
             {
                 this.Ii[j] = this.I[j];
             }
-            this.i = 0;
-            if (this.i > 0)
+            for (int iter = 0; iter < this.Ii.Count; iter++)
             {
-                for (int j = 0; j < this.countType; j++)
+                if (this.Ii[iter] != 0)
                 {
-                    if (j > this.i && this.Ii[j] != 0)
+                    this.i = iter;
+                    if (this.np1i[this.i] > 0)
                     {
-                        this.i = j;
-                        break;
-                    }
-                }
-            }
-            if (this.np1i[this.i] > 0)
-            {
-                this.q1 = 1;
-                this.k = 0;
-                this.A1 = new List<List<int>>();
-                this.A1.Add(new List<int>());
-                for (int i = 1; i < this.A.Count; i++)
-                {
-                    this.A1.Add(new List<int>());
-                    for (int j = 0; j < this.A[i].Count; j++)
-                    {
-                        this.A1[i].Add(this.A[i][j]);
-                    }
-                }
-                test = new BatchTypeClaims(this.f1[this.i], this.i, this.countClaims[this.i], this.A1, this.A);
-                test.GenerateSolution();
-                test.PrintMatrix(2);
-                test.PrintMatrix(3);
-                List<List<int>> tempA = test.ReturnMatrix(3);
-                if (tempA.Count == 0)
-                {
-                    this.mi[this.i]++;
-                    this.q2 = 1;
-                    this.A2 = new List<List<int>>();
-                    this.A2.Add(new List<int>());
-                    this.A2.Add(new List<int>());
-                    this.A2[this.q2].Add(0);
-                    this.A2[this.q2].Add(0);
-                    int sum = 0;
-                    for (int j = 1; j < this.mi[this.q2]; j++)
-                    {
-                        this.A2[this.q2].Add(2);
-                        sum += 2;
-                    }
-                    this.A2[this.q2][1] = this.countClaims[this.q2] - sum;
-                    if (this.CheckingMatrix(1) && this.CheckingMatrix(2))
-                    {
-                        for (int h = 0; h < this.A2[this.q2].Count; h++)
-                            if (this.A[this.i].Count < this.A2[this.q2].Count)
+                        this.q1 = 1;
+                        this.k = 0;
+                        this.A1 = new List<List<int>>();
+                        this.A1.Add(new List<int>());
+                        for (int i = 1; i < this.A.Count; i++)
+                        {
+                            this.A1.Add(new List<int>());
+                            for (int j = 0; j < this.A[i].Count; j++)
                             {
-                                this.A[this.i][h] = this.A2[this.q2][h];
+                                this.A1[i].Add(this.A[i][j]);
+                            }
+                        }
+                        List<List<int>> toBatchAlgoritm = new List<List<int>>();
+                        toBatchAlgoritm.Add(new List<int>());
+                        toBatchAlgoritm.Add(new List<int>());
+                        toBatchAlgoritm[1] = this.A1[this.i + 1];
+                        test = new BatchTypeClaims(this.f1i[this.i], this.i, this.countClaims[this.i], toBatchAlgoritm, this.A);
+                        test.GenerateSolution();
+                        test.PrintMatrix(2);
+                        test.PrintMatrix(3);
+                        List<List<int>> tempA = test.ReturnMatrix(3);
+                        if (tempA.Count == 0)
+                        {
+                            this.mi[this.i]++;
+                            this.q2 = 1;
+                            this.Gi[this.i] = 0;
+                            this.g = 1;
+                            this.A2 = new List<List<int>>();
+                            this.A2.Add(new List<int>());
+                            this.A2.Add(new List<int>());
+                            this.A2[this.q2].Add(0);
+                            this.A2[this.q2].Add(0);
+                            int sum = 0;
+                            for (int j = 1; j < this.mi[this.q2]; j++)
+                            {
+                                this.A2[this.q2].Add(2);
+                                sum += 2;
+                            }
+                            this.A2[this.q2][1] = this.countClaims[this.q2] - sum;
+                            if (this.CheckingMatrix(1) && this.CheckingMatrix(2))
+                            {
+                                for (int h = 0; h < this.A2[this.q2].Count; h++)
+                                    if (this.A[this.i].Count < this.A2[this.q2].Count)
+                                    {
+                                        this.A[this.i][h] = this.A2[this.q2][h];
+                                    }
+                                    else
+                                    {
+                                        this.A[this.i].Add(this.A2[this.q2][h]);
+                                    }
+                                secondLevel.GenerateSolution(this.A);
+                                List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
+                                int f1g = this.GetCriterion(tempMatrixA);
+                                if (f1g - this.f1 <= 0)
+                                {
+                                    this.q2i = this.q2;
+                                    this.Gi[this.i] = f1g - this.f1;
+                                }
                             }
                             else
                             {
-                                this.A[this.i].Add(this.A2[this.q2][h]);
+                                this.I[this.i] = 0;
                             }
-                        secondLevel.GenerateSolution(this.A);
-                        //Добавить вычисление значения критерия
-                    }
-                    else
-                    {
-                        this.I[this.i] = 0;
+                        }
                     }
                 }
             }
+            if (this.CheckType(1))
+                return;
             //Тестовый запуск алгоритма формирования решений i-ого типа
             MessageBox.Show("Генерируем начальное решение");
             List<List<int>> temp = new List<List<int>>();
@@ -260,7 +323,7 @@ namespace Diplom
                     MessageBox.Show("Генерируем новое решение");
             }
             this.GenerateStartSolution();
-            return true;
+            return;
         }
     }
 }
