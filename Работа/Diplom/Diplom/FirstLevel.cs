@@ -12,7 +12,8 @@ namespace Diplom
         private List<int> I;//Вектор интерпритируемых типов данных
         private List<int> Ii;//Вектор интерпритируемых типов данных на текущем шагу алгоритма
         private List<int> mi;//Вектор количества партий данных для каждого типа данных
-        private List<int> npi;//задание для каждого i-го типа данных количества решений по составам партий данных i-ых типов, сформированных на текущей ите-рации алгоритма
+        private List<int> np1i;//задание для каждого i-го типа данных количества решений по составам партий данных i-ых типов, сформированных на текущей ите-рации алгоритма
+        private List<int> np2i;//задание для каждого i-го типа данных количества решений по составам партий данных i-ых типов, сформированных на текущей ите-рации алгоритма
         private List<List<int>> A1;//Матрица составов партий требований
         private List<List<int>> A2;//Матрица составов партий требований
         private List<List<int>> A;//Матрица составов партий требований максимальных решений
@@ -39,7 +40,7 @@ namespace Diplom
             this.countType = count_type;
             this.countClaims = count_claims;
             this.mi = new List<int>(this.countType);
-            this.npi = new List<int>(this.countType);
+            this.np1i = new List<int>(this.countType);
             this.I = new List<int>(this.countType);
             this.Ii = new List<int>(this.countType);
             this.Gi = new List<int>(this.countType);
@@ -59,7 +60,7 @@ namespace Diplom
                 this.I.Add(1);
                 this.Ii.Add(1);
                 this.mi.Add(claim);
-                this.npi.Add(1);
+                this.np1i.Add(1);
                 this.A.Add(new List<int>());
                 this.A[i].Add(0);
                 this.A[i].Add(this.countClaims[i - 1] - claim);
@@ -73,8 +74,9 @@ namespace Diplom
                     this.A[i].Add(0);
                     this.A[i].Add(this.countClaims[i - 1]);
                     this.mi[i - 1] = 1;
-                    this.npi[i - 1] = 0;
+                    this.np1i[i - 1] = 0;
                     this.I[i - 1] = 0;
+                    this.Ii[i - 1] = 0;
                 }
             }
             this.G = 0;    
@@ -162,7 +164,7 @@ namespace Diplom
                     }
                 }
             }
-            if (this.npi[this.i] > 0)
+            if (this.np1i[this.i] > 0)
             {
                 this.q1 = 1;
                 this.k = 0;
@@ -191,7 +193,7 @@ namespace Diplom
                     this.A2[this.q2].Add(0);
                     this.A2[this.q2].Add(0);
                     int sum = 0;
-                    for (int j = 0; j < this.mi[this.q2]; j++)
+                    for (int j = 1; j < this.mi[this.q2]; j++)
                     {
                         this.A2[this.q2].Add(2);
                         sum += 2;
@@ -213,7 +215,7 @@ namespace Diplom
                     }
                     else
                     {
-                        this.Ii[this.i] = 0;
+                        this.I[this.i] = 0;
                     }
                 }
             }
