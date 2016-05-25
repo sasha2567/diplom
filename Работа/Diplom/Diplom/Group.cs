@@ -9,5 +9,7 @@ namespace Diplom
     class Group
     {
         List<Batch> batches;
+    
+    
     }
 }

@@ -36,7 +36,11 @@ namespace Diplom
                 this.groups.Nzt.Remove(this.groups.Nzt.Min());//4
 
                 this.groups.hi1 = 1;//5
+                
+                //6
+                //нужны данные   1 уроня все партии i` типа
 
+                
 
 
             }
