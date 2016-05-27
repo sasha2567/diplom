@@ -288,9 +288,7 @@ namespace Diplom
             temp.Add(new List<int>());
             temp.Add(new List<int>());
             temp[1].Add(0);
-            temp[1].Add(10);
-            temp[1].Add(2);
-            temp[1].Add(2);
+            temp[1].Add(14);
             temp[1].Add(2);
             /*temp.Add(new List<int>());
             temp[2].Add(0);
@@ -317,7 +315,7 @@ namespace Diplom
                     test.PrintMatrix(3);
                 }
                 countLoop++;
-                if (countLoop == 6)
+                if (countLoop == 7)
                     break;
                 else
                     MessageBox.Show("Генерируем новое решение");

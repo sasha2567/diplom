@@ -11,6 +11,7 @@ namespace Diplom
     {
 
         Groups groups=new Groups(5),Q=new Groups(1);
+        private List<List<int>> A;
 
         public void nach_uslov(int j)//this.groups.Z
         {
@@ -40,14 +41,19 @@ namespace Diplom
                 //6
                 //нужны данные   1 уроня все партии i` типа
 
-                
-
+                for (int i = 1; i < groups.Nz1.Count(); i++)
+                    if (groups.Nz1[i] == A[i1])
+                    {
+                        //groups.Nz1[i].Add(A[i1]);
+                        break;
+                    }
 
             }
         }
 
         public bool GenerateSolution(List<List<int>> matrixA)
         {
+            this.A = matrixA;
             return true;
         }
 

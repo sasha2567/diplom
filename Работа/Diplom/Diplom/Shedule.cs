@@ -34,7 +34,7 @@ namespace Diplom
             g = 1;//4
 
         }
-        public void Shedule() 
+        public Shedule() 
         {
 
         } 
