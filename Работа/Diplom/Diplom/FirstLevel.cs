@@ -51,6 +51,24 @@ namespace Diplom
         }
 
         /*
+         * Функция копирования значений между матрицами, предотвращающая копирование указателей
+         * 
+         */
+        private List<List<int>> CopyMatrix(List<List<int>> inMatrix)
+        {
+            List<List<int>> ret = new List<List<int>>();
+            for (int i = 0; i < inMatrix.Count; i++)
+            {
+                ret.Add(new List<int>());
+                for (int j = 0; j < inMatrix[i].Count; j++)
+                {
+                    ret[i].Add(inMatrix[i][j]);
+                }
+            }
+            return ret;
+        }
+
+        /*
          * Алгоритм формирования начальных решений по составам партий всех типов
          *  
          */ 
@@ -278,10 +296,44 @@ namespace Diplom
                             }
                         }
                     }
+                    if (this.CheckType(1))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        for (int j = 0; j < this.countType; j++)
+                        {
+                            this.Ii[j] = this.I[j];
+                        }
+                        int count = 0;
+                        for (int j = 0; j < this.countType; j++)
+                        {
+                            if (this.Gi[j] < 0)
+                            {
+                                count++;
+                            }
+                        }
+                        if (count > 0)
+                        {
+                            this.q2i = 0;
+                            for (int ind = 0; ind < this.countType; ind++)
+                            {
+                                if (this.G > this.Gi[ind] && this.G < 0 && this.Gi[ind] < 0)
+                                {
+                                    this.q2i = ind + 1;
+                                    this.G = this.Gi[ind];
+                                }
+                            }
+                            if (this.q2i != 0)
+                            {
+                                this.A[this.i] = this.A2[this.q2i];
+                            }
+                        }
+                    }
                 }
             }
-            if (this.CheckType(1))
-                return;
+            
             //Тестовый запуск алгоритма формирования решений i-ого типа
             MessageBox.Show("Генерируем начальное решение");
             List<List<int>> temp = new List<List<int>>();
