@@ -296,6 +296,10 @@ namespace Diplom
                             }
                         }
                     }
+                    else
+                    {
+
+                    }
                     if (this.CheckType(1))
                     {
                         return;
