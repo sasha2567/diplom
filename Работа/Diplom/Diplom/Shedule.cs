@@ -20,15 +20,14 @@ namespace Diplom
         int v;
         int h;
 
-        void construction_schedules()   
+        void CreateSchedules(List<List<int>> P1, List<List<int>> R1)   
         {
             h = 1;//1 
-
-
+            
             int Vmax = m[s - 1] + 1;//2
 
-            P[1][Vmax] = 1;
-            R[1][Vmax] = 1;//3
+            P1[1][Vmax] = 1;
+            R1[1][Vmax] = 1;//3
 
             v = Vmax;
             g = 1;//4
