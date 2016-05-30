@@ -34,8 +34,13 @@ namespace Diplom
             g = 1;//4
 
         }
-        public Shedule() 
+        public bool shedule(List<int> Nz) 
         {
+            Random x=new Random();
+            if (x.Next(1) == 1)//заглушка //здесь алгоритм который говорит проходит ли такая группа по времени
+                return true;
+            else
+                return false;
 
         } 
     }

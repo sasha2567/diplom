@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace Diplom
@@ -11,7 +12,8 @@ namespace Diplom
     {
 
         Groups groups=new Groups(5),Q=new Groups(1);
-        private List<List<int>> A;
+        Shedule sh = new Shedule();
+        private List<List<int>> A=new List<List<int>>();
 
         public void nach_uslov(int j)//this.groups.Z
         {
@@ -26,6 +28,8 @@ namespace Diplom
         }
         public void Algoritm_1()
         {
+           
+ 
             while (true)
             {
                 this.groups.Set_Nzt(this.groups.Nz);//1
@@ -49,6 +53,44 @@ namespace Diplom
                     }
 
             }
+        }
+        public void Algoritm_2() {
+            int logi = 0;//номер группы текущий расматриваемый 
+            A.Clear();
+            for (int i = 0; i < 4; i++)
+            {
+                List<int> w = new List<int>();
+                A.Add(w);
+            }
+
+             A[0].Add(12); A[0].Add(2); A[0].Add(2);
+            A[1].Add(13); A[1].Add(3); A[1].Add(2);
+            A[2].Add(10); A[2].Add(2); A[2].Add(2); A[2].Add(2);
+            A[2].Add(8); A[2].Add(2); A[2].Add(2); A[2].Add(2);
+
+            for (int i = 0; i < A.Count(); i++)
+            {
+                List<int> wx = new List<int>();
+                groups.Nz1.Add(wx);
+               
+            }
+
+
+                for (int i = 0; i < A.Count(); i++)
+                    for (int j = 0; j < A[i].Count(); j++)
+                    {
+                        groups.Nz1[logi].Add(A[i][j]);
+                        
+                        MessageBox.Show(Convert.ToString(A[i][j]), "Заголовок сообщения", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        if (sh.shedule(groups.Nz1[logi]))
+                        {
+                            MessageBox.Show(Convert.ToString(A[i][j]), "Заголовок сообщения", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            logi++;
+                       
+
+                        }
+                    }
+
         }
 
         public bool GenerateSolution(List<List<int>> matrixA)
