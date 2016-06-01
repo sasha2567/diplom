@@ -66,31 +66,44 @@ namespace Diplom
              A[0].Add(12); A[0].Add(2); A[0].Add(2);
             A[1].Add(13); A[1].Add(3); A[1].Add(2);
             A[2].Add(10); A[2].Add(2); A[2].Add(2); A[2].Add(2);
-            A[2].Add(8); A[2].Add(2); A[2].Add(2); A[2].Add(2);
+            A[3].Add(8); A[3].Add(2); A[3].Add(2); A[3].Add(2);
+
+             
 
             for (int i = 0; i < A.Count(); i++)
             {
-                List<int> wx = new List<int>();
-                groups.Nz1.Add(wx);
+                
+                groups.Nz1.Add(new List<int>());
                
             }
-
+            Q.Nz1.Add(new List<int>());
 
                 for (int i = 0; i < A.Count(); i++)
                     for (int j = 0; j < A[i].Count(); j++)
                     {
-                        groups.Nz1[logi].Add(A[i][j]);
+                        if (logi >= 4)
+                        {
+                            Q.Nz1[0].Add(A[i][j]);
+                        }
+                        else
+                            groups.Nz1[logi].Add(A[i][j]);
                         
-                        MessageBox.Show(Convert.ToString(A[i][j]), "Заголовок сообщения", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        if (sh.shedule(groups.Nz1[logi]))
+                        
+                        if (sh.shedule1(groups.Nz1[logi]))
                         {
                             MessageBox.Show(Convert.ToString(A[i][j]), "Заголовок сообщения", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             logi++;
-                       
+                            groups.Nz1[logi].Remove(A[i][j]);
+                            j--;
 
                         }
                     }
 
+        }
+
+        public void Algoritm_3() 
+        { 
+        
         }
 
         public bool GenerateSolution(List<List<int>> matrixA)

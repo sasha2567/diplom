@@ -20,23 +20,24 @@ namespace Diplom
         int v;
         int h;
 
-        void CreateSchedules(List<List<int>> P1, List<List<int>> R1)   
+        void construction_schedules()   
         {
             h = 1;//1 
-            
+
+
             int Vmax = m[s - 1] + 1;//2
 
-            P1[1][Vmax] = 1;
-            R1[1][Vmax] = 1;//3
+            P[1][Vmax] = 1;
+            R[1][Vmax] = 1;//3
 
             v = Vmax;
             g = 1;//4
 
         }
-        public bool shedule(List<int> Nz) 
+        public bool shedule1(List<int> Nz) 
         {
             Random x=new Random();
-            if (x.Next(1) == 1)//заглушка //здесь алгоритм который говорит проходит ли такая группа по времени
+            if (x.Next(2) == 1)//заглушка //здесь алгоритм который говорит проходит ли такая группа по времени
                 return true;
             else
                 return false;
