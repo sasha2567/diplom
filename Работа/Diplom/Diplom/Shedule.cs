@@ -20,7 +20,16 @@ namespace Diplom
         int v;
         int h;
 
+<<<<<<< HEAD
         void construction_schedules()   
+=======
+        public Shedule()
+        {
+
+        }
+
+        void CreateSchedules(List<List<int>> P1, List<List<int>> R1)   
+>>>>>>> 2291fcbe4cce198da09f1486cb249b4fc750ff59
         {
             h = 1;//1 
 

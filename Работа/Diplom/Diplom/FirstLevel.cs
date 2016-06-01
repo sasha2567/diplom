@@ -128,7 +128,8 @@ namespace Diplom
                     criterionA += this.A[i][j];
                 }
             }
-            return criterionA - criterion;
+            //return criterionA - criterion;
+            return -1;
         }
 
         /*
@@ -177,27 +178,14 @@ namespace Diplom
          * Функция проверки наличия оставшихся в рассмотрении типов
          * 
          */ 
-        private bool CheckType(int flag)
+        private bool CheckType(List<int> type)
         {
             int count = 0;
-            switch (flag)
+            for (int j = 0; j < this.countType; j++)
             {
-                case 1:
-                    for (int j = 0; j < this.countType; j++)
-                    {
-                        if (this.I[j] != 0)
-                            count++;
-                    }
-                    break;
-                case 2:
-                    for (int j = 0; j < this.countType; j++)
-                    {
-                        if (this.Ii[j] != 0)
-                            count++;
-                    }
-                    break;
+                if (type[j] != 0)
+                    count++;
             }
-            
             if (count == 0)
                 return true;
             return false;
@@ -218,7 +206,7 @@ namespace Diplom
             SecondLevel secondLevel = new SecondLevel();
             secondLevel.GenerateSolution(this.A);
             List<List<int>> tmpMatrixA = secondLevel.ReturnAMatrix();
-            this.f1 = this.GetCriterion(tmpMatrixA);
+            this.f1 = 0;//this.GetCriterion(tmpMatrixA);
             //Добавить вычисление значения критерия
             for (int j = 0; j < this.countType; j++)
             {
@@ -249,10 +237,11 @@ namespace Diplom
                         toBatchAlgoritm[1] = this.A1[this.i + 1];
                         test = new BatchTypeClaims(this.f1i[this.i], this.i, this.countClaims[this.i], toBatchAlgoritm, this.A);
                         test.GenerateSolution();
+                        MessageBox.Show("Решение по составу партий данных "+ this.i + " типа");
                         test.PrintMatrix(2);
                         test.PrintMatrix(3);
-                        List<List<int>> tempA = test.ReturnMatrix(3);
-                        if (tempA.Count == 0)
+                        List<List<int>> tempA2 = test.ReturnMatrix(3);
+                        if (tempA2.Count == 0)
                         {
                             this.mi[this.i]++;
                             this.q2 = 1;
@@ -264,7 +253,7 @@ namespace Diplom
                             this.A2[this.q2].Add(0);
                             this.A2[this.q2].Add(0);
                             int sum = 0;
-                            for (int j = 1; j < this.mi[this.q2]; j++)
+                            for (int j = 1; j < this.mi[this.i]; j++)
                             {
                                 this.A2[this.q2].Add(2);
                                 sum += 2;
@@ -273,13 +262,13 @@ namespace Diplom
                             if (this.CheckingMatrix(1) && this.CheckingMatrix(2))
                             {
                                 for (int h = 0; h < this.A2[this.q2].Count; h++)
-                                    if (this.A[this.i].Count < this.A2[this.q2].Count)
+                                    if (this.A[this.i + 1].Count < this.A2[this.q2].Count)
                                     {
-                                        this.A[this.i][h] = this.A2[this.q2][h];
+                                        this.A[this.i + 1][h] = this.A2[this.q2][h];
                                     }
                                     else
                                     {
-                                        this.A[this.i].Add(this.A2[this.q2][h]);
+                                        this.A[this.i + 1].Add(this.A2[this.q2][h]);
                                     }
                                 secondLevel.GenerateSolution(this.A);
                                 List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
@@ -293,14 +282,35 @@ namespace Diplom
                             else
                             {
                                 this.I[this.i] = 0;
+                            }    
+                        }
+                        else
+                        {
+                            this.A2 = tempA2;
+                            this.q2 = 1;
+                            for (this.q2 = 1; this.q2 < this.A2.Count; this.q2++)
+                            {
+                                for (int h = 0; h < this.A2[this.q2].Count; h++)
+                                    if (this.A[this.i + 1].Count < this.A2[this.q2].Count)
+                                    {
+                                        this.A[this.i + 1][h] = this.A2[this.q2][h];
+                                    }
+                                    else
+                                    {
+                                        this.A[this.i + 1].Add(this.A2[this.q2][h]);
+                                    }
+                                secondLevel.GenerateSolution(this.A);
+                                List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
+                                int f1g = this.GetCriterion(tempMatrixA);
+                                if (f1g - this.f1 <= 0)
+                                {
+                                    this.q2i = this.q2;
+                                    this.Gi[this.i] = f1g - this.f1;
+                                }
                             }
                         }
                     }
-                    else
-                    {
-
-                    }
-                    if (this.CheckType(1))
+                    if (this.CheckType(this.I))
                     {
                         return;
                     }
@@ -331,7 +341,7 @@ namespace Diplom
                             }
                             if (this.q2i != 0)
                             {
-                                this.A[this.i] = this.A2[this.q2i];
+                                this.A[this.i + 1] = this.A2[this.q2i];
                             }
                         }
                     }

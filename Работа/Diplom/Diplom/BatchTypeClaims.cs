@@ -82,6 +82,7 @@ namespace Diplom
                 }
                 s += "\n";
             }
+            MessageBox.Show(s);
             //MessageBox.Show(s);
 
         }
