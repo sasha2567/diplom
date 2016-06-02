@@ -31,6 +31,7 @@ namespace Diplom
         private List<int> f1i;//Критерии начальных решений всех i-ого типа данных
         private int f1;//Критерий текущего решения для всех типов
         private int f1Buf;//Критерий текущего решения для всех типов
+        private bool solutionFlag;
 
         /* 
          * Конструктор с параметрами
@@ -130,8 +131,8 @@ namespace Diplom
                 }
             }
             //return criterionA - criterion;
-            Random rand = new Random(DateTime.Now.Millisecond);
-            return rand.Next(10);
+            Random rand = new Random();
+            return rand.Next(7);
         }
 
         /*
@@ -148,8 +149,8 @@ namespace Diplom
                 case 1:
                     try
                     {
-                        for (int i = 2; i < this.A2[this.q2].Count; i++)
-                            if (this.A2[this.q2][1] < this.A2[this.q2][i])
+                        for (int i = 2; i < this.A2[1].Count; i++)
+                            if (this.A2[1][1] < this.A2[1][i])
                             {
                                 return false;
                             }
@@ -162,7 +163,7 @@ namespace Diplom
                case 2:
                     try
                     {
-                        if (this.A2[this.q2][1] < 2)
+                        if (this.A2[1][1] < 2)
                         {
                             return false;
                         }
@@ -209,6 +210,7 @@ namespace Diplom
             //Добавить вычисление значения критерия
             while (!this.CheckType(this.I))
             {
+                this.solutionFlag = false;
                 //1 - Копируем I в Ii
                 for (int j = 0; j < this.countType; j++)
                 {
@@ -238,21 +240,21 @@ namespace Diplom
                             test.PrintMatrix(3);
                             
                             List<List<int>> tempA2 = test.ReturnMatrix(3);
-                            if (tempA2.Count == 0)
+                            if (tempA2.Count < 2)
                             {
                                 this.mi[this.i]++;
                                 this.A2 = new List<List<int>>();
                                 this.A2.Add(new List<int>());
                                 this.A2.Add(new List<int>());
-                                this.A2[this.q2].Add(0);
-                                this.A2[this.q2].Add(0);
+                                this.A2[1].Add(0);
+                                this.A2[1].Add(0);
                                 int sum = 0;
                                 for (int j = 1; j < this.mi[this.i]; j++)
                                 {
-                                    this.A2[this.q2].Add(2);
+                                    this.A2[1].Add(2);
                                     sum += 2;
                                 }
-                                this.A2[this.q2][1] = this.countClaims[this.q2] - sum;
+                                this.A2[1][1] = this.countClaims[this.i] - sum;
                                 if (!this.CheckingMatrix(1) && !this.CheckingMatrix(2))
                                 {
                                     this.I[this.i] = 0;
@@ -270,27 +272,28 @@ namespace Diplom
                             for (this.q2 = 1; this.q2 < this.A2.Count; this.q2++)
                             {
                                 for (int h = 0; h < this.A2[this.q2].Count; h++)
-                                    if (this.A1i[this.i + 1].Count <= this.A2[this.q2].Count)
+                                    if (this.A1i[this.i + 1].Count < this.A2[this.q2].Count)
                                     {
-                                        this.A1i[this.i + 1][h] = this.A2[this.q2][h];
+                                        this.A1i[this.i + 1].Add(this.A2[this.q2][h]);
                                     }
                                     else
                                     {
-                                        this.A1i[this.i + 1].Add(this.A2[this.q2][h]);
+                                        this.A1i[this.i + 1][h] = this.A2[this.q2][h];
                                     }
                                 secondLevel.GenerateSolution(this.A1i);
                                 List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
                                 int f1g = this.GetCriterion(tempMatrixA);
-                                if (f1g - this.f1 <= 0)
+                                if (f1g - this.f1Buf <= 0)
                                 {
                                     this.q2i = this.q2;
-                                    this.G = f1g - this.f1;
+                                    this.G = f1g - this.f1Buf;
                                 }
                             }
                             if (this.G - this.f1 <= 0)
                             {
                                 this.ABuf = this.CopyMatrix(this.A1i);
                                 this.f1Buf = this.G;
+                                this.solutionFlag = true;
                             }
                             /*if (count > 0)
                             {
@@ -312,8 +315,11 @@ namespace Diplom
                     }
                 }
                 this.k++;
-                this.f1 = this.f1Buf;
-                this.A = this.CopyMatrix(ABuf);
+                if (this.solutionFlag)
+                {
+                    this.f1 = this.f1Buf;
+                    this.A = this.CopyMatrix(ABuf);
+                }   
             }
             
             
