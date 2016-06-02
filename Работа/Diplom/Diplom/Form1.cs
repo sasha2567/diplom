@@ -36,6 +36,7 @@ namespace Diplom
          SecondLevel  sl=new SecondLevel();
          sl.nach_uslov(Convert.ToInt16(textBox1.Text));
          sl.Algoritm_2();
+         
            
         }
 

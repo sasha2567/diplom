@@ -20,16 +20,7 @@ namespace Diplom
         int v;
         int h;
 
-<<<<<<< HEAD
         void construction_schedules()   
-=======
-        public Shedule()
-        {
-
-        }
-
-        void CreateSchedules(List<List<int>> P1, List<List<int>> R1)   
->>>>>>> 2291fcbe4cce198da09f1486cb249b4fc750ff59
         {
             h = 1;//1 
 
@@ -45,8 +36,7 @@ namespace Diplom
         }
         public bool shedule1(List<int> Nz) 
         {
-            Random x=new Random();
-            if (x.Next(2) == 1)//заглушка //здесь алгоритм который говорит проходит ли такая группа по времени
+            if (Nz.Sum() > 17)
                 return true;
             else
                 return false;

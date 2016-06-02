@@ -11,7 +11,7 @@ namespace Diplom
     class SecondLevel
     {
 
-        Groups groups=new Groups(5),Q=new Groups(1);
+        Groups groups=new Groups(5),Q=new Groups(5);
         Shedule sh = new Shedule();
         private List<List<int>> A=new List<List<int>>();
 
@@ -54,7 +54,8 @@ namespace Diplom
 
             }
         }
-        public void Algoritm_2() {
+        public List<List<int>> Algoritm_2()
+        {
             int logi = 0;//номер группы текущий расматриваемый 
             A.Clear();
             for (int i = 0; i < 4; i++)
@@ -84,31 +85,48 @@ namespace Diplom
                         if (logi >= 4)
                         {
                             Q.Nz1[0].Add(A[i][j]);
+                            
                         }
                         else
-                            groups.Nz1[logi].Add(A[i][j]);
-                        
-                        
-                        if (sh.shedule1(groups.Nz1[logi]))
                         {
-                            MessageBox.Show(Convert.ToString(A[i][j]), "Заголовок сообщения", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            logi++;
-                            groups.Nz1[logi].Remove(A[i][j]);
-                            j--;
+                            groups.Nz1[logi].Add(A[i][j]);
 
+
+                            if (sh.shedule1(groups.Nz1[logi]))
+                            {
+                                MessageBox.Show(Convert.ToString(A[i][j]), "Заголовок сообщения", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                                groups.Nz1[logi].Remove(A[i][j]);
+                                j--;
+                                logi++;
+                            }
                         }
                     }
-
+            if(Q.Nz1[0].Count()>0)
+            Algoritm_3();
+            return groups.Nz1;
         }
 
-        public void Algoritm_3() 
-        { 
+        public void Algoritm_3()
+        {
+            for (int i = 0; i < groups.Nz1.Count();i++ )
+                for (int j = 0; j < Q.Nz1.Count(); j++)
+                {
+                    groups.Nz1[i].Add(Q.Nz1[0][j]);
+
+                    if (sh.shedule1(groups.Nz1[i]))
+                    {
+                        groups.Nz1[i].Remove(Q.Nz1[0][j]);
+                    }
+
+                }
+            for (int i = 0; i<groups.Nz1[0].Count();i++ )
+                MessageBox.Show(Convert.ToString(groups.Nz1[0][i]), "Заголовок сообщения", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
         
-        }
 
         public bool GenerateSolution(List<List<int>> matrixA)
         {
-            this.A = matrixA;
             return true;
         }
 
