@@ -12,7 +12,7 @@ namespace Diplom
     {
 
         Groups groups=new Groups(5),Q=new Groups(5);
-        Shedule sh = new Shedule();
+        Shedule sh = new Shedule(null,null,null);
         private List<List<int>> A=new List<List<int>>();
 
         public void nach_uslov(int j)//this.groups.Z

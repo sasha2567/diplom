@@ -28,7 +28,7 @@ namespace Diplom
         private int q2;
         private int q2i;
         private int k;
-        private List<int> f1i;//Критерии начальных решений всех i-ого типа данных
+        private List<int> fi;//Критерии решений всех типов данных
         private int f1;//Критерий текущего решения для всех типов
         private int f1Buf;//Критерий текущего решения для всех типов
         private bool solutionFlag;
@@ -132,7 +132,8 @@ namespace Diplom
             }
             //return criterionA - criterion;
             Random rand = new Random();
-            return rand.Next(7);
+            int ret = rand.Next(5,15);
+            return ret;
         }
 
         /*
@@ -205,16 +206,18 @@ namespace Diplom
             secondLevel.GenerateSolution(this.A);
             List<List<int>> tmpMatrixA = secondLevel.ReturnAMatrix();
             this.k = 0;
-            this.f1 = this.GetCriterion(tmpMatrixA);
+            this.f1 = 10;//this.GetCriterion(tmpMatrixA);
             this.f1Buf = this.f1;
             //Добавить вычисление значения критерия
             while (!this.CheckType(this.I))
             {
                 this.solutionFlag = false;
                 //1 - Копируем I в Ii
+                this.fi = new List<int>();
                 for (int j = 0; j < this.countType; j++)
                 {
                     this.Ii[j] = this.I[j];
+                    this.fi.Add(0);
                 }
                 this.ABuf = this.CopyMatrix(A);
                 //Для каждого рассматриваемого типа
@@ -283,32 +286,23 @@ namespace Diplom
                                 secondLevel.GenerateSolution(this.A1i);
                                 List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
                                 int f1g = this.GetCriterion(tempMatrixA);
-                                if (f1g - this.f1Buf <= 0)
+                                if (f1g - this.f1 <= 0 && f1g < this.f1Buf)
                                 {
-                                    this.q2i = this.q2;
-                                    this.G = f1g - this.f1Buf;
+                                    this.fi[this.i] = f1g;
+                                    this.f1Buf = this.fi[this.i];
+                                    this.solutionFlag = true;
+                                    this.ABuf = this.CopyMatrix(this.A1i);
                                 }
                             }
-                            if (this.G - this.f1 <= 0)
+                            /*int min = 0;
+                            for (int j = 0; j < this.countType; j++)
                             {
-                                this.ABuf = this.CopyMatrix(this.A1i);
-                                this.f1Buf = this.G;
-                                this.solutionFlag = true;
-                            }
-                            /*if (count > 0)
-                            {
-                                this.q2i = 0;
-                                for (int ind = 0; ind < this.countType; ind++)
+                                if (this.fi[j] - this.f1 <= 0 && this.fi[j] - this.f1 < min && this.fi[j] != 0)
                                 {
-                                    if (this.G > this.Gi[ind] && this.G < 0 && this.Gi[ind] < 0)
-                                    {
-                                        this.q2i = ind + 1;
-                                        this.G = this.Gi[ind];
-                                    }
-                                }
-                                if (this.q2i != 0)
-                                {
-                                    this.A[this.i + 1] = this.A2[this.q2i];
+                                    this.ABuf = this.CopyMatrix(this.A1i);
+                                    this.f1Buf = this.fi[j];
+                                    min = this.fi[j] - this.f1;
+                                    this.solutionFlag = true;
                                 }
                             }*/
                         }
@@ -321,49 +315,7 @@ namespace Diplom
                     this.A = this.CopyMatrix(ABuf);
                 }   
             }
-            
-            
-            
-            //Тестовый запуск алгоритма формирования решений i-ого типа
-            MessageBox.Show("Генерируем начальное решение");
-            List<List<int>> temp = new List<List<int>>();
-            temp.Add(new List<int>());
-            temp.Add(new List<int>());
-            temp[1].Add(0);
-            temp[1].Add(14);
-            temp[1].Add(2);
-            /*temp.Add(new List<int>());
-            temp[2].Add(0);
-            temp[2].Add(5);
-            temp[2].Add(5);
-            temp[2].Add(3);
-            temp[2].Add(3);
-            temp.Add(new List<int>());
-            temp[3].Add(0);
-            temp[3].Add(5);
-            temp[3].Add(4);
-            temp[3].Add(4);
-            temp[3].Add(3);*/
-            int countLoop = 0;
-            while (true)
-            {
-                if (countLoop == 0)
-                    test = new BatchTypeClaims(10, 1, 16, temp, this.A);
-                else
-                    test = new BatchTypeClaims(10, 1, 16, test.ReturnMatrix(3), this.A);
-                if (test.GenerateSolution())
-                {
-                    test.PrintMatrix(2);
-                    test.PrintMatrix(3);
-                }
-                countLoop++;
-                if (countLoop == 7)
-                    break;
-                else
-                    MessageBox.Show("Генерируем новое решение");
-            }
-            this.GenerateStartSolution();
-            return;
+            test.PrintMatrix(1);
         }
     }
 }

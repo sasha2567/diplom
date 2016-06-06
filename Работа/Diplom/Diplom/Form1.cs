@@ -17,6 +17,10 @@ namespace Diplom
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             List<int> tmp = new List<int>();
             tmp.Add(16);
             tmp.Add(16);
@@ -24,11 +28,6 @@ namespace Diplom
             tmp.Add(16);
             firstLevel = new FirstLevel(tmp.Count, tmp);
             firstLevel.GenerateSolution();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
