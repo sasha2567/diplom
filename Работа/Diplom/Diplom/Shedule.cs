@@ -36,7 +36,7 @@ namespace Diplom
         }
         public bool shedule1(List<int> Nz) 
         {
-            if (Nz.Sum() > 17)
+            if (Nz.Sum() > 16)
                 return true;
             else
                 return false;
