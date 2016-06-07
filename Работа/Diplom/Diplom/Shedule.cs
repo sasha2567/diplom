@@ -33,13 +33,10 @@ namespace Diplom
         private int CalculateShedule(List<List<int>> inR)
         {
             int calc = 0;
-            for (int j = 1; j < this.R[1].Count; j++)
-            {
-                for (int i = 1; i < this.R.Count; i++)
-                {
 
-                }
-            }
+            double f3;
+           // for(int i=0;i<inR.Count();i++)
+            //f3=TTreatment+
             return calc;
         }
 
@@ -71,9 +68,9 @@ namespace Diplom
             //g = 1;//4
 
         }
-        public bool shedule1(List<int> Nz) 
+        public bool shedule1(List<List<int>> Nz) 
         {
-            if (Nz.Sum() > 16)
+            if (Nz[0].Sum()+Nz[1].Sum()+Nz[2].Sum()+Nz[3].Sum() > 16)//здесь вместо суммы нужно вставить f3
                 return true;
             else
                 return false;
