@@ -14,6 +14,8 @@ namespace Diplom
         private List<int> TTreatment;
         private List<List<int>> TSwitching;
         private int timeConstructShedule;
+        private int L;
+        private List<List<int>> Raspisanie;
         //List<List<int>> Pi=new List<List<int>>();   
         //List<List<int>> А = new List<List<int>>();
         //int s;
@@ -23,11 +25,21 @@ namespace Diplom
         //int v;
         //int h;
 
-        public Shedule(List<List<int>> r, List<int> tTreatment, List<List<int>> tSwitching)
+        public Shedule(List<List<int>> r, List<int> tTreatment, List<List<int>> tSwitching, int l)
         {
             this.R = r;
+            this.L = l;
             this.TSwitching = tSwitching;
             this.TTreatment = tTreatment;
+            this.Raspisanie = new List<List<int>>();
+            for (int i = 0; i < this.L; i++)
+            {
+                this.Raspisanie.Add(new List<int>());
+                for (int j = 0; j < this.R.Count; j++)
+                {
+                    this.Raspisanie[i].Add(0);
+                }
+            }
         }
 
         private int CalculateShedule(List<List<int>> inR)
@@ -40,6 +52,27 @@ namespace Diplom
 
                 }
             }
+            int yy, zz, count = 0;
+            for (int i = 1; i <= this.L; i++)
+            {
+                yy = 0;
+                zz = 0;
+                for (int k = 1; k <= this.R.Count; k++)
+                {
+                    for (int l = 1; l <= this.R[k].Count; l++)
+                    {
+                        if (this.R[k][l] != 0)
+                        {
+                            this.Raspisanie[i][k] = Math.Max(this.Raspisanie[i][zz] + this.TSwitching[i][zz] + this.R[k][l] * this.TTreatment[k], this.Raspisanie[i - 1][k]);
+                            //rasp.tstart[i][k] = max(rasp.tstop[i][zz] + perenastr[i][xx], rasp.tstop[i - 1][k]);
+                            //rasp.tstop[i][k] = rasp.tstart[i][k] + obrabot[i][j];
+                            count += this.R[k][l] * this.TTreatment[k];
+                            yy = l;
+                            zz = k;
+                        }
+                    }
+                }
+            }
             return calc;
         }
 
@@ -48,6 +81,7 @@ namespace Diplom
             switch (this.R[1].Count)
             {
                 case 1:
+                    this.timeConstructShedule = this.CalculateShedule(this.R);
                     break;
                 case 2:
                     break;
