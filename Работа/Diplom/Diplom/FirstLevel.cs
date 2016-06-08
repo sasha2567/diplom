@@ -313,7 +313,12 @@ namespace Diplom
                 {
                     this.f1 = this.f1Buf;
                     this.A = this.CopyMatrix(ABuf);
-                }   
+                }
+                else
+                {
+                    MessageBox.Show("На текущем шаге не найдено ни одного решения");
+                    break;
+                }
             }
             test.PrintMatrix(1);
         }

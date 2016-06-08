@@ -32,14 +32,14 @@ namespace Diplom
             this.TSwitching = tSwitching;
             this.TTreatment = tTreatment;
             this.Raspisanie = new List<List<int>>();
-            for (int i = 0; i < this.L; i++)
+            /*for (int i = 0; i <= this.L; i++)
             {
                 this.Raspisanie.Add(new List<int>());
-                for (int j = 0; j < this.R.Count; j++)
+                for (int j = 0; j <= this.R.Count; j++)
                 {
                     this.Raspisanie[i].Add(0);
                 }
-            }
+            }*/
         }
 
         private int CalculateShedule(List<List<int>> inR)
