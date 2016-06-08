@@ -12,7 +12,7 @@ namespace Diplom
     {
 
         Groups groups=new Groups(5),Q=new Groups(5);
-        Shedule sh = new Shedule(null,null,null);
+        Shedule sh = new Shedule(null,null,null,3);
         private List<List<int>> A=new List<List<int>>();
 
         public void nach_uslov(int j)//this.groups.Z
@@ -100,12 +100,12 @@ namespace Diplom
                             groups.Nz1[logi][i].Add(A[i][j]);
 
 
-                            if (sh.shedule1(groups.Nz1[logi]))
+                            /*if (sh.shedule1(groups.Nz1[logi]))
                             {
                                 groups.Nz1[logi][i].Remove(A[i][j]);
                                 j--;
                                 logi++;
-                            }
+                            }*/
                         }
                     }
             if(Q.Nz1[0].Count()>0)
