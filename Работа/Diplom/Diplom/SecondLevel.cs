@@ -84,6 +84,8 @@ namespace Diplom
 
 
             Q.Nz1.Add(new List<List<int>>());
+            for (int i = 0; i < 4; i++)
+                Q.Nz1[0].Add(new List<int>());
 
                 for (int i = 0; i < A.Count(); i++)
                     for (int j = 0; j < A[i].Count(); j++)
@@ -91,7 +93,7 @@ namespace Diplom
                         if (logi >= 4)
                         {
                             Q.Nz1[0][i].Add(A[i][j]);
-                            
+
                         }
                         else
                         {
