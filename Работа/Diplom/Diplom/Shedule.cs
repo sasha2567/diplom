@@ -42,6 +42,7 @@ namespace Diplom
             }*/
         }
 
+
         private int CalculateShedule(List<List<int>> inR)
         {
             int calc = 0;
@@ -97,27 +98,26 @@ namespace Diplom
             return this.R;
         }
 
+
+
+        void create_shed_test()
+        {
+
+        }
+
+
         void construction_schedules()   
         {
-            //h = 1;//1 
-
-
-            //int Vmax = m[s - 1] + 1;//2
-
-            //P[1][Vmax] = 1;
-            //R[1][Vmax] = 1;//3
-
-            //v = Vmax;
-            //g = 1;//4
+       
 
         }
         public bool shedule1(List<List<int>> Nz) 
         {
+
             if (Nz[0].Sum()+Nz[1].Sum()+Nz[2].Sum()+Nz[3].Sum() > 16)//здесь вместо суммы нужно вставить f3
                 return true;
             else
                 return false;
-
         } 
     }
 
