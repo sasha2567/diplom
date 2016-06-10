@@ -144,11 +144,11 @@ namespace Diplom
             try
             {
                 this.A2.Add(new List<int>());
-                this.A2.Add(new List<int>());
+                /*this.A2.Add(new List<int>());
                 for (int i = 0; i < valueA1[1].Count; i++)
                 {
                     this.A2[1].Add(0);
-                }
+                }*/
             }
             catch
             {
@@ -304,7 +304,7 @@ namespace Diplom
          */
         public void FormationDecisionPartMakeup()
         {
-            if (this.q2 >= this.A2.Count)
+            if (this.q2 > this.A2.Count - 1)
             {
                 this.A2.Add(new List<int>());
                 for (int i = 0; i < this.A1[this.q1].Count; i++)
