@@ -50,16 +50,16 @@ namespace Diplom
             {
                 yy = 0;
                 zz = 0;
-                for (int k = 1; k <= this.R.Count; k++)
+                for (int k = 1; k <= inR.Count; k++)
                 {
                     for (int l = 1; l <= this.R[k].Count; l++)
                     {
                         if (this.R[k][l] != 0)
                         {
-                            this.Raspisanie[i][k] = Math.Max(this.Raspisanie[i][zz] + this.TSwitching[i][zz] + this.R[k][l] * this.TTreatment[k], this.Raspisanie[i - 1][k]);
+                            this.Raspisanie[i][k] = Math.Max(this.Raspisanie[i][zz] + this.TSwitching[i][zz] + inR[k][l] * this.TTreatment[k], this.Raspisanie[i - 1][k]);
                             //rasp.tstart[i][k] = max(rasp.tstop[i][zz] + perenastr[i][xx], rasp.tstop[i - 1][k]);
                             //rasp.tstop[i][k] = rasp.tstart[i][k] + obrabot[i][j];
-                            count += this.R[k][l] * this.TTreatment[k];
+                            count += inR[k][l] * this.TTreatment[k];
                             yy = l;
                             zz = k;
                         }
