@@ -24,7 +24,6 @@ namespace Diplom
         private BatchTypeClaims test;
         private int i;//идентификатор текущего изменяемого типа
         private int G;
-        private List<int> Gi;
         private int q2;
         private int q2i;
         private int k;
@@ -49,7 +48,6 @@ namespace Diplom
             this.np2i = new List<int>(this.countType);
             this.I = new List<int>(this.countType);
             this.Ii = new List<int>(this.countType);
-            this.Gi = new List<int>(this.countType);
         }
 
         /*
@@ -83,7 +81,6 @@ namespace Diplom
             {
                 this.I.Add(1);
                 this.Ii.Add(1);
-                this.Gi.Add(0);
                 this.mi.Add(claim);
                 this.np1i.Add(1);
                 this.np2i.Add(1);
@@ -130,10 +127,10 @@ namespace Diplom
                     criterionA += this.A[i][j];
                 }
             }
-            //return criterionA - criterion;
-            Random rand = new Random();
+            return criterionA - criterion;
+            /*Random rand = new Random();
             int ret = rand.Next(5,15);
-            return ret;
+            return ret;*/
         }
 
         /*

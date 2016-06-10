@@ -277,7 +277,7 @@ namespace Diplom
             int criterion = 0;
             for (int i = 1; i < inMatrix.Count; i++)
             {
-                for (int j = 1; j < inMatrix[i].Count; i++)
+                for (int j = 1; j < inMatrix[i].Count; j++)
                 {
                     criterion += inMatrix[i][j];
                 }

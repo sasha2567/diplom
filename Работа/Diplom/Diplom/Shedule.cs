@@ -15,7 +15,8 @@ namespace Diplom
         private List<List<int>> TSwitching;
         private int timeConstructShedule;
         private int L;
-        private List<List<int>> Raspisanie;
+        private List<List<int>> StartProcessing;
+        private List<List<int>> EndProcessing;
         //List<List<int>> Pi=new List<List<int>>();   
         //List<List<int>> А = new List<List<int>>();
         //int s;
@@ -25,52 +26,55 @@ namespace Diplom
         //int v;
         //int h;
 
-        public Shedule(List<List<int>> r, List<int> tTreatment, List<List<int>> tSwitching, int l)
+        public Shedule(List<List<int>> r, int l)
         {
             this.R = r;
             this.L = l;
-            this.TSwitching = tSwitching;
-            this.TTreatment = tTreatment;
-            this.Raspisanie = new List<List<int>>();
-            /*for (int i = 0; i <= this.L; i++)
+            
+            this.StartProcessing = new List<List<int>>();
+            this.EndProcessing = new List<List<int>>();
+            for (int i = 0; i <= this.L; i++)
             {
-                this.Raspisanie.Add(new List<int>());
+                this.StartProcessing.Add(new List<int>());
+                this.EndProcessing.Add(new List<int>());
                 for (int j = 0; j <= this.R.Count; j++)
                 {
-                    this.Raspisanie[i].Add(0);
+                    this.StartProcessing[i].Add(0);
+                    this.EndProcessing[i].Add(0);
                 }
-            }*/
+            }
         }
 
+        public void SetTime(List<int> tTreatment, List<List<int>> tSwitching)
+        {
+            this.TSwitching = tSwitching;
+            this.TTreatment = tTreatment;
+        }
 
         private int CalculateShedule(List<List<int>> inR)
         {
-            int calc = 0;
-            int yy, zz, count = 0;
+            int yy, zz;
             for (int i = 1; i <= this.L; i++)
             {
                 yy = 0;
                 zz = 0;
                 for (int k = 1; k <= inR.Count; k++)
                 {
-                    for (int l = 1; l <= this.R[k].Count; l++)
-                    {
-                        if (this.R[k][l] != 0)
-                        {
-                            this.Raspisanie[i][k] = Math.Max(this.Raspisanie[i][zz] + this.TSwitching[i][zz] + inR[k][l] * this.TTreatment[k], this.Raspisanie[i - 1][k]);
-                            //rasp.tstart[i][k] = max(rasp.tstop[i][zz] + perenastr[i][xx], rasp.tstop[i - 1][k]);
-                            //rasp.tstop[i][k] = rasp.tstart[i][k] + obrabot[i][j];
-                            count += inR[k][l] * this.TTreatment[k];
-                            yy = l;
-                            zz = k;
-                        }
-                    }
+                    int index = this.ReturnRIndex(k);
+                    int timeToSwitch = this.TSwitching[k][zz];
+                    if (k == zz)
+                        timeToSwitch = 0;
+                    this.StartProcessing[i][k] = Math.Max(this.StartProcessing[i][zz] + this.TSwitching[k][zz], this.StartProcessing[i - 1][k]);
+                    //rasp.tstart[i][k] = max(rasp.tstop[i][zz] + perenastr[i][xx], rasp.tstop[i - 1][k]);
+                    this.EndProcessing[i][k] = this.StartProcessing[i][k] + inR[k][index] * this.TTreatment[k];
+                    //rasp.tstop[i][k] = rasp.tstart[i][k] + obrabot[i][j];
+                    //count += inR[k][index] * this.TTreatment[k];
+                    this.timeConstructShedule = this.StartProcessing[i][k];
+                    //yy = index;
+                    zz = k;
                 }
             }
-            double f3;
-           // for(int i=0;i<inR.Count();i++)
-            //f3=TTreatment+
-            return calc;
+            return this.timeConstructShedule;
         }
 
         private int ReturnRIndex(int j)
@@ -106,15 +110,9 @@ namespace Diplom
         }
 
 
-        void construction_schedules()   
-        {
-       
-
-        }
         public bool shedule1(List<List<int>> Nz) 
         {
-
-            if (Nz[0].Sum()+Nz[1].Sum()+Nz[2].Sum()+Nz[3].Sum() > 16)//здесь вместо суммы нужно вставить f3
+            if (this.timeConstructShedule > 100)//здесь вместо суммы нужно вставить f3
                 return true;
             else
                 return false;
