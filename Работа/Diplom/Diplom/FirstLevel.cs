@@ -199,11 +199,13 @@ namespace Diplom
         public void GenerateSolution()
         {
             this.GenerateStartSolution();
-            SecondLevel secondLevel = new SecondLevel();
-            secondLevel.GenerateSolution(this.A);
-            List<List<int>> tmpMatrixA = secondLevel.ReturnAMatrix();
+            //SecondLevel secondLevel = new SecondLevel();
+            //List<List<int>> temp = this.CopyMatrix(this.A);
+            //secondLevel.GenerateSolution(temp);
+            //List<List<int>> tmpMatrixA = secondLevel.ReturnAMatrix();
             this.k = 0;
-            this.f1 = 10;//this.GetCriterion(tmpMatrixA);
+            //this.f1 = this.GetCriterion(tmpMatrixA);
+            this.f1 = 20;
             this.f1Buf = this.f1;
             //Добавить вычисление значения критерия
             while (!this.CheckType(this.I))
@@ -227,7 +229,7 @@ namespace Diplom
                         {
                             this.A1 = this.CopyMatrix(this.A);
                             this.G = f1;
-                            MessageBox.Show("Решение по составу партий данных " + (this.i + 1) + " типа на " + (this.k + 1) + " шаге алгоритма");
+                            //MessageBox.Show("Решение по составу партий данных " + (this.i + 1) + " типа на " + (this.k + 1) + " шаге алгоритма");
                             //Получение состава партий фиксированного типа
                             List<List<int>> toBatchAlgoritm = new List<List<int>>();
                             toBatchAlgoritm.Add(new List<int>());
@@ -236,8 +238,8 @@ namespace Diplom
                             test = new BatchTypeClaims(this.f1, this.i + 1, this.countClaims[this.i], toBatchAlgoritm, this.A1);
                             test.GenerateSolution();
                             
-                            test.PrintMatrix(2);
-                            test.PrintMatrix(3);
+                            //test.PrintMatrix(2);
+                            //test.PrintMatrix(3);
                             
                             List<List<int>> tempA2 = test.ReturnMatrix(3);
                             if (tempA2.Count < 2)
@@ -280,10 +282,13 @@ namespace Diplom
                                     {
                                         this.A1i[this.i + 1][h] = this.A2[this.q2][h];
                                     }
-                                secondLevel.GenerateSolution(this.A1i);
-                                List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
-                                int f1g = this.GetCriterion(tempMatrixA);
-                                if (f1g - this.f1 <= 0 && f1g < this.f1Buf)
+                                //secondLevel.GenerateSolution(this.A1i);
+                                //List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
+                                int f1g = 5;//5 = this.GetCriterion(tempMatrixA);
+                                Random rand = new Random();
+                                int ret = rand.Next(5, 15);
+                                if(ret < 10)
+                                //if (f1g - this.f1 <= 0 && f1g < this.f1Buf)
                                 {
                                     this.fi[this.i] = f1g;
                                     this.f1Buf = this.fi[this.i];
