@@ -97,6 +97,14 @@ namespace Diplom
             return this.R;
         }
 
+
+
+        void create_shed_test()
+        {
+
+        }
+
+
         void construction_schedules()   
         {
             //h = 1;//1 

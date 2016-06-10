@@ -54,7 +54,7 @@ namespace Diplom
 
             }
         }
-        public List<List<int>> Algoritm_2()
+        public List<List<List<int>>> Algoritm_2()
         {
             int logi = 0;//номер группы текущий расматриваемый 
             A.Clear();
@@ -111,7 +111,7 @@ namespace Diplom
             if(Q.Nz1[0].Count()>0)
             Algoritm_3();
 
-            return groups.Nz1[0];//изменить
+            return groups.Nz1;//изменить
         }
 
         public void Algoritm_3()
@@ -129,11 +129,21 @@ namespace Diplom
                     else
                         Q.Nz1[0][i].Remove(Q.Nz1[0][i][j]);
                 }
-            for (int i = 0; i<groups.Nz1[0].Count();i++ )
-                MessageBox.Show(Convert.ToString(groups.Nz1[0][i]), "Заголовок сообщения", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+  
         }
-        
 
+        public List<List<int>> count_f2()
+        {
+            List<List<int>> A1 = new List<List<int>>();
+            for(int i=0;i<4;i++)
+            A1.Add(new List<int>());
+            for(int i=0;i<4;i++)
+                for(int j=0;j<groups.Nz1[i].Count();j++)
+                    for(int k=0;k<groups.Nz1[i][j].Count();k++)
+                        A1[j].Add(groups.Nz1[i][j][k]);
+
+            return A1;
+        }
         public bool GenerateSolution(List<List<int>> matrixA)
         {
             return true;
