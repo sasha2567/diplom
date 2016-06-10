@@ -26,6 +26,26 @@ namespace Diplom
             this.Q.Set_M(1);//допустим
            
         }
+        List<List<int>> built_R(List<List<int>> N)
+        {
+            List<List<int>> Res=new List<List<int>>();
+            for(int i=0;i<N.Count();i++)
+                Res.Add(new List<int>());
+            int sum=0,count=0;
+            for(int i=0;i<N.Count();i++)
+            sum+=N[i].Count();
+            for(int i=0;i<N.Count();i++)
+                for(int j=0;j<sum;j++)
+                Res[i].Add(0);
+            for(int i=0;i<N.Count();i++)
+                for(int j=0;j<N[i].Count();j++)
+                {
+
+                    Res[i][count] = N[i][j];
+                        count++;
+                }
+            return Res;
+        }
         public void Algoritm_1()
         {
            
@@ -114,6 +134,7 @@ namespace Diplom
             return groups.Nz1;//изменить
         }
 
+        
         public void Algoritm_3()
         {
             for (int k = 0; k < groups.Nz1.Count();k++ )
@@ -132,7 +153,7 @@ namespace Diplom
   
         }
 
-        public List<List<int>> count_f2()
+        public List<List<int>> ReturnAMatrix()
         {
             List<List<int>> A1 = new List<List<int>>();
             for(int i=0;i<4;i++)
@@ -149,13 +170,6 @@ namespace Diplom
             return true;
         }
 
-        public List<List<int>> ReturnAMatrix()
-        {
-            List<List<int>> ret = new List<List<int>>();//Сюда добавь код для построения матрицы А
-            //из партий требований, добавленных в группы (МАКСИМАЛЬНОЕ решение по составам партий)
-            //Либо верни все партии удовлетворяющие критерию по расписанию
-            //То биж все группы партий, вошедшие в обработку
-            return ret;
-        }
+     
     }
 }
