@@ -25,7 +25,6 @@ namespace Diplom
         private int i;//идентификатор текущего изменяемого типа
         private int G;
         private int q2;
-        private int q2i;
         private int k;
         private List<int> fi;//Критерии решений всех типов данных
         private int f1;//Критерий текущего решения для всех типов
@@ -282,9 +281,11 @@ namespace Diplom
                                     {
                                         this.A1i[this.i + 1][h] = this.A2[this.q2][h];
                                     }
-                                //secondLevel.GenerateSolution(this.A1i);
+                                //SecondLevel secondLevel = new SecondLevel();
+                                //List<List<int>> tempA = CopyMatrix(this.A1i);
+                                //secondLevel.GenerateSolution(tempA);
                                 //List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
-                                int f1g = 5;//5 = this.GetCriterion(tempMatrixA);
+                                int f1g = 5;// = this.GetCriterion(tempMatrixA);
                                 Random rand = new Random();
                                 int ret = rand.Next(5, 15);
                                 if(ret < 10)
@@ -296,17 +297,6 @@ namespace Diplom
                                     this.ABuf = this.CopyMatrix(this.A1i);
                                 }
                             }
-                            /*int min = 0;
-                            for (int j = 0; j < this.countType; j++)
-                            {
-                                if (this.fi[j] - this.f1 <= 0 && this.fi[j] - this.f1 < min && this.fi[j] != 0)
-                                {
-                                    this.ABuf = this.CopyMatrix(this.A1i);
-                                    this.f1Buf = this.fi[j];
-                                    min = this.fi[j] - this.f1;
-                                    this.solutionFlag = true;
-                                }
-                            }*/
                         }
                     }
                 }

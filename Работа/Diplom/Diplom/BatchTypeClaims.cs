@@ -133,22 +133,22 @@ namespace Diplom
          */
         public BatchTypeClaims(int valieCriterion, int valueI, int valueCountClaims, List<List<int>> valueA1, List<List<int>> valueA)
         {
-            /*this.A1 = new List<List<int>>();
-            this.A1.Add(new List<int>());
-            this.A1.Add(new List<int>());
-            this.A1[1] = valueA[valueI];*/
 
             this.A = this.CopyMatrix(valueA);
+            if (this.A[1].Count <= 1)
+            {
+                this.inMatrixFlag = true;
+            }
             this.A1 = this.CopyMatrix(valueA1);
             this.A2 = new List<List<int>>();
             try
             {
                 this.A2.Add(new List<int>());
-                /*this.A2.Add(new List<int>());
+                this.A2.Add(new List<int>());
                 for (int i = 0; i < valueA1[1].Count; i++)
                 {
                     this.A2[1].Add(0);
-                }*/
+                }
             }
             catch
             {
@@ -304,7 +304,7 @@ namespace Diplom
          */
         public void FormationDecisionPartMakeup()
         {
-            if (this.q2 > this.A2.Count - 1)
+            if (this.q2 >= this.A2.Count)
             {
                 this.A2.Add(new List<int>());
                 for (int i = 0; i < this.A1[this.q1].Count; i++)
@@ -312,10 +312,10 @@ namespace Diplom
                     this.A2[this.q2].Add(0);
                 }
             }
-            int summ = 0;
             if (this.q1 < this.A1.Count)
             {
-                for (int i = 1; i < this.A1[this.q1].Count; i++)
+                int summ = 0;
+                for (int i = 2; i < this.A1[this.q1].Count; i++)
                 {
                     if (i != this.h)
                     {
@@ -325,8 +325,7 @@ namespace Diplom
                     {
                         this.A2[this.q2][i] = this.A1[this.q1][i] + 1;
                     }
-                    if (i != 1)
-                        summ += this.A2[this.q2][i];
+                    summ += this.A2[this.q2][i];
                 }
                 this.A2[this.q2][1] = this.countClaims - summ;
             }
@@ -389,22 +388,24 @@ namespace Diplom
                 {
                     for (int indexQ = 1; indexQ < this.A2.Count; indexQ++)
                     {
-                        List<List<int>> tempA = CopyMatrix(this.A);
-                        tempA[this.i] = this.A2[indexQ];
-                        SecondLevel secondLevel = new SecondLevel();
-                        if (secondLevel.GenerateSolution(tempA))
+                        //List<List<int>> tempA = CopyMatrix(this.A);
+                        //tempA[this.i] = this.A2[indexQ];
+                        //SecondLevel secondLevel = new SecondLevel();
+                        //secondLevel.GenerateSolution(tempA);
+                        //List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
+                        int f1g = 5;// this.GetCriterion(tempMatrixA);
+                        Random rand = new Random();
+                        int ret = rand.Next(5, 15);
+                        if (ret < 10)
+                        //if (f1g - this.f1 <= 0)
                         {
-                            List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
-                            int f1g = this.GetCriterion(tempMatrixA);
-                            if (f1g - this.f1 <= 0)
+                            if (f1g - this.f1 < this.G)
                             {
-                                if (f1g - this.f1 < this.G)
-                                {
-                                    this.q2i = indexQ;
-                                    this.G = f1g - this.f1;
-                                }
+                                this.q2i = indexQ;
+                                this.G = f1g - this.f1;
                             }
                         }
+                        
                     }
                 }
                 else
