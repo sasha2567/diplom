@@ -32,9 +32,9 @@ namespace Diplom
 
         private void button2_Click(object sender, EventArgs e)
         {
-         SecondLevel  sl=new SecondLevel();
-         sl.nach_uslov(Convert.ToInt16(textBox1.Text));
-         sl.Algoritm_2();
+         SecondLevel  secondLevel=new SecondLevel();
+         secondLevel.InitialConditions(Convert.ToInt16(textBox1.Text));
+         secondLevel.Algoritm_2();
          
            
         }
