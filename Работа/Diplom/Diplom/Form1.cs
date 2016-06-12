@@ -22,10 +22,13 @@ namespace Diplom
         private void button1_Click(object sender, EventArgs e)
         {
             List<int> tmp = new List<int>();
-            tmp.Add(16);
-            tmp.Add(16);
-            tmp.Add(16);
-            tmp.Add(16);
+            for (int i = 0; i < numericTypeCount.Value; i++)
+            {
+                tmp.Add(Convert.ToInt32(CountTypeDGV[i, 0].Value));
+            }
+            //tmp.Add(16);
+            //tmp.Add(16);
+            //tmp.Add(16);
             firstLevel = new FirstLevel(tmp.Count, tmp);
             firstLevel.GenerateSolution();
         }
@@ -33,15 +36,19 @@ namespace Diplom
         private void button2_Click(object sender, EventArgs e)
         {
          SecondLevel  secondLevel=new SecondLevel();
-         secondLevel.InitialConditions(Convert.ToInt16(textBox1.Text));
+         secondLevel.InitialConditions(Convert.ToInt16(numericTypeCount.Value));
          secondLevel.Algoritm_2();
-         
-           
+
+
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void numericTypeCount_ValueChanged(object sender, EventArgs e)
         {
-
+            CountTypeDGV.Columns.Clear();
+            for (int i = 0; i < numericTypeCount.Value; i++)
+            {
+                CountTypeDGV.Columns.Add("col" + i, "Тип " + (i + 1));
+            }
         }
     }
 }

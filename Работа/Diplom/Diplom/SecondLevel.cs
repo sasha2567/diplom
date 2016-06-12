@@ -87,7 +87,7 @@ namespace Diplom
                   //  if (groups.Nz1[i] == A[i1])
                     {
                         //groups.Nz1[i].Add(A[i1]);
-                        break;
+                        //break;
                     }
 
             }
@@ -182,9 +182,11 @@ namespace Diplom
         public List<List<int>> ReturnAMatrix()
         {
             List<List<int>> A1 = new List<List<int>>();
+            A1.Add(new List<int>());
             for (int i = 0; i < 4; i++)
             {
                 A1.Add(new List<int>());
+                A1[i + 1].Add(0);
             }
             for (int i = 0; i < 4; i++)
             {
@@ -192,7 +194,7 @@ namespace Diplom
                 {
                     for (int k = 0; k < groups.Nz1[i][j].Count(); k++)
                     {
-                        A1[j].Add(groups.Nz1[i][j][k]);
+                        A1[j + 1].Add(groups.Nz1[i][j][k]);
                     }
                 }
             }
