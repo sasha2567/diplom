@@ -87,7 +87,7 @@ namespace Diplom
                   //  if (groups.Nz1[i] == A[i1])
                     {
                         //groups.Nz1[i].Add(A[i1]);
-                        break;
+                        //break;
                     }
 
             }
@@ -95,22 +95,28 @@ namespace Diplom
         public List<List<List<int>>> Algoritm_2()
         {
             int logi = 0;//номер группы текущий расматриваемый 
-            A.Clear();
-            for (int i = 0; i < 4; i++)
+            //A.Clear();
+            /*for (int i = 0; i < 4; i++)
             {
                 List<int> w = new List<int>();
                 A.Add(w);
-            }
+            }*/
 
             //A[0].Add(12); A[0].Add(2); A[0].Add(2);
             //A[1].Add(13); A[1].Add(3);
             //A[2].Add(10); A[2].Add(2); A[2].Add(2); A[2].Add(2);
             //A[3].Add(8); A[3].Add(2); A[3].Add(2); A[3].Add(2); A[3].Add(2);
 
-            for (int i = 0; i < 4; i++)
-            {
-                groups.Nz1.Add(new List<List<int>>());
-            }
+            A.RemoveAt(0);
+            for (int i = 0; i < A.Count(); i++)
+                A[i].RemoveAt(0);
+            
+           
+
+                for (int i = 0; i < 4; i++)
+                {
+                    groups.Nz1.Add(new List<List<int>>());
+                }
 
             for (int i = 0; i < 4; i++)
             {
@@ -176,9 +182,11 @@ namespace Diplom
         public List<List<int>> ReturnAMatrix()
         {
             List<List<int>> A1 = new List<List<int>>();
+            A1.Add(new List<int>());
             for (int i = 0; i < 4; i++)
             {
                 A1.Add(new List<int>());
+                A1[i + 1].Add(0);
             }
             for (int i = 0; i < 4; i++)
             {
@@ -186,7 +194,7 @@ namespace Diplom
                 {
                     for (int k = 0; k < groups.Nz1[i][j].Count(); k++)
                     {
-                        A1[j].Add(groups.Nz1[i][j][k]);
+                        A1[j + 1].Add(groups.Nz1[i][j][k]);
                     }
                 }
             }

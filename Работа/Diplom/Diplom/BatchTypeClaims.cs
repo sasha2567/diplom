@@ -155,7 +155,7 @@ namespace Diplom
                 this.inMatrixFlag = true;
             }
             this.i = valueI;
-            this.np2 = 0;
+            this.np2 = 1;
             this.np1 = this.A1.Count - 1;
             this.q2 = 0;
             this.q2i = 0;
@@ -360,7 +360,7 @@ namespace Diplom
                         this.np2--;
                     }
                 }
-                if (this.h + this.j <= this.countClaims)
+                if (this.h + this.j <= this.A1[this.q1].Count - 1)
                 {
                     if (this.CheckingMatrix(2))
                     {
@@ -373,7 +373,7 @@ namespace Diplom
                         step5 = true;
                         continue;
                     }
-                }          
+                }
                 this.q1++;
                 this.h = 2;
                 this.j = 1;
@@ -393,6 +393,77 @@ namespace Diplom
                         //SecondLevel secondLevel = new SecondLevel();
                         //secondLevel.GenerateSolution(tempA);
                         //List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
+                        int f1g = 5;// this.GetCriterion(tempMatrixA);
+                        Random rand = new Random();
+                        int ret = rand.Next(5, 15);
+                        if (ret < 10) 
+                        //if (f1g - this.f1 <= 0)
+                        {
+                            if (f1g - this.f1 < this.G)
+                            {
+                                this.q2i = indexQ;
+                                this.G = f1g - this.f1;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+            /*bool step5 = false;
+            this.q1 = 1;
+            this.h = 2;
+            while (this.q1 <= this.np1)
+            {
+                if (!step5)
+                {
+                    step5 = false;
+                    this.q2++;
+                    this.FormationDecisionPartMakeup();
+                    this.np2++;
+                    if (!this.CheckingMatrix(1))
+                    {
+                        this.A2.RemoveAt(this.q2);
+                        this.q2--;
+                        this.np2--;
+                    }
+                }
+                if (this.h + this.j <= this.countClaims)
+                {
+                    if (this.CheckingMatrix(2))
+                    {
+                        this.h += this.j;
+                        continue;
+                    }
+                    if (this.CheckingMatrix(3))
+                    {
+                        this.j++;
+                        step5 = true;
+                        continue;
+                    }
+                }          
+                this.q1++;
+                this.h = 2;
+                this.j = 1;
+            }/*
+            /*if (this.np2 > 1)
+            {
+                this.A2 = this.SortedMatrix(this.A2);
+                this.np2 = this.A2.Count - 1;
+                this.q2i = 0;
+                this.G = 0;
+                if (this.np2 > 0)
+                {
+                    for (int indexQ = 1; indexQ < this.A2.Count; indexQ++)
+                    {
+                        List<List<int>> tempA = CopyMatrix(this.A);
+                        tempA[this.i] = this.A2[indexQ];
+                        SecondLevel secondLevel = new SecondLevel();
+                        secondLevel.GenerateSolution(tempA);
+                        List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
                         int f1g = 5;// this.GetCriterion(tempMatrixA);
                         Random rand = new Random();
                         int ret = rand.Next(5, 15);
@@ -417,7 +488,7 @@ namespace Diplom
             {
                 return false;
             }
-            return true;
+            return true;*/
         }      
     }
 }
