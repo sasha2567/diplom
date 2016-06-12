@@ -360,7 +360,7 @@ namespace Diplom
                         this.np2--;
                     }
                 }
-                if (this.h + this.j <= this.countClaims)
+                if (this.h + this.j <= this.A1[this.q1].Count - 1)
                 {
                     if (this.CheckingMatrix(2))
                     {
@@ -413,43 +413,6 @@ namespace Diplom
                 }
             }
             return true;
-            /*if (this.inMatrixFlag)
-            {
-                return false;
-            }
-            this.q1 = 1;
-            this.h = 2;
-            while (this.q1 <= this.np1)
-            {
-                bool flag = false;
-                this.q2++;
-                this.FormationDecisionPartMakeup();
-                this.np2++;
-                if (!this.CheckingMatrix(1))
-                {
-                    this.A2.RemoveAt(this.q2);
-                    this.q2--;
-                    this.np2--;
-                }
-                for (int i = 3; i < this.A1[this.q1].Count; i++)
-                {
-                    if (this.A1[this.q1][this.h] > this.A1[this.q1][i])
-                    {
-                        this.h = i;
-                        flag = true;
-                        break;
-                    }
-                    if (this.A1[this.q1][this.h] == this.A1[this.q1][i])
-                    {
-                        continue;
-                    }
-                }
-                if (!flag)
-                {
-                    this.q1++;
-                    this.h = 2;
-                }
-            }*/
             /*bool step5 = false;
             this.q1 = 1;
             this.h = 2;
