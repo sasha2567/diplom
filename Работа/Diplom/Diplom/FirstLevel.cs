@@ -207,7 +207,7 @@ namespace Diplom
             //this.f1 = 20;
             this.f1Buf = this.f1;
             //Добавить вычисление значения критерия
-            while (!this.CheckType(this.I))
+            /*while (!this.CheckType(this.I))
             {
                 this.solutionFlag = false;
                 //1 - Копируем I в Ii
@@ -314,9 +314,9 @@ namespace Diplom
                     break;
 
                 }
-            }
-            test.PrintMatrix(1);
-            MessageBox.Show("Количество обработанных партий " + this.f1);
+            }*/
+            //test.PrintMatrix(1);
+            MessageBox.Show("Количество обработанных требований " + (64 - this.f1));
         }
     }
 }
