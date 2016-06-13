@@ -171,8 +171,10 @@ namespace Diplom
                      for (int j = 0; j < Q.Nz1[0][i].Count();j++)
                 {
                     groups.Nz1[k][i].Add(Q.Nz1[0][i][j]);
-
-                    if (shedule.shedule1(groups.Nz1[k]))
+                    int Tz = 50;
+                    this.shedule = new Shedule(this.BuildR(groups.Nz1[k]), 2);
+                    this.shedule.ConstructShedule();
+                    if (shedule.GetTime()>Tz) 
                     {
                         groups.Nz1[k][i].Remove(Q.Nz1[0][i][j]);
                     }
