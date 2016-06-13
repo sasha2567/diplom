@@ -30,6 +30,27 @@ namespace Diplom
         {
             this.R = r;
             this.L = l;
+        }
+
+        private void SetTime()
+        {
+            this.TSwitching = new List<List<List<int>>>();
+            this.TTreatment = new List<List<int>>();
+            Random rand = new Random();
+            for (int i = 0; i < this.L; i++)
+            {
+                this.TTreatment.Add(new List<int>());
+                this.TSwitching.Add(new List<List<int>>());
+                for (int j = 0; j < this.R.Count; j++)
+                {
+                    int otnosh = 2;
+                    this.TTreatment[i].Add(rand.Next(2, otnosh * 2));
+                    this.TSwitching[i].Add(new List<int>());
+                    for(int k=0;k<this.R.Count;k++){
+                        this.TSwitching[i][j].Add(rand.Next(1,5));
+                    }
+                }
+            }
 
             this.StartProcessing = new List<List<List<int>>>();
             this.EndProcessing = new List<List<List<int>>>();
@@ -51,27 +72,6 @@ namespace Diplom
                                 this.EndProcessing[i][k].Add(0);
                             }
                         }
-                    }
-                }
-            }
-        }
-
-        private void SetTime()
-        {
-            this.TSwitching = new List<List<List<int>>>();
-            this.TTreatment = new List<List<int>>();
-            Random rand = new Random();
-            for (int i = 0; i < this.L; i++)
-            {
-                this.TTreatment.Add(new List<int>());
-                this.TSwitching.Add(new List<List<int>>());
-                for (int j = 0; j < this.R.Count; j++)
-                {
-                    int otnosh = 2;
-                    this.TTreatment[i].Add(rand.Next(2, otnosh * 2));
-                    this.TSwitching[i].Add(new List<int>());
-                    for(int k=0;k<this.R.Count;k++){
-                        this.TSwitching[i][j].Add(rand.Next(1,5));
                     }
                 }
             }
@@ -196,7 +196,7 @@ namespace Diplom
                     this.CalculateShedule();
                     tempR = CopyMatrix(this.R);
                     tempTime = this.timeConstructShedule;
-                    for (int i = this.R[0].Count - 1; i > -1; i--)
+                    for (int i = this.R[0].Count - 1; i > 0; i--)
                     {
                         this.ChangeColum(i - 1, i);
                         this.CalculateShedule();
@@ -227,7 +227,7 @@ namespace Diplom
              //   else
             //        return false;
             //CalculateShedule();
-            if (this.timeConstructShedule > 1000)//здесь вместо суммы нужно вставить f3
+            if (this.timeConstructShedule > 100)//здесь вместо суммы нужно вставить f3
                 return true;
             else
                 return false;

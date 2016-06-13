@@ -148,7 +148,7 @@ namespace Diplom
                         this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), 2);
                         this.shedule.ConstructShedule();
                          
-                        if(this.shedule.GetTime() < Tz) 
+                        if(this.shedule.GetTime() > Tz) 
                         {
                             groups.Nz1[logi][i].Remove(A[i][j]);
                             j--;
