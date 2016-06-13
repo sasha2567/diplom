@@ -198,13 +198,13 @@ namespace Diplom
         public void GenerateSolution()
         {
             this.GenerateStartSolution();
-            //SecondLevel secondLevel = new SecondLevel();
-            //List<List<int>> temp = this.CopyMatrix(this.A);
-            //secondLevel.GenerateSolution(temp);
-            //List<List<int>> tmpMatrixA = secondLevel.ReturnAMatrix();
+            SecondLevel secondLevel = new SecondLevel();
+            List<List<int>> temp = this.CopyMatrix(this.A);
+            secondLevel.GenerateSolution(temp);
+            List<List<int>> tmpMatrixA = secondLevel.ReturnAMatrix();
             this.k = 0;
-            //this.f1 = this.GetCriterion(tmpMatrixA);
-            this.f1 = 20;
+            this.f1 = this.GetCriterion(tmpMatrixA);
+            //this.f1 = 20;
             this.f1Buf = this.f1;
             //Добавить вычисление значения критерия
             while (!this.CheckType(this.I))
@@ -272,28 +272,29 @@ namespace Diplom
 
                             for (this.q2 = 1; this.q2 < this.A2.Count; this.q2++)
                             {
-                                for (int h = 0; h < this.A2[this.q2].Count; h++)
+                                for (int h = 1; h < this.A2[this.q2].Count; h++)
                                     if (this.A1i[this.i + 1].Count < this.A2[this.q2].Count)
                                     {
-                                        this.A1i[this.i + 1].Add(this.A2[this.q2][h]);
+                                        this.A1i[this.i + 1].Add(this.A2[this.q2][h - 1]);
                                     }
                                     else
                                     {
-                                        this.A1i[this.i + 1][h] = this.A2[this.q2][h];
+                                        this.A1i[this.i + 1][h] = this.A2[this.q2][h - 1];
                                     }
                                 int f1g = 0;
-                                SecondLevel secondLevel = new SecondLevel();
+                                secondLevel = new SecondLevel();
                                 List<List<int>> tempA = CopyMatrix(this.A1i);
                                 secondLevel.GenerateSolution(tempA);
                                 List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
                                 f1g =  this.GetCriterion(tempMatrixA);
                                 Random rand = new Random();
                                 int ret = rand.Next(5, 15);
-                                if(ret < 10)
-                                //if (f1g - this.f1 <= 0 && f1g < this.f1Buf)
+                                //if(ret < 10)
+                                if (f1g - this.f1 <= 0 && f1g < this.f1Buf)
                                 {
-                                    this.fi[this.i] = f1g;
-                                    this.f1Buf = this.fi[this.i];
+                                    this.f1Buf = f1g;
+                                    //this.fi[this.i] = f1g;
+                                    //this.f1Buf = this.fi[this.i];
                                     this.solutionFlag = true;
                                     this.ABuf = this.CopyMatrix(this.A1i);
                                 }
@@ -311,9 +312,11 @@ namespace Diplom
                 {
                     MessageBox.Show("На текущем шаге не найдено ни одного решения");
                     break;
+
                 }
             }
             test.PrintMatrix(1);
+            MessageBox.Show("Количество обработанных партий " + this.f1);
         }
     }
 }
