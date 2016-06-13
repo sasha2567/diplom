@@ -164,7 +164,7 @@ namespace Diplom
             //        return true;
              //   else
             //        return false;
-            CalculateShedule();
+            //CalculateShedule();
             if (this.timeConstructShedule > 1000)//здесь вместо суммы нужно вставить f3
                 return true;
             else
