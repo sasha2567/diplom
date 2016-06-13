@@ -98,7 +98,7 @@ namespace Diplom
                                 timeToSwitch = 0;
                             //rasp.tstart[i][k][l]=max(rasp.tstop[i][zz][yy]+perenastr[i][xx][j],rasp.tstop[i-1][k][l]);
                             this.StartProcessing[i][j][k] = Math.Max(this.EndProcessing[i][yy][zz] + timeToSwitch, this.EndProcessing[i - 1][j][k]);
-                            this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][j];
+                            this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][index];
                             this.timeConstructShedule = this.EndProcessing[i][j][k];
                             yy = j;
                             zz = k;
@@ -110,16 +110,13 @@ namespace Diplom
                             if (index == xx && k != 0)
                                 timeToSwitch = 0;
                             this.StartProcessing[i][j][k] = this.EndProcessing[i][yy][zz] + timeToSwitch;
-                            this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][j];
+                            this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][index];
                             this.timeConstructShedule = this.EndProcessing[i][j][k];
                             yy = j;
                             zz = k;
                             xx = index;
                         }
-
                     }
-                    
-                    
                 }
             }
         }
@@ -151,7 +148,6 @@ namespace Diplom
 
         public bool shedule1(List<List<int>> Nz) 
         {
-
          //   CalculateShedule(Nz);
          //   int sum=0;
           //  for (int i = 0; i < Nz.Count(); i++)
