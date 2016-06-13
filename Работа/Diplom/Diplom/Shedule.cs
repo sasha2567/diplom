@@ -131,16 +131,78 @@ namespace Diplom
             return -1;
         }
 
+        private List<List<int>> CopyMatrix(List<List<int>> inMatrix)
+        {
+            List<List<int>> ret = new List<List<int>>();
+            for (int i = 0; i < inMatrix.Count; i++)
+            {
+                ret.Add(new List<int>());
+                for (int j = 0; j < inMatrix[i].Count; j++)
+                {
+                    ret[i].Add(inMatrix[i][j]);
+                }
+            }
+            return ret;
+        }
+
+        private void ChangeColum(int ind1, int ind2)
+        {
+            int indd1 = 0, indd2 = 0, temp;
+            for (int i = 0; i < this.R.Count; i++)
+            {
+                if (this.R[i][ind1] > 0)
+                {
+                    if (this.R[i][ind2] > 0)
+                    {
+                        temp = this.R[i][ind1];
+                        this.R[i][ind1] = this.R[i][ind2];
+                        this.R[i][ind2] = temp;
+                        return;
+                    }
+                    else
+                    {
+                        indd1 = i;
+                    }
+                }
+                if (this.R[i][ind2] > 0)
+                {
+                    indd2 = i;
+                }
+            }
+            temp = this.R[indd1][ind1];
+            this.R[indd1][ind1] = this.R[indd2][ind2];
+            this.R[indd2][ind2] = temp;
+        }
+
         public List<List<int>> ConstructShedule()
         {
+            List<List<int>> tempR = new List<List<int>>();
+            int tempTime = 9999999;
             switch (this.R[1].Count)
             {
                 case 1:
                     this.CalculateShedule();
                     break;
                 case 2:
+                    this.CalculateShedule();
+                    tempR = CopyMatrix(this.R);
+                    tempTime = this.timeConstructShedule;
+                    this.ChangeColum(0, 1);
+                    this.CalculateShedule();
+                    if (tempTime < this.timeConstructShedule)
+                        this.R = tempR;
                     break;
                 default:
+                    this.CalculateShedule();
+                    tempR = CopyMatrix(this.R);
+                    tempTime = this.timeConstructShedule;
+                    for (int i = this.R[0].Count - 1; i > -1; i--)
+                    {
+                        this.ChangeColum(i - 1, i);
+                        this.CalculateShedule();
+                        if (tempTime < this.timeConstructShedule)
+                            this.R = tempR;
+                    }
                     break;
             }
             return this.R;
