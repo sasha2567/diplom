@@ -397,8 +397,8 @@ namespace Diplom
                         f1g = this.GetCriterion(tempMatrixA);
                         Random rand = new Random();
                         int ret = rand.Next(5, 15);
-                        //if (ret < 10) 
-                        if (f1g - this.f1 <= 0)
+                        if (ret < 10) 
+                        //if (f1g - this.f1 <= 0)
                         {
                             if (f1g - this.f1 < this.G)
                             {

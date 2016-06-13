@@ -38,6 +38,7 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numericTypeCount = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.ModificatedAlgoritm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CountTypeDGV)).BeginInit();
@@ -93,6 +94,7 @@
             // 
             // ModificatedAlgoritm
             // 
+            this.ModificatedAlgoritm.Controls.Add(this.label2);
             this.ModificatedAlgoritm.Controls.Add(this.CountTypeDGV);
             this.ModificatedAlgoritm.Controls.Add(this.numericTypeCount);
             this.ModificatedAlgoritm.Controls.Add(this.CreateShedule);
@@ -113,11 +115,11 @@
             this.CountTypeDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
             this.CountTypeDGV.GridColor = System.Drawing.SystemColors.HighlightText;
-            this.CountTypeDGV.Location = new System.Drawing.Point(3, 84);
+            this.CountTypeDGV.Location = new System.Drawing.Point(6, 116);
             this.CountTypeDGV.Name = "CountTypeDGV";
             this.CountTypeDGV.RowHeadersVisible = false;
             this.CountTypeDGV.RowHeadersWidth = 35;
-            this.CountTypeDGV.Size = new System.Drawing.Size(424, 52);
+            this.CountTypeDGV.Size = new System.Drawing.Size(424, 45);
             this.CountTypeDGV.TabIndex = 5;
             // 
             // Column1
@@ -160,6 +162,16 @@
             this.tabPage2.Text = "Фиксированные партии";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(6, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(355, 24);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "количество требований каждого типа";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,6 +202,7 @@
         private System.Windows.Forms.DataGridView CountTypeDGV;
         private System.Windows.Forms.NumericUpDown numericTypeCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

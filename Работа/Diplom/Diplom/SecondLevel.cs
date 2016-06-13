@@ -143,7 +143,7 @@ namespace Diplom
                     else
                     {
                         
-                        int Tz = 100;
+                        int Tz = 50;
                         groups.Nz1[logi][i].Add(A[i][j]);
                         this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), 2);
                         this.shedule.ConstructShedule();

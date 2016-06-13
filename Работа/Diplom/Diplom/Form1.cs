@@ -17,6 +17,7 @@ namespace Diplom
         public Form1()
         {
             InitializeComponent();
+            CountTypeDGV[0, 0].Value = 16;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -62,6 +63,7 @@ namespace Diplom
             for (int i = 0; i < numericTypeCount.Value; i++)
             {
                 CountTypeDGV.Columns.Add("col" + i, "Тип " + (i + 1));
+                CountTypeDGV[i, 0].Value = 16;
             }
         }
     }
