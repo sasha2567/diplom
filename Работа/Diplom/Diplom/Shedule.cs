@@ -11,12 +11,12 @@ namespace Diplom
         //int L;
         //List<List<int>> P = new List<List<int>>();
         private List<List<int>> R = new List<List<int>>();
-        private List<int> TTreatment;
-        private List<List<int>> TSwitching;
+        private List<List<int>> TTreatment;
+        private List<List<List<int>>> TSwitching;
         private int timeConstructShedule;
         private int L;
-        private List<List<int>> StartProcessing;
-        private List<List<int>> EndProcessing;
+        private List<List<List<int>>> StartProcessing;
+        private List<List<List<int>>> EndProcessing;
         //List<List<int>> Pi=new List<List<int>>();   
         //List<List<int>> А = new List<List<int>>();
         //int s;
@@ -30,56 +30,103 @@ namespace Diplom
         {
             this.R = r;
             this.L = l;
-            
-            this.StartProcessing = new List<List<int>>();
-            this.EndProcessing = new List<List<int>>();
-            for (int i = 0; i <= this.L; i++)
+
+            this.StartProcessing = new List<List<List<int>>>();
+            this.EndProcessing = new List<List<List<int>>>();
+            for (int i = 0; i < this.L; i++)
             {
-                this.StartProcessing.Add(new List<int>());
-                this.EndProcessing.Add(new List<int>());
-                for (int j = 0; j <= this.R.Count; j++)
+                this.StartProcessing.Add(new List<List<int>>());
+                this.EndProcessing.Add(new List<List<int>>());
+                for (int j = 0; j < this.R.Count; j++)
                 {
-                    this.StartProcessing[i].Add(0);
-                    this.EndProcessing[i].Add(0);
+                    for (int k = 0; k < this.R[j].Count; k++)
+                    {
+                        if (this.R[j][k] > 0)
+                        {
+                            this.StartProcessing[i].Add(new List<int>());
+                            this.EndProcessing[i].Add(new List<int>());
+                            for (int p = 0; p < this.R[j][k]; p++)
+                            {
+                                this.StartProcessing[i][k].Add(0);
+                                this.EndProcessing[i][k].Add(0);
+                            }
+                        }
+                    }
                 }
             }
         }
 
-        public void SetTime(List<int> tTreatment, List<List<int>> tSwitching)
+        private void SetTime()
         {
-            this.TSwitching = tSwitching;
-            this.TTreatment = tTreatment;
+            this.TSwitching = new List<List<List<int>>>();
+            this.TTreatment = new List<List<int>>();
+            Random rand = new Random();
+            for (int i = 0; i < this.L; i++)
+            {
+                this.TTreatment.Add(new List<int>());
+                this.TSwitching.Add(new List<List<int>>());
+                for (int j = 0; j < this.R.Count; j++)
+                {
+                    int otnosh = 2;
+                    this.TTreatment[i].Add(rand.Next(2, otnosh * 2));
+                    this.TSwitching[i].Add(new List<int>());
+                    for(int k=0;k<this.R.Count;k++){
+                        this.TSwitching[i][j].Add(rand.Next(1,5));
+                    }
+                }
+            }
         }
 
-        private int CalculateShedule(List<List<int>> inR)
+        private void CalculateShedule()
         {
-            int yy, zz;
-            for (int i = 1; i <= this.L; i++)
+            this.SetTime();
+            int yy, zz, xx;
+            for (int i = 0; i < this.L; i++)
             {
                 yy = 0;
                 zz = 0;
-                for (int k = 1; k <= inR.Count; k++)
+                xx = 0;
+                for (int j = 0; j < this.R[0].Count; j++)
                 {
-                    int index = this.ReturnRIndex(k);
-                    int timeToSwitch = this.TSwitching[k][zz];
-                    if (k == zz)
-                        timeToSwitch = 0;
-                    this.StartProcessing[i][k] = Math.Max(this.StartProcessing[i][zz] + this.TSwitching[k][zz], this.StartProcessing[i - 1][k]);
-                    //rasp.tstart[i][k] = max(rasp.tstop[i][zz] + perenastr[i][xx], rasp.tstop[i - 1][k]);
-                    this.EndProcessing[i][k] = this.StartProcessing[i][k] + inR[k][index] * this.TTreatment[k];
-                    //rasp.tstop[i][k] = rasp.tstart[i][k] + obrabot[i][j];
-                    //count += inR[k][index] * this.TTreatment[k];
-                    this.timeConstructShedule = this.StartProcessing[i][k];
-                    //yy = index;
-                    zz = k;
+                    int index = this.ReturnRIndex(j);
+                    for (int k = 0; k < this.R[index][j]; k++)
+                    {
+                        if (i != 0)
+                        {
+                            int timeToSwitch = this.TSwitching[i][xx][index];
+                            if (index == xx)
+                                timeToSwitch = 0;
+                            //rasp.tstart[i][k][l]=max(rasp.tstop[i][zz][yy]+perenastr[i][xx][j],rasp.tstop[i-1][k][l]);
+                            this.StartProcessing[i][j][k] = Math.Max(this.EndProcessing[i][yy][zz] + timeToSwitch, this.EndProcessing[i - 1][j][k]);
+                            this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][j];
+                            this.timeConstructShedule = this.EndProcessing[i][j][k];
+                            yy = j;
+                            zz = k;
+                            xx = index;
+                        }
+                        else
+                        {
+                            int timeToSwitch = this.TSwitching[i][xx][index];
+                            if (index == xx && k != 0)
+                                timeToSwitch = 0;
+                            this.StartProcessing[i][j][k] = this.EndProcessing[i][yy][zz] + timeToSwitch;
+                            this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][j];
+                            this.timeConstructShedule = this.EndProcessing[i][j][k];
+                            yy = j;
+                            zz = k;
+                            xx = index;
+                        }
+
+                    }
+                    
+                    
                 }
             }
-            return this.timeConstructShedule;
         }
 
         private int ReturnRIndex(int j)
         {
-            for (int i = 1; i < this.R.Count; i++)
+            for (int i = 0; i < this.R.Count; i++)
             {
                 if (this.R[i][j] != 0)
                     return i;
@@ -92,7 +139,7 @@ namespace Diplom
             switch (this.R[1].Count)
             {
                 case 1:
-                    this.timeConstructShedule = this.CalculateShedule(this.R);
+                    this.CalculateShedule();
                     break;
                 case 2:
                     break;
@@ -102,17 +149,9 @@ namespace Diplom
             return this.R;
         }
 
-
-
-        void create_shed_test()
-        {
-
-        }
-
-
         public bool shedule1(List<List<int>> Nz) 
         {
-            if (this.timeConstructShedule > 100)//здесь вместо суммы нужно вставить f3
+            if (this.timeConstructShedule > 1000)//здесь вместо суммы нужно вставить f3
                 return true;
             else
                 return false;

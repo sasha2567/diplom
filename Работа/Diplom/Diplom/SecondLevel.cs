@@ -19,6 +19,7 @@ namespace Diplom
         {
             this.groups = new Groups(5);
             this.Q = new Groups(5);
+            this.A = new List<List<int>>();
         }
 
         public void InitialConditions(int j)//this.groups.Z
@@ -95,25 +96,22 @@ namespace Diplom
         public List<List<List<int>>> Algoritm_2()
         {
             int logi = 0;//номер группы текущий расматриваемый 
-            //A.Clear();
-            /*for (int i = 0; i < 4; i++)
+            /*A.Clear();
+            for (int i = 0; i < 4; i++)
             {
                 List<int> w = new List<int>();
                 A.Add(w);
-            }*/
+            }
 
-            //A[0].Add(12); A[0].Add(2); A[0].Add(2);
-            //A[1].Add(13); A[1].Add(3);
-            //A[2].Add(10); A[2].Add(2); A[2].Add(2); A[2].Add(2);
-            //A[3].Add(8); A[3].Add(2); A[3].Add(2); A[3].Add(2); A[3].Add(2);
+            A[0].Add(12); A[0].Add(2); A[0].Add(2);
+            A[1].Add(13); A[1].Add(3);
+            A[2].Add(10); A[2].Add(2); A[2].Add(2); A[2].Add(2);
+            A[3].Add(8); A[3].Add(2); A[3].Add(2); A[3].Add(2); A[3].Add(2);*/
 
             A.RemoveAt(0);
             for (int i = 0; i < A.Count(); i++)
                 A[i].RemoveAt(0);
-            
-           
-
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 4; j++)
                 {
                     groups.Nz1.Add(new List<List<int>>());
                 }
@@ -144,7 +142,7 @@ namespace Diplom
                     {
                         groups.Nz1[logi][i].Add(A[i][j]);
                         this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), 2);
-
+                        this.shedule.ConstructShedule();
                         if (shedule.shedule1(groups.Nz1[logi]))
                         {
                             groups.Nz1[logi][i].Remove(A[i][j]);
