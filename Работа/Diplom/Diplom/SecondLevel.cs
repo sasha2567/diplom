@@ -142,17 +142,13 @@ namespace Diplom
                     }
                     else
                     {
-                        int summ = 0;
+                        
                         int Tz = 100;
                         groups.Nz1[logi][i].Add(A[i][j]);
                         this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), 2);
                         this.shedule.ConstructShedule();
-                        summ += this.shedule.GetTime();
-                        if(summ < Tz)
-                        {
-
-                        }
-                        if (shedule.shedule1(groups.Nz1[logi]))
+                         
+                        if(this.shedule.GetTime() < Tz) 
                         {
                             groups.Nz1[logi][i].Remove(A[i][j]);
                             j--;
