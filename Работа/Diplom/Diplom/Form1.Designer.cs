@@ -34,14 +34,14 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ModificatedAlgoritm = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.numericTypeCount = new System.Windows.Forms.NumericUpDown();
             this.CountTypeDGV = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numericTypeCount = new System.Windows.Forms.NumericUpDown();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.ModificatedAlgoritm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericTypeCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountTypeDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericTypeCount)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateShedule
@@ -56,7 +56,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(595, 25);
+            this.button2.Location = new System.Drawing.Point(611, 25);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -106,15 +106,26 @@
             this.ModificatedAlgoritm.Text = "Алгоритм с модификацией составов партий требований";
             this.ModificatedAlgoritm.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // CountTypeDGV
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(702, 320);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Фиксированные партии";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.CountTypeDGV.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.CountTypeDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CountTypeDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            this.CountTypeDGV.GridColor = System.Drawing.SystemColors.HighlightText;
+            this.CountTypeDGV.Location = new System.Drawing.Point(3, 84);
+            this.CountTypeDGV.Name = "CountTypeDGV";
+            this.CountTypeDGV.RowHeadersVisible = false;
+            this.CountTypeDGV.RowHeadersWidth = 35;
+            this.CountTypeDGV.Size = new System.Drawing.Size(424, 52);
+            this.CountTypeDGV.TabIndex = 5;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 80F;
+            this.Column1.HeaderText = "Тип 1";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 80;
             // 
             // numericTypeCount
             // 
@@ -139,26 +150,15 @@
             0});
             this.numericTypeCount.ValueChanged += new System.EventHandler(this.numericTypeCount_ValueChanged);
             // 
-            // CountTypeDGV
+            // tabPage2
             // 
-            this.CountTypeDGV.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.CountTypeDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CountTypeDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
-            this.CountTypeDGV.GridColor = System.Drawing.SystemColors.HighlightText;
-            this.CountTypeDGV.Location = new System.Drawing.Point(3, 84);
-            this.CountTypeDGV.Name = "CountTypeDGV";
-            this.CountTypeDGV.RowHeadersVisible = false;
-            this.CountTypeDGV.RowHeadersWidth = 35;
-            this.CountTypeDGV.Size = new System.Drawing.Size(424, 52);
-            this.CountTypeDGV.TabIndex = 5;
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 80F;
-            this.Column1.HeaderText = "Тип 1";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 80;
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(702, 320);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Фиксированные партии";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -172,8 +172,8 @@
             this.tabControl1.ResumeLayout(false);
             this.ModificatedAlgoritm.ResumeLayout(false);
             this.ModificatedAlgoritm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericTypeCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountTypeDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericTypeCount)).EndInit();
             this.ResumeLayout(false);
 
         }

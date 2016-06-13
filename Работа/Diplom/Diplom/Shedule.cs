@@ -112,10 +112,17 @@ namespace Diplom
 
         public bool shedule1(List<List<int>> Nz) 
         {
-            if (this.timeConstructShedule > 100)//здесь вместо суммы нужно вставить f3
-                return true;
-            else
-                return false;
+         //   CalculateShedule(Nz);
+            int sum=0;
+            for (int i = 0; i < Nz.Count(); i++)
+                sum += Nz[i].Sum();
+
+
+                //  if (this.timeConstructShedule > 100)//здесь вместо суммы нужно вставить f3
+                if (sum > 14)
+                    return true;
+                else
+                    return false;
         } 
     }
 

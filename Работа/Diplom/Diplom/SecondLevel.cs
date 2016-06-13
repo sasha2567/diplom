@@ -171,7 +171,7 @@ namespace Diplom
 
                     if (shedule.shedule1(groups.Nz1[k]))
                     {
-                        groups.Nz1[i].Remove(Q.Nz1[0][j]);
+                        groups.Nz1[k][i].Remove(Q.Nz1[0][i][j]);
                     }
                     else
                         Q.Nz1[0][i].Remove(Q.Nz1[0][i][j]);
