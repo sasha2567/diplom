@@ -86,8 +86,8 @@ namespace Diplom
                 for (int i = 1; i < groups.Nz1.Count(); i++)
                   //  if (groups.Nz1[i] == A[i1])
                     {
-                        //groups.Nz1[i].Add(A[i1]);
-                        //break;
+                        groups.Nz1[i].Add(A[i1]);
+                        break;
                     }
 
             }
