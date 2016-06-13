@@ -35,9 +35,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ModificatedAlgoritm = new System.Windows.Forms.TabPage();
             this.CountTypeDGV = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numericTypeCount = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.ModificatedAlgoritm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CountTypeDGV)).BeginInit();
@@ -113,19 +113,13 @@
             this.CountTypeDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
             this.CountTypeDGV.GridColor = System.Drawing.SystemColors.HighlightText;
-            this.CountTypeDGV.Location = new System.Drawing.Point(3, 84);
+            this.CountTypeDGV.Location = new System.Drawing.Point(6, 84);
             this.CountTypeDGV.Name = "CountTypeDGV";
             this.CountTypeDGV.RowHeadersVisible = false;
             this.CountTypeDGV.RowHeadersWidth = 35;
-            this.CountTypeDGV.Size = new System.Drawing.Size(424, 52);
+            this.CountTypeDGV.Size = new System.Drawing.Size(424, 45);
             this.CountTypeDGV.TabIndex = 5;
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 80F;
-            this.Column1.HeaderText = "Тип 1";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 80;
+            this.CountTypeDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CountTypeDGV_CellContentClick);
             // 
             // numericTypeCount
             // 
@@ -159,6 +153,13 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Фиксированные партии";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 80F;
+            this.Column1.HeaderText = "Тип 1";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 80;
             // 
             // Form1
             // 

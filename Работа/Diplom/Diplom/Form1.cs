@@ -64,5 +64,10 @@ namespace Diplom
                 CountTypeDGV.Columns.Add("col" + i, "Тип " + (i + 1));
             }
         }
+
+        private void CountTypeDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
