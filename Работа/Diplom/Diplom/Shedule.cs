@@ -146,6 +146,11 @@ namespace Diplom
             return this.R;
         }
 
+        public int GetTime()
+        {
+            return this.timeConstructShedule;
+        }
+
         public bool shedule1(List<List<int>> Nz) 
         {
          //   CalculateShedule(Nz);
