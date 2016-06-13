@@ -43,11 +43,11 @@ namespace Diplom
                 this.TSwitching.Add(new List<List<int>>());
                 for (int j = 0; j < this.R.Count; j++)
                 {
-                    int otnosh = 2;
-                    this.TTreatment[i].Add(rand.Next(2, otnosh * 2));
+                    //int otnosh = 2;
+                    this.TTreatment[i].Add(rand.Next(2, 20));
                     this.TSwitching[i].Add(new List<int>());
                     for(int k=0;k<this.R.Count;k++){
-                        this.TSwitching[i][j].Add(rand.Next(5,15));
+                        this.TSwitching[i][j].Add(rand.Next(2, 20));
                     }
                 }
             }

@@ -316,7 +316,7 @@ namespace Diplom
                 }
             }
             test.PrintMatrix(1);
-            MessageBox.Show("Количество обработанных партий " + this.f1);
+            MessageBox.Show("Количество обработанных требований " + this.f1);
         }
     }
 }
