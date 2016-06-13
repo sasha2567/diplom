@@ -47,7 +47,7 @@ namespace Diplom
                     this.TTreatment[i].Add(rand.Next(2, otnosh * 2));
                     this.TSwitching[i].Add(new List<int>());
                     for(int k=0;k<this.R.Count;k++){
-                        this.TSwitching[i][j].Add(rand.Next(1,5));
+                        this.TSwitching[i][j].Add(rand.Next(5,15));
                     }
                 }
             }

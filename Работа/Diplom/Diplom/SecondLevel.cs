@@ -111,12 +111,10 @@ namespace Diplom
             for (int i = 0; i < A.Count(); i++)
                 A[i].RemoveAt(0);
             
-           
-
-                for (int i = 0; i < 4; i++)
-                {
-                    groups.Nz1.Add(new List<List<int>>());
-                }
+            for (int i = 0; i < 4; i++)
+            {
+                groups.Nz1.Add(new List<List<int>>());
+            }
 
             for (int i = 0; i < 4; i++)
             {
@@ -125,7 +123,6 @@ namespace Diplom
                     groups.Nz1[i].Add(new List<int>());
                 }
             }
-
 
             Q.Nz1.Add(new List<List<int>>());
             for (int i = 0; i < 4; i++)
@@ -142,12 +139,10 @@ namespace Diplom
                     }
                     else
                     {
-                        
-                        int Tz = 50;
+                        int Tz = 20;
                         groups.Nz1[logi][i].Add(A[i][j]);
                         this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), 2);
-                        this.shedule.ConstructShedule();
-                         
+                        this.shedule.ConstructShedule();    
                         if(this.shedule.GetTime() > Tz) 
                         {
                             groups.Nz1[logi][i].Remove(A[i][j]);
@@ -157,8 +152,8 @@ namespace Diplom
                     }
                 }
             }
-            if(Q.Nz1[0].Count()>0)
-            Algoritm_3();
+            //if(Q.Nz1[0].Count()>0)
+            //Algoritm_3();
 
             return groups.Nz1;//изменить
         }
@@ -203,7 +198,6 @@ namespace Diplom
                     }
                 }
             }
-
             return A1;
         }
         public bool GenerateSolution(List<List<int>> matrixA)
