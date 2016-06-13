@@ -40,16 +40,16 @@ namespace Diplom
          
    
             List<List<int>> A=new List<List<int>>();
-                        for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 List<int> w = new List<int>();
                 A.Add(w);
             }
-                        A[0].Add(12); A[0].Add(12); A[0].Add(2); A[0].Add(2);
-                        A[1].Add(12); A[1].Add(12); A[1].Add(2); A[1].Add(2);
-                        A[2].Add(12); A[2].Add(13); A[2].Add(3);
-                        A[3].Add(12); A[3].Add(10); A[3].Add(2); A[3].Add(2); A[3].Add(2);
-                        A[4].Add(12); A[4].Add(8); A[4].Add(2); A[4].Add(2); A[4].Add(2); A[4].Add(2);
+            A[0].Add(12); A[0].Add(12); A[0].Add(2); A[0].Add(2);
+            A[1].Add(12); A[1].Add(12); A[1].Add(2); A[1].Add(2);
+            A[2].Add(12); A[2].Add(13); A[2].Add(3);
+            A[3].Add(12); A[3].Add(10); A[3].Add(2); A[3].Add(2); A[3].Add(2);
+            A[4].Add(12); A[4].Add(8); A[4].Add(2); A[4].Add(2); A[4].Add(2); A[4].Add(2);
 
             secondLevel.GenerateSolution(A);
 

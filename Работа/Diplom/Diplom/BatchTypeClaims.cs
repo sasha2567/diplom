@@ -388,12 +388,13 @@ namespace Diplom
                 {
                     for (int indexQ = 1; indexQ < this.A2.Count; indexQ++)
                     {
+                        int f1g = 0;
                         List<List<int>> tempA = CopyMatrix(this.A);
                         tempA[this.i] = this.A2[indexQ];
                         SecondLevel secondLevel = new SecondLevel();
                         secondLevel.GenerateSolution(tempA);
                         List<List<int>> tempMatrixA = secondLevel.ReturnAMatrix();
-                        int f1g = this.GetCriterion(tempMatrixA);
+                        f1g = this.GetCriterion(tempMatrixA);
                         Random rand = new Random();
                         int ret = rand.Next(5, 15);
                         //if (ret < 10) 
