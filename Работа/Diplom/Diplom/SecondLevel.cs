@@ -107,16 +107,16 @@ namespace Diplom
             //A[2].Add(10); A[2].Add(2); A[2].Add(2); A[2].Add(2);
             //A[3].Add(8); A[3].Add(2); A[3].Add(2); A[3].Add(2); A[3].Add(2);
 
-            A.RemoveAt(0);
+            /*A.RemoveAt(0);
             for (int i = 0; i < A.Count(); i++)
                 A[i].RemoveAt(0);
-            
+            */
            
 
-                for (int i = 0; i < 4; i++)
-                {
-                    groups.Nz1.Add(new List<List<int>>());
-                }
+            for (int i = 0; i < 4; i++)
+            {
+                groups.Nz1.Add(new List<List<int>>());
+            }
 
             for (int i = 0; i < 4; i++)
             {
@@ -145,7 +145,7 @@ namespace Diplom
                         
                         int Tz = 80;
                         groups.Nz1[logi][i].Add(A[i][j]);
-                        this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), 4);
+                        this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), 10);
                         this.shedule.ConstructShedule();
                          
                         if(this.shedule.GetTime() > Tz) 
@@ -172,7 +172,7 @@ namespace Diplom
                 {
                     groups.Nz1[k][i].Add(Q.Nz1[0][i][j]);
                     int Tz = 80;
-                    this.shedule = new Shedule(this.BuildR(groups.Nz1[k]), 4);
+                    this.shedule = new Shedule(this.BuildR(groups.Nz1[k]), 10);
                     this.shedule.ConstructShedule();
                     if (shedule.GetTime() > Tz)
                     {
