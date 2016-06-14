@@ -107,10 +107,10 @@ namespace Diplom
             //A[2].Add(10); A[2].Add(2); A[2].Add(2); A[2].Add(2);
             //A[3].Add(8); A[3].Add(2); A[3].Add(2); A[3].Add(2); A[3].Add(2);
 
-            /*A.RemoveAt(0);
+            A.RemoveAt(0);
             for (int i = 0; i < A.Count(); i++)
                 A[i].RemoveAt(0);
-            */
+            
            
 
             for (int i = 0; i < 4; i++)
