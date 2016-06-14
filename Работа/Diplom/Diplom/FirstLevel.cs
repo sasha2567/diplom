@@ -126,7 +126,7 @@ namespace Diplom
                     criterionA += this.A[i][j];
                 }
             }
-            return criterionA - criterion;
+            return criterion;
             /*Random rand = new Random();
             int ret = rand.Next(5,15);
             return ret;*/
@@ -204,10 +204,14 @@ namespace Diplom
             List<List<int>> tmpMatrixA = secondLevel.ReturnAMatrix();
             this.k = 0;
             this.f1 = this.GetCriterion(tmpMatrixA);
+            if (this.f1 == 0)
+            {
+                this.f1 = 64;
+            }
             //this.f1 = 20;
             this.f1Buf = this.f1;
             //Добавить вычисление значения критерия
-            /*while (!this.CheckType(this.I))
+            while (!this.CheckType(this.I))
             {
                 this.solutionFlag = false;
                 //1 - Копируем I в Ii
@@ -293,8 +297,6 @@ namespace Diplom
                                 if (f1g - this.f1 <= 0 && f1g < this.f1Buf)
                                 {
                                     this.f1Buf = f1g;
-                                    //this.fi[this.i] = f1g;
-                                    //this.f1Buf = this.fi[this.i];
                                     this.solutionFlag = true;
                                     this.ABuf = this.CopyMatrix(this.A1i);
                                 }
@@ -310,12 +312,21 @@ namespace Diplom
                 }
                 else
                 {
-                    MessageBox.Show("На текущем шаге не найдено ни одного решения");
                     break;
 
                 }
-            }*/
-            //test.PrintMatrix(1);
+            }
+            MessageBox.Show("На текущем " + this.k + " шаге не найдено ни одного решения");
+            string s = "";
+            foreach (List<int> row in this.A)
+            {
+                foreach (int colum in row)
+                {
+                    s += colum + ", ";
+                }
+                s += "\n";
+            }
+            MessageBox.Show(s);
             MessageBox.Show("Количество обработанных требований " + (64 - this.f1));
         }
     }

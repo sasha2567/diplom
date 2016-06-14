@@ -44,10 +44,10 @@ namespace Diplom
                 for (int j = 0; j < this.R.Count; j++)
                 {
                     //int otnosh = 2;
-                    this.TTreatment[i].Add(rand.Next(2, 16));
+                    this.TTreatment[i].Add(rand.Next(2, 20));
                     this.TSwitching[i].Add(new List<int>());
                     for(int k=0;k<this.R.Count;k++){
-                        this.TSwitching[i][j].Add(rand.Next(2, 16));
+                        this.TSwitching[i][j].Add(rand.Next(2, 20));
                     }
                 }
             }
@@ -89,32 +89,35 @@ namespace Diplom
                 for (int j = 0; j < this.R[0].Count; j++)
                 {
                     int index = this.ReturnRIndex(j);
-                    for (int k = 0; k < this.R[index][j]; k++)
+                    if (index != -1)
                     {
-                        if (i != 0)
+                        for (int k = 0; k < this.R[index][j]; k++)
                         {
-                            int timeToSwitch = this.TSwitching[i][xx][index];
-                            if (index == xx)
-                                timeToSwitch = 0;
-                            //rasp.tstart[i][k][l]=max(rasp.tstop[i][zz][yy]+perenastr[i][xx][j],rasp.tstop[i-1][k][l]);
-                            this.StartProcessing[i][j][k] = Math.Max(this.EndProcessing[i][yy][zz] + timeToSwitch, this.EndProcessing[i - 1][j][k]);
-                            this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][index];
-                            this.timeConstructShedule = this.EndProcessing[i][j][k];
-                            yy = j;
-                            zz = k;
-                            xx = index;
-                        }
-                        else
-                        {
-                            int timeToSwitch = this.TSwitching[i][xx][index];
-                            if (index == xx && k != 0)
-                                timeToSwitch = 0;
-                            this.StartProcessing[i][j][k] = this.EndProcessing[i][yy][zz] + timeToSwitch;
-                            this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][index];
-                            this.timeConstructShedule = this.EndProcessing[i][j][k];
-                            yy = j;
-                            zz = k;
-                            xx = index;
+                            if (i != 0)
+                            {
+                                int timeToSwitch = this.TSwitching[i][xx][index];
+                                if (index == xx)
+                                    timeToSwitch = 0;
+                                //rasp.tstart[i][k][l]=max(rasp.tstop[i][zz][yy]+perenastr[i][xx][j],rasp.tstop[i-1][k][l]);
+                                this.StartProcessing[i][j][k] = Math.Max(this.EndProcessing[i][yy][zz] + timeToSwitch, this.EndProcessing[i - 1][j][k]);
+                                this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][index];
+                                this.timeConstructShedule = this.EndProcessing[i][j][k];
+                                yy = j;
+                                zz = k;
+                                xx = index;
+                            }
+                            else
+                            {
+                                int timeToSwitch = this.TSwitching[i][xx][index];
+                                if (index == xx && k != 0)
+                                    timeToSwitch = 0;
+                                this.StartProcessing[i][j][k] = this.EndProcessing[i][yy][zz] + timeToSwitch;
+                                this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][index];
+                                this.timeConstructShedule = this.EndProcessing[i][j][k];
+                                yy = j;
+                                zz = k;
+                                xx = index;
+                            }
                         }
                     }
                 }
