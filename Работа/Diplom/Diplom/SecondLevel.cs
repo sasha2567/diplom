@@ -141,11 +141,6 @@ namespace Diplom
                     }
                     else
                     {
-                        
-<<<<<<< HEAD
-                        int Tz = 400;
-=======
->>>>>>> 2e220904d0f89b8967a8c2f32284e5ce0bc8e555
                         groups.Nz1[logi][i].Add(A[i][j]);
                         this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), countL);
                         this.shedule.ConstructShedule();
