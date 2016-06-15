@@ -17,8 +17,8 @@ namespace Diplom
         private int L;
         private List<List<List<int>>> StartProcessing;
         private List<List<List<int>>> EndProcessing;
-        private int maxTimeSwitching = 20;
-        private int maxTimeTreatment = 20;
+        private int maxTimeSwitching = 2;
+        private int maxTimeTreatment = 2;
         //List<List<int>> Pi=new List<List<int>>();   
         //List<List<int>> А = new List<List<int>>();
         //int s;
@@ -54,16 +54,19 @@ namespace Diplom
                     }
                 }
             }
+        }
 
+        private void CalculateShedule()
+        {
             this.StartProcessing = new List<List<List<int>>>();
             this.EndProcessing = new List<List<List<int>>>();
             for (int i = 0; i < this.L; i++)//количество приборов
             {
                 this.StartProcessing.Add(new List<List<int>>());
                 this.EndProcessing.Add(new List<List<int>>());
-                for (int j = 0; j < this.R.Count; j++)
+                for (int k = 0; k < this.R[0].Count; k++)
                 {
-                    for (int k = 0; k < this.R[j].Count; k++)//номер партии
+                    for (int j = 0; j < this.R.Count; j++)//номер партии
                     {
                         if (this.R[j][k] > 0)
                         {
@@ -78,10 +81,6 @@ namespace Diplom
                     }
                 }
             }
-        }
-
-        private void CalculateShedule()
-        {
             int yy, zz, xx;
             for (int i = 0; i < this.L; i++)
             {
@@ -208,7 +207,7 @@ namespace Diplom
                     tempR = CopyMatrix(this.R);
                     tempTime = this.timeConstructShedule;
                     this.ChangeColum(0, 1);
-                    this.ChangeColumTime(0, 1);
+                    //this.ChangeColumTime(0, 1);
                     this.CalculateShedule();
                     if (tempTime < this.timeConstructShedule)
                         this.R = tempR;
@@ -220,7 +219,7 @@ namespace Diplom
                     for (int i = this.R[0].Count - 1; i > 0; i--)
                     {
                         this.ChangeColum(i - 1, i);
-                        this.ChangeColumTime(i - 1, i);
+                        //this.ChangeColumTime(i - 1, i);
                         this.CalculateShedule();
                         if (tempTime < this.timeConstructShedule)
                             this.R = tempR;
