@@ -315,7 +315,7 @@ namespace Diplom
 
                 }
             }
-            MessageBox.Show("На текущем " + this.k + " шаге не найдено ни одного решения");
+            MessageBox.Show("На текущем " + this.k + " получено решение");
             string s = "";
             foreach (List<int> row in this.A)
             {
