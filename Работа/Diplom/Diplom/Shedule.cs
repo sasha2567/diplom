@@ -17,6 +17,8 @@ namespace Diplom
         private int L;
         private List<List<List<int>>> StartProcessing;
         private List<List<List<int>>> EndProcessing;
+        private int maxTimeSwitching = 20;
+        private int maxTimeTreatment = 20;
         //List<List<int>> Pi=new List<List<int>>();   
         //List<List<int>> А = new List<List<int>>();
         //int s;
@@ -45,10 +47,10 @@ namespace Diplom
                 for (int j = 0; j < this.R.Count; j++)
                 {
                     //int otnosh = 2;
-                    this.TTreatment[i].Add(rand.Next(2, 20));
+                    this.TTreatment[i].Add(rand.Next(2, this.maxTimeTreatment));
                     this.TSwitching[i].Add(new List<int>());
                     for(int k=0;k<this.R.Count;k++){
-                        this.TSwitching[i][j].Add(rand.Next(2, 20));
+                        this.TSwitching[i][j].Add(rand.Next(2, this.maxTimeSwitching));
                     }
                 }
             }
@@ -80,7 +82,6 @@ namespace Diplom
 
         private void CalculateShedule()
         {
-            
             int yy, zz, xx;
             for (int i = 0; i < this.L; i++)
             {
@@ -156,17 +157,7 @@ namespace Diplom
             {
                 if (this.R[i][ind1] > 0)
                 {
-                    if (this.R[i][ind2] > 0)
-                    {
-                        temp = this.R[i][ind1];
-                        this.R[i][ind1] = this.R[i][ind2];
-                        this.R[i][ind2] = temp;
-                        return;
-                    }
-                    else
-                    {
-                        indd1 = i;
-                    }
+                    indd1 = i;
                 }
                 if (this.R[i][ind2] > 0)
                 {
@@ -174,13 +165,33 @@ namespace Diplom
                 }
             }
             temp = this.R[indd1][ind1];
-            this.R[indd1][ind1] = this.R[indd2][ind2];
-            this.R[indd2][ind2] = temp;
+            this.R[indd1][ind1] = 0;
+            this.R[indd2][ind1] = this.R[indd2][ind2];
+            this.R[indd2][ind2] = 0;
+            this.R[indd1][ind2] = temp;
+        }
+
+        private List<int> CopyList(List<int> inList)
+        {
+            List<int> ret = new List<int>();
+            for (int i = 0; i < inList.Count; i++)
+            {
+                ret.Add(inList[i]);
+            }
+            return ret;
         }
 
         private void ChangeColumTime(int ind1, int ind2)
         {
-            
+            for (int i = 0; i < this.L; i++)
+            {
+                List<int> temp = this.CopyList(this.StartProcessing[i][ind1]);
+                this.StartProcessing[i][ind1] = this.CopyList(this.StartProcessing[i][ind2]);
+                this.StartProcessing[i][ind2] = temp;
+                List<int> temp1 = this.CopyList(this.EndProcessing[i][ind1]);
+                this.EndProcessing[i][ind1] = this.CopyList(this.EndProcessing[i][ind2]);
+                this.EndProcessing[i][ind2] = temp1;
+            }
         }
 
         public List<List<int>> ConstructShedule()
@@ -197,6 +208,7 @@ namespace Diplom
                     tempR = CopyMatrix(this.R);
                     tempTime = this.timeConstructShedule;
                     this.ChangeColum(0, 1);
+                    this.ChangeColumTime(0, 1);
                     this.CalculateShedule();
                     if (tempTime < this.timeConstructShedule)
                         this.R = tempR;
@@ -208,6 +220,7 @@ namespace Diplom
                     for (int i = this.R[0].Count - 1; i > 0; i--)
                     {
                         this.ChangeColum(i - 1, i);
+                        this.ChangeColumTime(i - 1, i);
                         this.CalculateShedule();
                         if (tempTime < this.timeConstructShedule)
                             this.R = tempR;
