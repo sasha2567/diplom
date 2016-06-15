@@ -206,7 +206,7 @@ namespace Diplom
             this.f1 = this.GetCriterion(tmpMatrixA);
             if (this.f1 == 0)
             {
-                this.f1 = 64;
+                this.f1 = 99999;
             }
             //this.f1 = 20;
             this.f1Buf = this.f1;
@@ -215,13 +215,12 @@ namespace Diplom
             {
                 this.solutionFlag = false;
                 //1 - Копируем I в Ii
-                this.fi = new List<int>();
                 for (int j = 0; j < this.countType; j++)
                 {
                     this.Ii[j] = this.I[j];
-                    this.fi.Add(0);
                 }
-                this.ABuf = this.CopyMatrix(A);
+                this.ABuf = this.CopyMatrix(this.A);
+                //this.f1 = this.GetCriterion(this.ABuf);
                 //Для каждого рассматриваемого типа
                 for (int iter = 0; iter < this.Ii.Count; iter++)
                 {
@@ -231,7 +230,6 @@ namespace Diplom
                         if (this.np1i[this.i] > 0)
                         {
                             this.A1 = this.CopyMatrix(this.A);
-                            this.G = f1;
                             //MessageBox.Show("Решение по составу партий данных " + (this.i + 1) + " типа на " + (this.k + 1) + " шаге алгоритма");
                             //Получение состава партий фиксированного типа
                             List<List<int>> toBatchAlgoritm = new List<List<int>>();
@@ -268,7 +266,15 @@ namespace Diplom
                             }
                             else
                             {
-                                this.A2 = this.CopyMatrix(tempA2);
+                                //this.A2 = this.CopyMatrix(tempA2);
+                                this.A2 = new List<List<int>>();
+                                this.A2.Add(new List<int>());
+                                for (int ii = 1; ii < tempA2.Count; ii++)
+                                {
+                                    //this.A2.Add(new List<int>());
+                                    this.A2.Insert(ii, tempA2[ii]);
+                                    this.A2[ii].Insert(0, 0);
+                                }
                             }
 
                             //Буферизируем текущее решение для сравнения
@@ -276,15 +282,7 @@ namespace Diplom
 
                             for (this.q2 = 1; this.q2 < this.A2.Count; this.q2++)
                             {
-                                for (int h = 1; h < this.A2[this.q2].Count; h++)
-                                    if (this.A1i[this.i + 1].Count < this.A2[this.q2].Count)
-                                    {
-                                        this.A1i[this.i + 1].Add(this.A2[this.q2][h - 1]);
-                                    }
-                                    else
-                                    {
-                                        this.A1i[this.i + 1][h] = this.A2[this.q2][h - 1];
-                                    }
+                                this.A1i[this.i + 1] = this.A2[this.q2];
                                 int f1g = 0;
                                 secondLevel = new SecondLevel();
                                 List<List<int>> tempA = CopyMatrix(this.A1i);
@@ -294,7 +292,8 @@ namespace Diplom
                                 Random rand = new Random();
                                 int ret = rand.Next(5, 15);
                                 //if(ret < 10)
-                                if (f1g - this.f1 <= 0 && f1g < this.f1Buf)
+                                if (f1g > this.f1Buf)
+                                //if (f1g - this.f1Buf < 0 || f1g == 0)
                                 {
                                     this.f1Buf = f1g;
                                     this.solutionFlag = true;
@@ -327,7 +326,7 @@ namespace Diplom
                 s += "\n";
             }
             MessageBox.Show(s);
-            MessageBox.Show("Количество обработанных требований " + (64 - this.f1));
+            MessageBox.Show("Количество обработанных требований " + this.f1);
         }
     }
 }

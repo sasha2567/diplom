@@ -306,10 +306,13 @@ namespace Diplom
         {
             if (this.q2 >= this.A2.Count)
             {
-                this.A2.Add(new List<int>());
-                for (int i = 0; i < this.A1[this.q1].Count; i++)
+                while (this.q2 >= this.A2.Count)
                 {
-                    this.A2[this.q2].Add(0);
+                    this.A2.Add(new List<int>());
+                    for (int i = 0; i < this.A1[this.q1].Count; i++)
+                    {
+                        this.A2[this.q2].Add(0);
+                    }
                 }
             }
             if (this.q1 < this.A1.Count)
@@ -341,6 +344,7 @@ namespace Diplom
             {
                 return false;
             }
+            Nachalo:
             bool step5 = false;
             this.q1 = 1;
             this.h = 2;
@@ -378,14 +382,15 @@ namespace Diplom
                 this.h = 2;
                 this.j = 1;
             }
+            this.np2 = this.A2.Count;
             if (this.np2 > 1)
             {
                 this.A2 = this.SortedMatrix(this.A2);
                 this.np2 = this.A2.Count - 1;
-                this.q2i = 0;
                 this.G = 0;
                 if (this.np2 > 0)
                 {
+                    bool flagSolution = false;
                     for (int indexQ = 1; indexQ < this.A2.Count; indexQ++)
                     {
                         int f1g = 0;
@@ -398,12 +403,25 @@ namespace Diplom
                         Random rand = new Random();
                         int ret = rand.Next(5, 15);
                         //if (ret < 10) 
-                        if (f1g - this.f1 <= 0 && f1g < this.f1)
+                        if (f1g > this.f1)
                         {
                             this.q2i = indexQ;
                             this.G = f1g - this.f1;
                             this.f1 = f1g;
+                            flagSolution = true;
                         }
+                    }
+                    if (flagSolution == false)
+                    {
+                        for (int ii = 1; ii < this.A2.Count; ii++)
+                        {
+                            this.A2[ii].Insert(0, 0);
+                        }
+                        this.A1 = CopyMatrix(this.A2);
+                        this.q1 = this.A1.Count - 1;
+                        this.np2 = 0;
+                        this.q2 = 0;
+                        goto Nachalo;
                     }
                 }
                 else
