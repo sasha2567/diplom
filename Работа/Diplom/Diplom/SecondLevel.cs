@@ -14,7 +14,9 @@ namespace Diplom
         private Groups groups, Q;
         private Shedule shedule;
         private List<List<int>> A;
-
+        private int countL = 10;
+        int Tz = 100;//вот здесь надо менять время обработки при 40 оно успеваетполностьюобработать все партии
+                    
         public SecondLevel()
         {
             this.groups = new Groups(5);
@@ -30,7 +32,6 @@ namespace Diplom
             this.groups.Set_I2(j);//допустим 
             this.groups.Set_M(j);//допустим 
             this.Q.Set_M(1);//допустим
-           
         }
 
         private List<List<int>> BuildR(List<List<int>> N)
@@ -66,8 +67,6 @@ namespace Diplom
 
         public void Algoritm_1()
         {
-           
- 
             while (true)
             {
                 this.groups.Set_Nzt(this.groups.Nz);//1
@@ -85,11 +84,10 @@ namespace Diplom
 
                 for (int i = 1; i < groups.Nz1.Count(); i++)
                   //  if (groups.Nz1[i] == A[i1])
-                    {
-                        groups.Nz1[i].Add(A[i1]);
-                        break;
-                    }
-
+                {
+                    groups.Nz1[i].Add(A[i1]);
+                    break;
+                }
             }
         }
         public List<List<List<int>>> Algoritm_2()
@@ -107,12 +105,13 @@ namespace Diplom
             //A[2].Add(10); A[2].Add(2); A[2].Add(2); A[2].Add(2);
             //A[3].Add(8); A[3].Add(2); A[3].Add(2); A[3].Add(2); A[3].Add(2);
 
-            A.RemoveAt(0);
-            for (int i = 0; i < A.Count(); i++)
-                A[i].RemoveAt(0);
+            if (this.A[0].Count == 0)
+            {
+                A.RemoveAt(0);
+                for (int i = 0; i < A.Count(); i++)
+                    A[i].RemoveAt(0);
+            }
             
-           
-
             for (int i = 0; i < 4; i++)
             {
                 groups.Nz1.Add(new List<List<int>>());
@@ -143,9 +142,12 @@ namespace Diplom
                     else
                     {
                         
+<<<<<<< HEAD
                         int Tz = 400;
+=======
+>>>>>>> 2e220904d0f89b8967a8c2f32284e5ce0bc8e555
                         groups.Nz1[logi][i].Add(A[i][j]);
-                        this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), 10);
+                        this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), countL);
                         this.shedule.ConstructShedule();
                          
                         if(this.shedule.GetTime() > Tz) 
@@ -167,31 +169,34 @@ namespace Diplom
         
         public void Algoritm_3()
         {
-            for (int k = 0; k < groups.Nz1.Count();k++ )
+            for (int k = 0; k < groups.Nz1.Count(); k++)
+            {
                 for (int i = 0; i < Q.Nz1[0].Count(); i++)
-                     for (int j = 0; j < Q.Nz1[0][i].Count();j++)
                 {
-                    groups.Nz1[k][i].Add(Q.Nz1[0][i][j]);
-                    int Tz = 80;
-                    this.shedule = new Shedule(this.BuildR(groups.Nz1[k]), 10);
-                    this.shedule.ConstructShedule();
-                    if (shedule.GetTime() > Tz)
+                    for (int j = 0; j < Q.Nz1[0][i].Count(); j++)
                     {
-                        groups.Nz1[k][i].Remove(Q.Nz1[0][i][j]);
-                    }
-                    else
-                    {
-                        Q.Nz1[0][i].Remove(Q.Nz1[0][i][j]);
+                        groups.Nz1[k][i].Add(Q.Nz1[0][i][j]);
+
+                        this.shedule = new Shedule(this.BuildR(groups.Nz1[k]), countL);
+                        this.shedule.ConstructShedule();
+                        if (shedule.GetTime() > Tz)
+                        {
+                            groups.Nz1[k][i].Remove(Q.Nz1[0][i][j]);
+                        }
+                        else
+                        {
+                            Q.Nz1[0][i].Remove(Q.Nz1[0][i][j]);
+                        }
                     }
                 }
-  
+            }
         }
 
         public List<List<int>> ReturnAMatrix()
         {
             List<List<int>> A1 = new List<List<int>>();
             A1.Add(new List<int>());
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < this.A.Count(); i++)
             {
                 A1.Add(new List<int>());
                 A1[i + 1].Add(0);
@@ -206,7 +211,6 @@ namespace Diplom
                     }
                 }
             }
-
             return A1;
         }
         public bool GenerateSolution(List<List<int>> matrixA)
@@ -215,7 +219,5 @@ namespace Diplom
             this.Algoritm_2();
             return true;
         }
-
-     
     }
 }
