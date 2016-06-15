@@ -66,5 +66,10 @@ namespace Diplom
                 CountTypeDGV[i, 0].Value = 16;
             }
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            SecondLevel.c = checkBox1.Checked;
+        }
     }
 }

@@ -34,11 +34,13 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ModificatedAlgoritm = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.CountTypeDGV = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numericTypeCount = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.ModificatedAlgoritm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CountTypeDGV)).BeginInit();
@@ -63,6 +65,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
@@ -71,9 +74,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(6, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(244, 24);
+            this.label1.Size = new System.Drawing.Size(247, 24);
             this.label1.TabIndex = 3;
-            this.label1.Text = "количество типов  заявок";
+            this.label1.Text = "Количество типов  заявок";
             // 
             // progressBar1
             // 
@@ -94,6 +97,8 @@
             // 
             // ModificatedAlgoritm
             // 
+            this.ModificatedAlgoritm.Controls.Add(this.checkBox2);
+            this.ModificatedAlgoritm.Controls.Add(this.checkBox1);
             this.ModificatedAlgoritm.Controls.Add(this.label2);
             this.ModificatedAlgoritm.Controls.Add(this.CountTypeDGV);
             this.ModificatedAlgoritm.Controls.Add(this.numericTypeCount);
@@ -107,6 +112,16 @@
             this.ModificatedAlgoritm.TabIndex = 0;
             this.ModificatedAlgoritm.Text = "Алгоритм с модификацией составов партий требований";
             this.ModificatedAlgoritm.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(6, 89);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(358, 24);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Количество требований каждого типа";
             // 
             // CountTypeDGV
             // 
@@ -162,15 +177,26 @@
             this.tabPage2.Text = "Фиксированные партии";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // checkBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(6, 89);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(355, 24);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "количество требований каждого типа";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(281, 25);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(199, 17);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Оптимизация по составам  групп ";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(281, 48);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(240, 17);
+            this.checkBox2.TabIndex = 8;
+            this.checkBox2.Text = "Оптимизация по составам патрий данных";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -203,6 +229,8 @@
         private System.Windows.Forms.NumericUpDown numericTypeCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

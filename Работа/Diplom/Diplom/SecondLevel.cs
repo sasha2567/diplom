@@ -10,7 +10,7 @@ namespace Diplom
 {
     class SecondLevel
     {
-
+        public static bool c;
         private Groups groups, Q;
         private Shedule shedule;
         private List<List<int>> A;
@@ -143,7 +143,7 @@ namespace Diplom
                     else
                     {
                         
-                        int Tz = 80;
+                        int Tz = 400;
                         groups.Nz1[logi][i].Add(A[i][j]);
                         this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), 10);
                         this.shedule.ConstructShedule();
@@ -157,7 +157,8 @@ namespace Diplom
                     }
                 }
             }
-            if(Q.Nz1[0].Count()>0)
+            
+            if((Q.Nz1[0].Count()>0)&&(c))
             Algoritm_3();
              
             return groups.Nz1;//изменить
