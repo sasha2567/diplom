@@ -30,6 +30,7 @@ namespace Diplom
         {
             this.R = r;
             this.L = l;
+            this.SetTime();
         }
 
         private void SetTime()
@@ -54,19 +55,19 @@ namespace Diplom
 
             this.StartProcessing = new List<List<List<int>>>();
             this.EndProcessing = new List<List<List<int>>>();
-            for (int i = 0; i < this.L; i++)
+            for (int i = 0; i < this.L; i++)//количество приборов
             {
                 this.StartProcessing.Add(new List<List<int>>());
                 this.EndProcessing.Add(new List<List<int>>());
                 for (int j = 0; j < this.R.Count; j++)
                 {
-                    for (int k = 0; k < this.R[j].Count; k++)
+                    for (int k = 0; k < this.R[j].Count; k++)//номер партии
                     {
                         if (this.R[j][k] > 0)
                         {
                             this.StartProcessing[i].Add(new List<int>());
                             this.EndProcessing[i].Add(new List<int>());
-                            for (int p = 0; p < this.R[j][k]; p++)
+                            for (int p = 0; p < this.R[j][k]; p++)//количество требований
                             {
                                 this.StartProcessing[i][k].Add(0);
                                 this.EndProcessing[i][k].Add(0);
@@ -79,7 +80,7 @@ namespace Diplom
 
         private void CalculateShedule()
         {
-            this.SetTime();
+            
             int yy, zz, xx;
             for (int i = 0; i < this.L; i++)
             {
@@ -177,6 +178,11 @@ namespace Diplom
             this.R[indd2][ind2] = temp;
         }
 
+        private void ChangeColumTime(int ind1, int ind2)
+        {
+            
+        }
+
         public List<List<int>> ConstructShedule()
         {
             List<List<int>> tempR = new List<List<int>>();
@@ -218,24 +224,10 @@ namespace Diplom
 
         public bool shedule1(List<List<int>> Nz) 
         {
-         //   CalculateShedule(Nz);
-         //   int sum=0;
-          //  for (int i = 0; i < Nz.Count(); i++)
-          //      sum += Nz[i].Sum();
-
-
-                //  if (this.timeConstructShedule > 100)//здесь вместо суммы нужно вставить f3
-         //       if (sum > 14)
-            //        return true;
-             //   else
-            //        return false;
-            //CalculateShedule();
             if (this.timeConstructShedule > 100)//здесь вместо суммы нужно вставить f3
                 return true;
             else
                 return false;
-
         } 
     }
-
 }
