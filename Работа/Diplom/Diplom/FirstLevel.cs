@@ -311,6 +311,21 @@ namespace Diplom
                 }
                 else
                 {
+                    /*this.A = new List<List<int>>();
+                    this.A.Add(new List<int>());
+                    for (int ii = 0; ii < this.I.Count; ii++)
+                    {
+                        this.A.Add(new List<int>());
+                        this.A[ii + 1].Add(0);
+                        this.A[ii + 1].Add(0);
+                        int sum = 0;
+                        for (int j = 1; j < this.mi[ii]; j++)
+                        {
+                            this.A[ii + 1].Add(2);
+                            sum += 2;
+                        }
+                        this.A[ii + 1][1] = this.countClaims[ii] - sum;
+                    }*/
                     break;
 
                 }

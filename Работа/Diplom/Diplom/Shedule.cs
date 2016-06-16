@@ -66,13 +66,14 @@ namespace Diplom
                 this.EndProcessing.Add(new List<List<int>>());
                 for (int k = 0; k < this.R[0].Count; k++)
                 {
-                    for (int j = 0; j < this.R.Count; j++)//номер партии
+                    int ind = this.ReturnRIndex(k);
+                    if (ind != -1)
                     {
-                        if (this.R[j][k] > 0)
+                        if (this.R[ind][k] > 0)
                         {
                             this.StartProcessing[i].Add(new List<int>());
                             this.EndProcessing[i].Add(new List<int>());
-                            for (int p = 0; p < this.R[j][k]; p++)//количество требований
+                            for (int p = 0; p < this.R[ind][k]; p++)//количество требований
                             {
                                 this.StartProcessing[i][k].Add(0);
                                 this.EndProcessing[i][k].Add(0);
@@ -210,7 +211,10 @@ namespace Diplom
                     //this.ChangeColumTime(0, 1);
                     this.CalculateShedule();
                     if (tempTime < this.timeConstructShedule)
+                    {
                         this.R = tempR;
+                        this.timeConstructShedule = tempTime;
+                    }
                     break;
                 default:
                     this.CalculateShedule();
@@ -222,7 +226,10 @@ namespace Diplom
                         //this.ChangeColumTime(i - 1, i);
                         this.CalculateShedule();
                         if (tempTime < this.timeConstructShedule)
+                        {
                             this.R = tempR;
+                            this.timeConstructShedule = tempTime;
+                        }
                     }
                     break;
             }
