@@ -210,6 +210,7 @@ namespace Diplom
             }
             //this.f1 = 20;
             this.f1Buf = this.f1;
+            int currentChangeType = 0;
             //Добавить вычисление значения критерия
             while (!this.CheckType(this.I))
             {
@@ -261,6 +262,7 @@ namespace Diplom
                                 if (!this.CheckingMatrix(1) && !this.CheckingMatrix(2))
                                 {
                                     this.I[this.i] = 0;
+                                    this.mi[this.i]--;
                                     continue;
                                 }
                             }
@@ -311,7 +313,28 @@ namespace Diplom
                 }
                 else
                 {
-                    break;
+                    /*//this.A = new List<List<int>>();
+                    //this.A.Add(new List<int>());
+                    //for (int ii = 0; ii < this.I.Count; ii++)
+                    //{
+                        this.A[currentChangeType + 1].Clear();
+                        //this.A.Add(new List<int>());
+                        this.A[currentChangeType + 1].Add(0);
+                        this.A[currentChangeType + 1].Add(0);
+                        int sum = 0;
+                        for (int j = 1; j < this.mi[currentChangeType]; j++)
+                        {
+                            this.A[currentChangeType + 1].Add(2);
+                            sum += 2;
+                        }
+                        this.A[currentChangeType + 1][1] = this.countClaims[currentChangeType] - sum;
+                        currentChangeType++;
+                        if (currentChangeType == 4)
+                        {
+                            currentChangeType = 0;
+                        }
+                    //}
+                    //*/break;
 
                 }
             }
