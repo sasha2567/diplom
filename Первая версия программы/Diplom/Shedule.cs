@@ -8,50 +8,41 @@ namespace Diplom
 {
     class Shedule
     {
-        //int L;
-        //List<List<int>> P = new List<List<int>>();
         private List<List<int>> R = new List<List<int>>();
-        private List<List<int>> TTreatment;
-        private List<List<List<int>>> TSwitching;
+        public static List<List<int>> TTreatment;
+        public static List<List<List<int>>> TSwitching;
         private int timeConstructShedule;
-        private int L;
+        public static int L;
         private List<List<List<int>>> StartProcessing;
         private List<List<List<int>>> EndProcessing;
-        private int maxTimeSwitching = 2;
-        private int maxTimeTreatment = 2;
-        //List<List<int>> Pi=new List<List<int>>();   
-        //List<List<int>> А = new List<List<int>>();
-        //int s;
-        //List<int> m = new List<int>();
-        //List<List<int>> M = new List<List<int>>();
-        //int g;
-        //int v;
-        //int h;
+        public static int maxTimeSwitching = 4;
+        public static int maxTimeTreatment = 4;
+
 
         public Shedule(List<List<int>> r, int l)
         {
             this.R = r;
-            this.L = l;
-            this.SetTime();
+            L = l;
+            //this.SetTime();
         }
 
         private void SetTime()
         {
-            this.TSwitching = new List<List<List<int>>>();
-            this.TTreatment = new List<List<int>>();
+            TSwitching = new List<List<List<int>>>();
+            TTreatment = new List<List<int>>();
             Random rand = new Random();
-            for (int i = 0; i < this.L; i++)
+            for (int i = 0; i < L; i++)
             {
-                this.TTreatment.Add(new List<int>());
-                this.TSwitching.Add(new List<List<int>>());
+                TTreatment.Add(new List<int>());
+                TSwitching.Add(new List<List<int>>());
                 for (int j = 0; j < this.R.Count; j++)
                 {
                     //int otnosh = 2;
-                    this.TTreatment[i].Add(rand.Next(2, this.maxTimeTreatment));
-                    this.TSwitching[i].Add(new List<int>());
+                    TTreatment[i].Add(rand.Next(2, maxTimeTreatment));
+                    TSwitching[i].Add(new List<int>());
                     for (int k = 0; k < this.R.Count; k++)
                     {
-                        this.TSwitching[i][j].Add(rand.Next(2, this.maxTimeSwitching));
+                        TSwitching[i][j].Add(rand.Next(2, maxTimeSwitching));
                     }
                 }
             }
@@ -61,7 +52,7 @@ namespace Diplom
         {
             this.StartProcessing = new List<List<List<int>>>();
             this.EndProcessing = new List<List<List<int>>>();
-            for (int i = 0; i < this.L; i++)//количество приборов
+            for (int i = 0; i < L; i++)//количество приборов
             {
                 this.StartProcessing.Add(new List<List<int>>());
                 this.EndProcessing.Add(new List<List<int>>());
@@ -81,15 +72,10 @@ namespace Diplom
                             }
                         }
                     }
-                    /*else
-                    {
-                        this.StartProcessing[i].Add(new List<int>());
-                        this.EndProcessing[i].Add(new List<int>());
-                    }*/
                 }
             } 
             int yy, zz, xx;
-            for (int i = 0; i < this.L; i++)
+            for (int i = 0; i < L; i++)
             {
                 yy = 0;
                 zz = 0;
@@ -103,11 +89,11 @@ namespace Diplom
                         {
                             if (i != 0)
                             {
-                                int timeToSwitch = this.TSwitching[i][xx][index];
+                                int timeToSwitch = TSwitching[i][xx][index];
                                 if (index == xx && j != 0)
                                     timeToSwitch = 0;
                                 this.StartProcessing[i][j][k] = Math.Max(this.EndProcessing[i][yy][zz] + timeToSwitch, this.EndProcessing[i - 1][j][k]);
-                                this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][index];
+                                this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + TTreatment[i][index];
                                 this.timeConstructShedule = this.EndProcessing[i][j][k];
                                 yy = j;
                                 zz = k;
@@ -115,11 +101,11 @@ namespace Diplom
                             }
                             else
                             {
-                                int timeToSwitch = this.TSwitching[i][xx][index];
+                                int timeToSwitch = TSwitching[i][xx][index];
                                 if (index == xx && j != 0)
                                     timeToSwitch = 0;
                                 this.StartProcessing[i][j][k] = this.EndProcessing[i][yy][zz] + timeToSwitch;
-                                this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + this.TTreatment[i][index];
+                                this.EndProcessing[i][j][k] = this.StartProcessing[i][j][k] + TTreatment[i][index];
                                 this.timeConstructShedule = this.EndProcessing[i][j][k];
                                 yy = j;
                                 zz = k;
@@ -188,7 +174,7 @@ namespace Diplom
 
         private void ChangeColumTime(int ind1, int ind2)
         {
-            for (int i = 0; i < this.L; i++)
+            for (int i = 0; i < L; i++)
             {
                 List<int> temp = this.CopyList(this.StartProcessing[i][ind1]);
                 this.StartProcessing[i][ind1] = this.CopyList(this.StartProcessing[i][ind2]);

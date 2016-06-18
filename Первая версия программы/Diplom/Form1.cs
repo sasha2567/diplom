@@ -155,6 +155,13 @@ namespace Diplom
             tz = Convert.ToInt32(textBox1.Text);
             maxT = Convert.ToInt32(textBox2.Text);
             maxS = Convert.ToInt32(textBox3.Text);
+            SecondLevel.Tz = tz;
+            SecondLevel.countL = l;
+            Shedule.L = l;
+            Shedule.maxTimeSwitching = maxS;
+            Shedule.maxTimeTreatment = maxT;
+            Shedule.TSwitching = tS;
+            Shedule.TTreatment = tT;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

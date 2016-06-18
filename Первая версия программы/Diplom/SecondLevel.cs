@@ -14,8 +14,8 @@ namespace Diplom
         private Groups groups, Q;
         private Shedule shedule;
         private List<List<int>> A;
-        private int countL = 4;
-        int Tz = 60;//вот здесь надо менять время обработки при 40 оно успеваетполностьюобработать все партии
+        public static int countL = 4;
+        public static int Tz = 80;//вот здесь надо менять время обработки при 40 оно успеваетполностьюобработать все партии
                     
         public SecondLevel()
         {

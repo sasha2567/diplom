@@ -215,6 +215,7 @@ namespace Diplom
             //Добавить вычисление значения критерия
             List<List<int>> MaxA = this.CopyMatrix(this.A);
             int maxF1 = this.f1;
+            string s = "";
             if (flag == false)
             {
                 while (!this.CheckType(this.I))
@@ -317,7 +318,7 @@ namespace Diplom
                         this.A = this.CopyMatrix(ABuf);
                         MaxA = this.CopyMatrix(ABuf);
                         maxF1 = this.f1Buf;
-                        string s = "";
+                        s = "";
                         foreach (List<int> row in MaxA)
                         {
                             foreach (int colum in row)
@@ -358,6 +359,16 @@ namespace Diplom
                 }
             }
             MessageBox.Show("На текущем " + this.k + " шаге получено решение");
+            s = "";
+            foreach (List<int> row in MaxA)
+            {
+                foreach (int colum in row)
+                {
+                    s += colum + ", ";
+                }
+                s += "\n";
+            }
+            MessageBox.Show(s);
             MessageBox.Show("Количество обработанных требований " + maxF1);
         }
     }
