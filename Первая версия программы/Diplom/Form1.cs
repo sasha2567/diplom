@@ -36,6 +36,8 @@ namespace Diplom
             textBox2.Text = maxT.ToString();
             textBox3.Text = maxS.ToString();
             numericUpDown1.Value = l;
+            checkBox2.Checked = true;
+            FirstLevel.flag = checkBox2.Checked;
         }
 
         private void RandomTime()
@@ -166,23 +168,44 @@ namespace Diplom
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            maxT = Convert.ToInt32(textBox2.Text);
-            this.RandomTime();
-            //this.PrintTime();
+            try
+            {
+                maxT = Convert.ToInt32(textBox2.Text);
+                this.RandomTime();
+                //this.PrintTime();
+            }
+            catch
+            {
+
+            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            maxS = Convert.ToInt32(textBox3.Text);
-            this.RandomTime();
-            //this.PrintTime();
+            try
+            {
+                maxS = Convert.ToInt32(textBox3.Text);
+                this.RandomTime();
+                //this.PrintTime();
+            }
+            catch
+            {
+
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            tz = Convert.ToInt32(textBox1.Text);
-            this.RandomTime();
-            //this.PrintTime();
+            try
+            {
+                tz = Convert.ToInt32(textBox1.Text);
+                this.RandomTime();
+                //this.PrintTime();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

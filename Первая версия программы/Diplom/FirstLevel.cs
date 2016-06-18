@@ -9,7 +9,7 @@ namespace Diplom
 {
     class FirstLevel
     {
-        public static bool flag = false;
+        public static bool flag;
         private List<int> I;//Вектор интерпритируемых типов данных
         private List<int> Ii;//Вектор интерпритируемых типов данных на текущем шагу алгоритма
         private List<int> mi;//Вектор количества партий данных для каждого типа данных
@@ -216,7 +216,7 @@ namespace Diplom
             List<List<int>> MaxA = this.CopyMatrix(this.A);
             int maxF1 = this.f1;
             string s = "";
-            if (flag == false)
+            if (flag == true)
             {
                 while (!this.CheckType(this.I))
                 {
