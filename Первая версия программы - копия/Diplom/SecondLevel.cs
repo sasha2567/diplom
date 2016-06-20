@@ -162,6 +162,7 @@ namespace Diplom
         
         public void Algoritm_3()
         {
+            int buff=0;
             for (int k = 0; k < groups.Nz1.Count(); k++)
             {
                 for (int i = 0; i < Q.Nz1[0].Count(); i++)
@@ -175,6 +176,7 @@ namespace Diplom
                         if (shedule.GetTime() > Tz)
                         {
                             groups.Nz1[k][i].Remove(Q.Nz1[0][i][j]);
+                            
                         }
                         else
                         {
@@ -182,6 +184,12 @@ namespace Diplom
                         }
                     }
                 }
+            }
+            for (int k = 0; k < groups.Nz1.Count(); k++)
+            {
+                this.shedule = new Shedule(this.BuildR(groups.Nz1[k]), countL);
+                this.shedule.ConstructShedule();
+                MessageBox.Show(Convert.ToString(Tz - shedule.GetTime()));
             }
         }
 
