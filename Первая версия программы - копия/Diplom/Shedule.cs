@@ -17,6 +17,7 @@ namespace Diplom
         private List<List<List<int>>> EndProcessing;
         public static int maxTimeSwitching = 4;
         public static int maxTimeTreatment = 4;
+        
 
 
         public Shedule(List<List<int>> r, int l)

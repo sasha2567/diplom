@@ -16,7 +16,7 @@ namespace Diplom
         private List<List<int>> A;
         public static int countL = 4;
         public static int Tz = 80;//вот здесь надо менять время обработки при 40 оно успеваетполностьюобработать все партии
-                    
+        public int[] Prostoi = new int[4];   
         public SecondLevel()
         {
             this.groups = new Groups(5);
@@ -143,7 +143,7 @@ namespace Diplom
                         this.shedule = new Shedule(this.BuildR(groups.Nz1[logi]), countL);
                         this.shedule.ConstructShedule();
                          
-                        if(this.shedule.GetTime() > Tz) 
+                         if(this.shedule.GetTime() > Tz) 
                         {
                             groups.Nz1[logi][i].Remove(A[i][j]);
                             j--;
@@ -175,12 +175,12 @@ namespace Diplom
                         this.shedule.ConstructShedule();
                         if (shedule.GetTime() > Tz)
                         {
-                            groups.Nz1[k][i].Remove(Q.Nz1[0][i][j]);
+                            groups.Nz1[k][i].RemoveAt(groups.Nz1[k][i].Count-1);
                             
                         }
                         else
                         {
-                            Q.Nz1[0][i].Remove(Q.Nz1[0][i][j]);
+                            Q.Nz1[0][i].Remove(Q.Nz1[0][i].Count-1);
                         }
                     }
                 }
@@ -189,7 +189,7 @@ namespace Diplom
             {
                 this.shedule = new Shedule(this.BuildR(groups.Nz1[k]), countL);
                 this.shedule.ConstructShedule();
-                MessageBox.Show(Convert.ToString(Tz - shedule.GetTime()));
+                Prostoi[k]=Tz - shedule.GetTime();
             }
         }
 
