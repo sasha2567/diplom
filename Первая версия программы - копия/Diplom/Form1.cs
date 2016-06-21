@@ -177,8 +177,23 @@ namespace Diplom
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            Random t=new Random();
+
+            dataGridView2.Rows.Clear();
+            dataGridView2.Columns.Clear();
             try
             {
+                for (int i = 0; i < numericTypeCount.Value; i++)
+                {
+                    dataGridView2.Columns.Add("прибор", "прибор " + (i+1).ToString());
+                    dataGridView2.Rows.Add();
+                }
+                for (int i = 0; i < numericTypeCount.Value; i++)
+                    for (int j = 0; j < numericTypeCount.Value; j++)
+                {
+                    dataGridView2[i, j].Value = t.Next(10);
+                }
+
                 maxS = Convert.ToInt32(textBox2.Text);
                 this.RandomTime();
                 this.PrintTime();
@@ -196,6 +211,7 @@ namespace Diplom
                 maxT = Convert.ToInt32(textBox3.Text);
                 this.RandomTime();
                 this.PrintTime();
+
             }
             catch
             {

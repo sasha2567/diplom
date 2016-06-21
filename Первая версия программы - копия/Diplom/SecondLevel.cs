@@ -193,11 +193,11 @@ namespace Diplom
             {
                 this.shedule = new Shedule(this.BuildR(groups.Nz1[k]), countL);
                 this.shedule.ConstructShedule();
-<<<<<<< HEAD
+
                 Prostoi[k]=Tz - shedule.GetTime();
-=======
+
                 //MessageBox.Show(Convert.ToString(Tz - shedule.GetTime()));
->>>>>>> 43965d49dad96c9fea2d11d26b89691f9af5e246
+
             }
         }
 
