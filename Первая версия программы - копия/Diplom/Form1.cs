@@ -71,10 +71,7 @@ namespace Diplom
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
             dataGridView1.RowCount = tT.Count;
-            for (int i = 0; i < tT.Count; i++)
-            {
-                dataGridView1.Columns.Add("col" + i, "Тип " + (i + 1));
-            }
+            dataGridView1.ColumnCount = tT[0].Count;
             for (int i = 0; i < tT.Count; i++)
             {
                 for (int j = 0; j < numericTypeCount.Value; j++)

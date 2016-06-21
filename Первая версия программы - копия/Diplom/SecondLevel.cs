@@ -68,25 +68,33 @@ namespace Diplom
         public void Algoritm_1()
         {
             int buff,buff2;
-          
-            for(int i=0;i<groups.Nz1.Count;i++)
-              for(int j=0;j<groups.Nz1[i].Count;j++)
-                  for(int k=0;k<groups.Nz1[i][j].Count;k++)
-                       for(int l=0;l<Q.Nz1[0].Count;l++)
-                            for(int t=0;t<Q.Nz1[0][l].Count;t++)
+
+            for (int i = 0; i < groups.Nz1.Count; i++)
+            {
+                for (int j = 0; j < groups.Nz1[i].Count; j++)
+                {
+                    for (int k = 0; k < groups.Nz1[i][j].Count; k++)
+                    {
+                        for (int l = 0; l < Q.Nz1[0].Count; l++)
+                        {
+                            for (int t = 0; t < Q.Nz1[0][l].Count; t++)
                             {
                                 this.shedule = new Shedule(this.BuildR(groups.Nz1[i]), countL);
                                 this.shedule.ConstructShedule();
-                                buff2=shedule.GetTime();
+                                buff2 = shedule.GetTime();
                                 buff = groups.Nz1[i][j][k];
                                 groups.Nz1[i][l][k] = Q.Nz1[0][l][t];
                                 this.shedule = new Shedule(this.BuildR(groups.Nz1[i]), countL);
                                 this.shedule.ConstructShedule();
-                    if (shedule.GetTime() > buff2)
-                    {
-                        groups.Nz1[i][j][k]=buff2;
+                                if (shedule.GetTime() > buff2)
+                                {
+                                    groups.Nz1[i][j][k] = buff;
+                                }
+                            }
+                        }
                     }
-                  }
+                }
+            }
             Algoritm_3();
         }
         public List<List<List<int>>> Algoritm_2()
@@ -219,6 +227,7 @@ namespace Diplom
         {
             this.A = matrixA;
             this.Algoritm_2();
+            //this.Algoritm_1();
             return true;
         }
     }
