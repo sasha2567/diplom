@@ -24,6 +24,7 @@ namespace Diplom
 
         public Form1()
         {
+
             InitializeComponent();
             CountTypeDGV[0, 0].Value = this.countClaims;
             l = 4;
@@ -31,7 +32,7 @@ namespace Diplom
             maxS = 2;
             maxT = 2;
             this.RandomTime();
-            //this.PrintTime();
+            this.PrintTime();
             textBox1.Text = tz.ToString();
             textBox2.Text = maxT.ToString();
             textBox3.Text = maxS.ToString();
@@ -49,12 +50,12 @@ namespace Diplom
             {
                 temptT.Add(new List<int>());
                 temptS.Add(new List<List<int>>());
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < numericTypeCount.Value; j++)
                 {
                     int temp = rand.Next(2, maxT);
                     temptT[i].Add(temp);
                     temptS[i].Add(new List<int>());
-                    for (int k = 0; k < 4; k++)
+                    for (int k = 0; k < numericTypeCount.Value; k++)
                     {
                         temp = rand.Next(2, maxS);
                         temptS[i][j].Add(temp);
@@ -67,15 +68,23 @@ namespace Diplom
 
         private void PrintTime()
         {
+            dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
-            for (int i = 0; i < l; i++)
+            dataGridView1.RowCount = tT.Count;
+            for (int i = 0; i < tT.Count; i++)
             {
-                dataGridView1.Columns.Add("col" + i, "Прибор " + (i + 1));
-                for (int j = 0; j < 4; j++)
+                dataGridView1.Columns.Add("col" + i, "Тип " + (i + 1));
+            }
+            for (int i = 0; i < tT.Count; i++)
+            {
+                for (int j = 0; j < numericTypeCount.Value; j++)
                 {
-                    dataGridView1[i, j].Value = tT[i][j];
+                    dataGridView1[j, i].Value = tT[i][j];
                 }
             }
+            dataGridView2.Rows.Clear();
+            dataGridView2.Columns.Clear();
+            dataGridView2.RowCount = tS.Count * tS[0].Count;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -114,8 +123,6 @@ namespace Diplom
             A[4].Add(12); A[4].Add(8); A[4].Add(2); A[4].Add(2); A[4].Add(2); A[4].Add(2);
 
             secondLevel.GenerateSolution(A);
-
-
         }
 
         private void numericTypeCount_ValueChanged(object sender, EventArgs e)
@@ -126,6 +133,8 @@ namespace Diplom
                 CountTypeDGV.Columns.Add("col" + i, "Тип " + (i + 1));
                 CountTypeDGV[i, 0].Value = this.countClaims;
             }
+            this.RandomTime();
+            this.PrintTime();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -170,9 +179,9 @@ namespace Diplom
         {
             try
             {
-                maxT = Convert.ToInt32(textBox2.Text);
+                maxS = Convert.ToInt32(textBox2.Text);
                 this.RandomTime();
-                //this.PrintTime();
+                this.PrintTime();
             }
             catch
             {
@@ -184,9 +193,9 @@ namespace Diplom
         {
             try
             {
-                maxS = Convert.ToInt32(textBox3.Text);
+                maxT = Convert.ToInt32(textBox3.Text);
                 this.RandomTime();
-                //this.PrintTime();
+                this.PrintTime();
             }
             catch
             {
@@ -199,8 +208,6 @@ namespace Diplom
             try
             {
                 tz = Convert.ToInt32(textBox1.Text);
-                this.RandomTime();
-                //this.PrintTime();
             }
             catch
             {
@@ -208,14 +215,24 @@ namespace Diplom
             }
         }
 
-        private void ModificatedAlgoritm_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             SecondLevel.c = false;
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                l = (int)numericUpDown1.Value;
+                this.RandomTime();
+                this.PrintTime();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

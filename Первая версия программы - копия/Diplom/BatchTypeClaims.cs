@@ -403,7 +403,7 @@ namespace Diplom
                         Random rand = new Random();
                         int ret = rand.Next(5, 15);
                         //if (ret < 10) 
-                        if (f1g > this.f1)
+                        if (f1g >= this.f1)
                         {
                             this.q2i = indexQ;
                             this.G = f1g - this.f1;

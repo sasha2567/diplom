@@ -121,7 +121,6 @@
             this.ModificatedAlgoritm.TabIndex = 0;
             this.ModificatedAlgoritm.Text = "Алгоритм с модификацией составов партий требований";
             this.ModificatedAlgoritm.UseVisualStyleBackColor = true;
-            this.ModificatedAlgoritm.Click += new System.EventHandler(this.ModificatedAlgoritm_Click);
             // 
             // checkBox2
             // 
@@ -317,6 +316,7 @@
             0,
             0,
             0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label7
             // 
