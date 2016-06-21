@@ -179,24 +179,32 @@ namespace Diplom
         {
             Random t=new Random();
 
-            dataGridView2.Rows.Clear();
-            dataGridView2.Columns.Clear();
+           
             try
             {
+                dataGridView2.Rows.Clear();
+                dataGridView2.Columns.Clear();
                 for (int i = 0; i < numericTypeCount.Value; i++)
                 {
-                    dataGridView2.Columns.Add("прибор", "прибор " + (i+1).ToString());
-                    dataGridView2.Rows.Add();
+                    dataGridView2.Columns.Add("прибор", "прибор " + (i + 1).ToString());
+                    for (int j = 0; j < numericTypeCount.Value+1; j++)
+                    {
+                        if (j > numericTypeCount.Value)
+                            dataGridView2.Rows.Add("прибор "+i.ToString(),"");
+                        else
+                            dataGridView2.Rows.Add();
+                    }
                 }
+               for (int k = 0; k < numericTypeCount.Value; k++)
                 for (int i = 0; i < numericTypeCount.Value; i++)
                     for (int j = 0; j < numericTypeCount.Value; j++)
-                {
-                    dataGridView2[i, j].Value = t.Next(10);
-                }
+                    {
+                        dataGridView2[i,j+(5*k)].Value = t.Next(Convert.ToInt32(textBox2.Text));
+                    }
 
                 maxS = Convert.ToInt32(textBox2.Text);
-                this.RandomTime();
-                this.PrintTime();
+               this.RandomTime();
+               // this.PrintTime();
             }
             catch
             {
