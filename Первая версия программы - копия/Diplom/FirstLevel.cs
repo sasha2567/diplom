@@ -326,7 +326,8 @@ namespace Diplom
                         {
                             foreach (int colum in row)
                             {
-                                s += colum + ", ";
+                                if (colum >= 2)
+                                    s += colum + ", ";
                             }
                             s += "\n";
                         }
@@ -367,7 +368,8 @@ namespace Diplom
             {
                 foreach (int colum in row)
                 {
-                    s += colum + ", ";
+                    if(colum >= 2)
+                        s += colum + ", ";
                 }
                 s += "\n";
             }
