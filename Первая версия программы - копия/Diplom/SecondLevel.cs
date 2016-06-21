@@ -66,7 +66,8 @@ namespace Diplom
         }
 
         public void Algoritm_1()
-        {int buff,buff2;
+        {
+            int buff,buff2;
           
             for(int i=0;i<groups.Nz1.Count;i++)
               for(int j=0;j<groups.Nz1[i].Count;j++)
@@ -192,7 +193,11 @@ namespace Diplom
             {
                 this.shedule = new Shedule(this.BuildR(groups.Nz1[k]), countL);
                 this.shedule.ConstructShedule();
+<<<<<<< HEAD
                 Prostoi[k]=Tz - shedule.GetTime();
+=======
+                //MessageBox.Show(Convert.ToString(Tz - shedule.GetTime()));
+>>>>>>> 43965d49dad96c9fea2d11d26b89691f9af5e246
             }
         }
 
