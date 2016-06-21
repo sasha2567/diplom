@@ -145,15 +145,18 @@ namespace Diplom
                          
                          if(this.shedule.GetTime() > Tz) 
                         {
-                            groups.Nz1[logi][i].Remove(A[i][j]);
+                            groups.Nz1[logi][i].RemoveAt(groups.Nz1[logi][i].Count-1);
                             j--;
                             logi++;
                         }
                     }
                 }
             }
-            
-            if((Q.Nz1[0].Count()>0)&&c)
+
+            int sum=0;
+            for (int i = 0; i < Q.Nz1[0].Count; i++)
+                sum += Q.Nz1[0][i].Count;
+            if((sum>0)&&c)
             Algoritm_3();
         
             return groups.Nz1;//изменить
@@ -180,7 +183,7 @@ namespace Diplom
                         }
                         else
                         {
-                            Q.Nz1[0][i].Remove(Q.Nz1[0][i].Count-1);
+                            Q.Nz1[0][i].RemoveAt(j);
                         }
                     }
                 }
