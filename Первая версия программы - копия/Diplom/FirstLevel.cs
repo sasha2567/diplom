@@ -300,7 +300,7 @@ namespace Diplom
                                     Random rand = new Random();
                                     int ret = rand.Next(5, 15);
                                     //if(ret < 10)
-                                    if (f1g > this.f1Buf)
+                                    if (f1g >= this.f1Buf)
                                     //if (f1g - this.f1Buf < 0 || f1g == 0)
                                     {
                                         this.f1Buf = f1g;
@@ -314,12 +314,15 @@ namespace Diplom
                     this.k++;
                     if (this.solutionFlag)
                     {
+                        if (this.f1Buf > this.f1)
+                        {
+                            MaxA = this.CopyMatrix(ABuf);
+                            maxF1 = this.f1Buf;
+                        }
                         this.f1 = this.f1Buf;
                         this.A = this.CopyMatrix(ABuf);
-                        MaxA = this.CopyMatrix(ABuf);
-                        maxF1 = this.f1Buf;
-                        s = "";
-                        foreach (List<int> row in MaxA)
+                        s = "Решение на текущем шаге\n";
+                        foreach (List<int> row in this.A)
                         {
                             foreach (int colum in row)
                             {
@@ -359,7 +362,7 @@ namespace Diplom
                 }
             }
             MessageBox.Show("На текущем " + this.k + " шаге получено решение");
-            s = "";
+            s = "Максимальное решение\n";
             foreach (List<int> row in MaxA)
             {
                 foreach (int colum in row)
