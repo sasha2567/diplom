@@ -82,6 +82,15 @@ namespace Diplom
             dataGridView2.Rows.Clear();
             dataGridView2.Columns.Clear();
             dataGridView2.RowCount = tS.Count * tS[0].Count;
+            dataGridView2.ColumnCount = tS[0].Count;
+            for (int k = 0; k < tS.Count; k++)
+                for (int i = 0; i < numericTypeCount.Value; i++)
+                    for (int j = 0; j < numericTypeCount.Value; j++)
+                    {
+                        int str = k * tS[0].Count + i;
+                        dataGridView2[j, str].Value = tS[k][i][j];
+                        //dataGridView2[j, k].Value = tS[k][i][j];
+                    }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -144,64 +153,29 @@ namespace Diplom
             FirstLevel.flag = checkBox2.Checked;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            TimeForm tForm = new TimeForm();
-            tForm.Show();
-            timeFlag = true;
-            this.maxS = TimeForm.maxS;
-            this.maxT = TimeForm.maxT;
-            this.l = TimeForm.l;
-            this.tz = TimeForm.tz;
-            this.tS = TimeForm.tS;
-            this.tT = TimeForm.tT;
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            l = (int)numericUpDown1.Value;
-            tz = Convert.ToInt32(textBox1.Text);
-            maxT = Convert.ToInt32(textBox2.Text);
-            maxS = Convert.ToInt32(textBox3.Text);
-            SecondLevel.Tz = tz;
-            SecondLevel.countL = l;
-            Shedule.L = l;
-            Shedule.maxTimeSwitching = maxS;
-            Shedule.maxTimeTreatment = maxT;
-            Shedule.TSwitching = tS;
-            Shedule.TTreatment = tT;
+            this.l = (int)numericUpDown1.Value;
+            this.tz = Convert.ToInt32(textBox1.Text);
+            this.maxT = Convert.ToInt32(textBox2.Text);
+            this.maxS = Convert.ToInt32(textBox3.Text);
+            SecondLevel.Tz = this.tz;
+            SecondLevel.countL = this.l;
+            Shedule.L = this.l;
+            Shedule.maxTimeSwitching = this.maxS;
+            Shedule.maxTimeTreatment = this.maxT;
+            Shedule.TSwitching = this.tS;
+            Shedule.TTreatment = this.tT;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            Random t=new Random();
-
-           
             try
             {
-                dataGridView2.Rows.Clear();
-                dataGridView2.Columns.Clear();
-                for (int i = 0; i < numericTypeCount.Value; i++)
-                {
-                    dataGridView2.Columns.Add("прибор", "прибор " + (i + 1).ToString());
-                    for (int j = 0; j < numericTypeCount.Value+1; j++)
-                    {
-                        if (j > numericTypeCount.Value)
-                            dataGridView2.Rows.Add("прибор "+i.ToString(),"");
-                        else
-                            dataGridView2.Rows.Add();
-                    }
-                }
-               for (int k = 0; k < numericTypeCount.Value; k++)
-                for (int i = 0; i < numericTypeCount.Value; i++)
-                    for (int j = 0; j < numericTypeCount.Value; j++)
-                    {
-                        dataGridView2[i,j+(5*k)].Value = t.Next(Convert.ToInt32(textBox2.Text));
-                    }
-
-                maxS = Convert.ToInt32(textBox2.Text);
-               this.RandomTime();
-               // this.PrintTime();
+                this.maxS = Convert.ToInt32(textBox2.Text);
+                this.RandomTime();
+                this.PrintTime();
+                MessageBox.Show("maxS = " + this.maxS);
             }
             catch
             {
@@ -213,10 +187,10 @@ namespace Diplom
         {
             try
             {
-                maxT = Convert.ToInt32(textBox3.Text);
+                this.maxT = Convert.ToInt32(textBox3.Text);
                 this.RandomTime();
                 this.PrintTime();
-
+                MessageBox.Show("maxT = " + this.maxT);
             }
             catch
             {
@@ -228,7 +202,8 @@ namespace Diplom
         {
             try
             {
-                tz = Convert.ToInt32(textBox1.Text);
+                this.tz = Convert.ToInt32(textBox1.Text);
+                MessageBox.Show("tz = " + this.tz);
             }
             catch
             {
@@ -239,16 +214,16 @@ namespace Diplom
         private void Form1_Load(object sender, EventArgs e)
         {
             SecondLevel.c = false;
-
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             try
             {
-                l = (int)numericUpDown1.Value;
+                this.l = (int)numericUpDown1.Value;
                 this.RandomTime();
                 this.PrintTime();
+                MessageBox.Show("l = " + this.l);
             }
             catch
             {
