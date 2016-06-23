@@ -175,7 +175,6 @@ namespace Diplom
                 this.maxS = Convert.ToInt32(textBox2.Text);
                 this.RandomTime();
                 this.PrintTime();
-                MessageBox.Show("maxS = " + this.maxS);
             }
             catch
             {
@@ -190,7 +189,6 @@ namespace Diplom
                 this.maxT = Convert.ToInt32(textBox3.Text);
                 this.RandomTime();
                 this.PrintTime();
-                MessageBox.Show("maxT = " + this.maxT);
             }
             catch
             {
@@ -203,7 +201,6 @@ namespace Diplom
             try
             {
                 this.tz = Convert.ToInt32(textBox1.Text);
-                MessageBox.Show("tz = " + this.tz);
             }
             catch
             {
@@ -223,7 +220,6 @@ namespace Diplom
                 this.l = (int)numericUpDown1.Value;
                 this.RandomTime();
                 this.PrintTime();
-                MessageBox.Show("l = " + this.l);
             }
             catch
             {
